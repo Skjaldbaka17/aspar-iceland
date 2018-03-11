@@ -8,6 +8,7 @@ body{
 
 
     position: static;
+    z-index: 0;
 
 }
 
@@ -53,7 +54,7 @@ body{
 
     font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
     color: rgba(255,255,255,1);
-    text-shadow: 3px 3px 0 #0199d9;  
+    text-shadow: 3px 3px 0 #014dd9;  
 }
 
 nav {
@@ -64,16 +65,20 @@ nav {
     position: sticky;
     top: 0;
     height: 4rem;
-    background-color: lightgray;
+
     opacity: 0.3;
     
-
+    
     border-bottom: solid rgb(211,211,211);
     border-width: thin;
     margin: 0 10%;
+    z-index: 1;
+    transition: all 1s;
 }
 nav:hover{
     opacity: 0.9;
+    background-color: white;
+
 }
 
 nav a{
@@ -85,6 +90,12 @@ nav a{
 
     box-sizing: border-box;
     padding: 5px 20px;
+
+    transition: font-size 1s;
+}
+
+nav a:hover{
+    font-size: 24px;
 }
 
 
@@ -146,10 +157,18 @@ nav a{
     color: #323232;
 }
 
+.greinar li{
+    transition: all 2s;
+}
+
+.greinar li:hover{
+    transform: scale(1.1);
+}
+
 footer{
     border-top: solid;
     height: 100px;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 footer form{

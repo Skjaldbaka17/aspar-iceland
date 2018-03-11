@@ -1,0 +1,24 @@
+{
+  "name": "aspar-iceland",
+  "version": "1.0.0",
+  "description": "Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skjaldbaka17/aspar-iceland.git"
+  },
+  "author": "Þórður Ágústsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skjaldbaka17/aspar-iceland/issues"
+  },
+  "homepage": "https://github.com/Skjaldbaka17/aspar-iceland#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "path": "^0.12.7"
+  }
+}
