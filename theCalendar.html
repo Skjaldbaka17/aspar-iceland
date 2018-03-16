@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Calendar</title>
+        <link rel="stylesheet" href="./theCalendar.css">
+        <meta charset="utf-8">
+    </head>
+
+
+    <div id="theCalendar">
+        <div id ="headerMonth">
+            <h1 id="month">Month</h1>
+        </div>
+        <div id="weekdays">
+            <div>MON</div>
+            <div>TUE</div>
+            <div>WED</div>
+            <div>THU</div>
+            <div>FRI</div>
+            <div>SAT</div>
+            <div>SUN</div>
+        </div>
+        <div id="days"></div>
+    </div>
+
+    <script>
+        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+        
+        var today = new Date();
+            var day = today.getDate();
+            var month = today.getMonth(); //January is 0!
+            var year = today.getFullYear();
+
+            document.getElementById('month').innerHTML = MONTH_NAMES[month] + " " + year;
+            var day1 = new Date(year + "-" + (month+1) + "-01").getDay()
+            day1 = (day1===0) ? 7 : day1
+            //How many days in current month!
+           /* Date.prototype.monthDays= function(){
+                var d= new Date(this.getFullYear(), this.getMonth()+1, 0);
+                return d.getDate();
+            }*/
+
+             // pass in any date as parameter anyDateInMonth
+            function daysInMonth(anyDateInMonth) {
+                return new Date(anyDateInMonth.getYear(), anyDateInMonth.getMonth()+1, 0).getDate();
+            }
+            
+            var amountOfDaysThisMonth = daysInMonth(today);
+            var lastMonthDate = new Date(today.getFullYear(), today.getMonth()-1);
+            var amountOfDaysLastMonth = daysInMonth(lastMonthDate);
+
+           for(var x =(amountOfDaysLastMonth - (day1-1))+1; x <= amountOfDaysLastMonth; x++){
+                var monthDay = document.createElement('div');
+                    monthDay.innerHTML = x;
+                    monthDay.className = 'day';
+                    document.getElementById('days').appendChild(monthDay);
+           }
+
+            for(var x = 1; x <= amountOfDaysThisMonth; x++){
+                var monthDay = document.createElement('div');
+                monthDay.innerHTML = x;
+                monthDay.className = 'day';
+                document.getElementById('days').appendChild(monthDay);
+            }
+
+            if((amountOfDaysThisMonth+(day1-1))%7 !== 0){
+                for(var x = 1; x <= 7 - (amountOfDaysThisMonth+(day1-1))%7; x++){
+                    var monthDay = document.createElement('div');
+                monthDay.innerHTML = x;
+                monthDay.className = 'day';
+                document.getElementById('days').appendChild(monthDay);
+                }
+                }
+            
+    </script>
+</html>

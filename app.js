@@ -9,14 +9,17 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
 
-app.use('/img', express.static(path.join(__dirname, 'public/img')));
+
+app.use(express.static(path.join(__dirname, 'articles')));
+app.use(express.static(path.join(__dirname, 'theTour')));
+app.use(express.static(path.join(__dirname, 'people')));
 
 
 
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
     const title = 'Fannst ekki';
-    const message = 'Ó nei, efnið finnst ekki!';
+    const message = 'Sorry, this page is currently under construction.';
     res.status(404).render('error', {message });
   }
   

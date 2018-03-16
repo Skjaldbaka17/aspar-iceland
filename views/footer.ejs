@@ -1,0 +1,23 @@
+<% if(height === '700px'){%>
+<footer style='margin-top: 200px;'>
+        <% } else{ %>
+            <footer> <% } %>
+                <form id ="submitForm">
+                    <input type="text" placeholder ="Your name">
+                    <input type="text" placeholder ="Email">
+                    <input type="text" placeholder ="Subject">
+                    <textarea class = "about" placeholder ="About..."></textarea>
+                    <input type="submit" value="submit">
+                </form>
+            </footer>
+
+
+            <script>
+                    $('#submitForm').submit(function () {
+                        alert($('.about').val());
+                        return false;
+                    });
+            </script>
+    </body>
+
+</html>

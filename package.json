@@ -19,6 +19,10 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "path": "^0.12.7"
+    "fs": "0.0.1-security",
+    "gray-matter": "^3.1.1",
+    "markdown-it": "^8.4.1",
+    "path": "^0.12.7",
+    "util": "^0.10.3"
   }
 }

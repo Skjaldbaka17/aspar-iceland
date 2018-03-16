@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles1.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <title>Aspar Iceland</title>
+    </head>
+    
+    <body>
+        
+        <div class ="big_picture" style="height: <%= height %> ; background-image: url(<%= image %>);">
+            <div class = "logo">
+                    <img src = "/img/asparlogo/Aspar.png" alt="Aspar Iceland">
+            </div>
+            <% if(height === '700px'){%>
+            <h1>Aspar Iceland</h1> 
+            <% } %>
+        </div>
+
+        <nav>
+                <a href = "/">Home</a>
+                <a href = "/the-tour">The Tour</a>
+                <a href = "/pictures">Pictures</a>
+                <a href = "/about-us">About us</a>
+                <a href = "/contact-us">Contact us</a>
+        </nav>

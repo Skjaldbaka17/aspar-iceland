@@ -1,0 +1,268 @@
+<%- include('header')-%>
+<div class ="glymurHeading">
+        <h2>Glymur - Adventure tour</h2>
+    </div>
+
+    <div class="upplýsingar">
+            <ul>
+                <li>Duration: 6 hours</li>
+                <li id="pickUp">Pick up: <div id="time">09:00</div></li>
+                <li>Group: 5-8 p.</li>
+                <li>Available: Summer</li>
+                <li>Age limit: ???</li>
+                <li>Difficulty: medium</li>
+            </ul></div>
+
+    <div class ="peppTexti">
+        <p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </p>
+    </div>
+<div class = "together">
+    <div class="sidebar"></div>
+    <div class="myndaGallerý">
+            <h2 style="text-align:center">Pictures</h2>
+
+        <div class="pictureKeeper">
+
+
+            <div class ="mainPic">
+                    <a class="prev" onclick="car.prev()">&#10094;</a>
+                    <a class="next" onclick="car.next()">&#10095;</a>
+                <img id ="showPic" src="./img/IMG_0160.JPG">
+            </div>
+
+            <div id = "carousel" class="row" aria-live="polite" role="listbox">
+                    
+                <% var a = 1; pictures.forEach((picture) =>{ %> 
+                    <div class="images">
+                    <% if(picture) { %>
+                        <img class="slides" aria-hidden="true" src="./img/<%= picture%>" onclick="car.moveToBig(this.src)">
+                    <% } %>
+                </div>
+              
+              <% }); %>
+            </div>
+        </div>
+            
+            <script src = "/imageGalleryHandler.js"></script>
+    </div>
+
+    <div id="theCalendarBox">
+            <div id="theCalendar">
+                    <div id ="headerMonth">
+                        <div class="previousRound" onclick="orderDate.prevMonth()">
+                                <a>&#8249;</a>
+                        </div>
+                        <div class="theMonth"> <h1 id="month">Month</h1> </div>
+                       
+                        <div class="nextRound" onclick="orderDate.nextMonth()">
+                                <a>&#8250;</a>
+                        </div>
+                        
+                    </div>
+                    <div id="weekdays">
+                        <div>MON</div>
+                        <div>TUE</div>
+                        <div>WED</div>
+                        <div>THU</div>
+                        <div>FRI</div>
+                        <div>SAT</div>
+                        <div>SUN</div>
+                    </div>
+                    <div id="days"></div>
+            </div>
+
+            <div id="booking">
+                <h2>Dates</h2>
+                <div id="pickedDate">
+                </div>
+                <input type="radio" id="radio"></input>
+            </div>
+    </div>
+            
+
+
+
+
+                <script>
+                    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                    ];
+
+                    function DateTracker(){
+                       
+                        this.today = new Date();
+                        var day = this.today.getDate();
+                       
+                        var month = this.today.getMonth(); //January is 0!
+                        var year = this.today.getFullYear();
+                        this.datePicked = new Date(year, month, day+1);
+                        this.day = this.datePicked.getDate();
+                        this.month = this.datePicked.getMonth();
+                        this.year = this.datePicked.getFullYear();
+
+                        
+                        this.setup();
+                    }
+
+                    //theDay is the html-element for the picked day!
+                    DateTracker.prototype.pickDate = function(theDay) {
+                        var days = document.getElementsByClassName('day')
+                        for(var i=0; i < days.length; i++){
+                            if(days[i].innerHTML == this.day){
+                                alert(days[i].innerHTML + " " + this.day + " " + i);
+                                days[i].style.border = "1px solid silver";
+                            }
+                        }
+
+                        this.datePicked = new Date(this.year, this.month, theDay.innerHTML);
+                        this.day = this.datePicked.getDate();
+                        this.month = this.datePicked.getMonth();
+                        this.year = this.datePicked.getFullYear();
+
+                        theDay.style.border = "1px solid black";
+
+
+                        var picked = document.createElement('h2');
+                        var seatsLeft = document.createElement('label');
+                        picked.innerHTML = this.datePicked;
+
+                        while(document.getElementById('pickedDate').firstChild){
+                            document.getElementById('pickedDate').removeChild(document.getElementById('pickedDate').firstChild);
+                        }
+                        document.getElementById('pickedDate').appendChild(picked);
+                        document.getElementById('radio').innerHTML = "&nbsp; " + document.getElementById('time').innerHTML +"&nbsp; ";
+
+
+                    };
+
+                    DateTracker.prototype.nextMonth = function(){
+
+                        this.datePicked = new Date(this.year, this.month+1, 1);
+                        this.day = this.datePicked.getDate();
+                        this.month = this.datePicked.getMonth();
+                        this.year = this.datePicked.getFullYear();
+
+                        if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
+                            this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
+                            this.day = this.datePicked.getDate();
+                            this.month = this.datePicked.getMonth();
+                            this.year = this.datePicked.getFullYear();
+                        }
+
+                        this.deleteCurrentMonth();
+
+                        this.setup();
+                    }
+
+                    DateTracker.prototype.prevMonth = function(){
+                        this.datePicked = new Date(this.year, this.month-1, 1);
+                        this.day = this.datePicked.getDate();
+                        this.month = this.datePicked.getMonth();
+                        this.year = this.datePicked.getFullYear();
+
+
+                            if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
+                            this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
+                            this.day = this.datePicked.getDate();
+                            this.month = this.datePicked.getMonth();
+                            this.year = this.datePicked.getFullYear();
+                        }
+
+                        this.deleteCurrentMonth();
+
+                        this.setup();
+                    }
+
+                    DateTracker.prototype.deleteCurrentMonth = function() {
+                            //Delete all days:
+                                while (document.getElementById('days').firstChild) {
+                                    document.getElementById('days').removeChild(document.getElementById('days').firstChild);
+                                }
+                    }
+
+                        
+                       
+                    
+                    
+                    DateTracker.prototype.setup = function() {
+
+                        document.getElementById('month').innerHTML = MONTH_NAMES[this.month] + " " + this.year;
+
+                        var day1 = new Date(this.year, this.month, 1).getDay()
+                        day1 = (day1===0) ? 7 : day1;
+                       
+            
+                         // pass in any date as parameter anyDateInMonth, margir dagar í tilteknum mánuði
+                        function daysInMonth(anyDateInMonth) {
+                            return new Date(anyDateInMonth.getYear(), anyDateInMonth.getMonth()+1, 0).getDate();
+                        }
+                        
+                        var amountOfDaysThisMonth = daysInMonth(this.today);
+                        var lastMonthDate = new Date(this.today.getFullYear(), this.today.getMonth()-1);
+                        var amountOfDaysLastMonth = daysInMonth(lastMonthDate);
+                       for(var x =(amountOfDaysLastMonth - (day1-1))+1; x <= amountOfDaysLastMonth; x++){
+                            var monthDay = document.createElement('div');
+                                monthDay.innerHTML = x;
+                                monthDay.className = 'day';
+                                monthDay.style.background = "#E0E0E0";
+                                document.getElementById('days').appendChild(monthDay);          
+                       }
+
+                        for(var x = 1; x <= amountOfDaysThisMonth; x++){
+                            var monthDay = document.createElement('div');
+                            monthDay.innerHTML = x;
+                            monthDay.className = 'day';
+
+                            if(x === this.day && !(this.datePicked < this.today)) monthDay.style.fontWeight = "bold";
+                            //if(x === this.day-1 && !(this.datePicked < this.today)) monthDay.style.border = "1px solid black";
+                            if(x > this.day-1){ 
+                                
+                                if(this.datePicked < this.today){monthDay.style.background = "white";}
+                                else{
+                                    monthDay.id = `day`+x;
+                                    var temp = this;
+                                   
+                                    monthDay.style.background = "#BCED91";
+                                    monthDay.style.color = "#61B329";
+                                    monthDay.classList.add("available");
+                                    monthDay.onclick = function() {
+                                        //Inside this function 'this' means the html-element
+                                        temp.pickDate(this);
+                                    };
+                                    }
+                                }
+                                
+                                document.getElementById('days').appendChild(monthDay);
+                        }
+            
+                        if((amountOfDaysThisMonth+(day1-1))%7 !== 0){
+                            for(var x = 1; x <= 7 - (amountOfDaysThisMonth+(day1-1))%7; x++){
+                                var monthDay = document.createElement('div');
+                            monthDay.innerHTML = x;
+                            monthDay.className = 'day';
+                            monthDay.style.background = "#E0E0E0";
+                            document.getElementById('days').appendChild(monthDay);
+                            }
+                            }
+                        };
+
+                        var orderDate = new DateTracker();
+                        
+                </script>
+</div>
+
+    <div class="upplýsingar">
+        <p class="frekariLýsing">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+
+<%- include('footer')-%>

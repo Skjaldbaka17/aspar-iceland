@@ -1,0 +1,19 @@
+<%- include('header')-%>
+
+<div class ="people">
+    <% people.forEach((person) => { %>
+        <div class = "person">
+            <h1><%= person.nafn%></h1>
+
+            <%if(person.image){%>
+                <div class="mynd">
+                <img src="<%= person.image%>" alt="<%= person.nafn%>">
+            </div>
+            <%}%>
+            <h2><%= person.who%></h2>
+            <div class="content"> <%= person.content%> </div>
+        </div>
+    <%});%>
+</div>
+
+<%- include('footer')-%>
