@@ -11,6 +11,7 @@
                     <% articles.forEach((article) => { %>
                         <li>
                                 <a href="/ice-yoga">
+                                    <p><%= article.content%></p>
                               <% if (article.image) { %>
                                 <img src = "<%= article.image %>" alt="<%= article.title%>">
                               <% } %>
