@@ -1,0 +1,33 @@
+<%- include('header') -%>
+
+
+<form method="POST" id ="submitForm" action="/contact-us">
+        <input type="text" placeholder ="Your name" name="name" id="name">
+        <input type="text" placeholder ="Email" name="email" id="email">
+        <input type="text" placeholder ="Subject" name="subject" id="subject">
+        <textarea class = "about" placeholder ="About..." name="about" id="about"></textarea>
+        <input type="submit" value="submit">
+</form>
+
+<%- include('footer') -%>
+    <!-- action="sendmail.js"
+
+
+
+extends layout
+include mixins
+block content
+
+  if errors && errors.length > 0
+    ul.validation
+      each error in errors
+        li.validation__item: label(for=error.param)= error.msg
+
+  form.form(method="post", action="/")
+    +input('Nafn', 'name', data.name, isInvalid('name', errors))
+    +input('Netfang', 'email', data.email, isInvalid('email', errors))
+    +input('Kennitala', 'ssn', data.ssn, isInvalid('ssn', errors))
+    +input('Fjöldi', 'amount', data.amount, isInvalid('amount', errors))(type='number')
+
+    button.form__button Senda -->
+

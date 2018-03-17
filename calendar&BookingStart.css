@@ -1,0 +1,165 @@
+ /*start of CalendarBox*/
+
+ #theCalendarBox{
+     padding: 12% 5% 0 10%;
+     display: flex;
+     flex-direction: column;
+     border: solid;
+ }
+ #theCalendar{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: default;
+}
+
+#headerMonth{
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+}
+
+#headerMonth h1{
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    
+}
+
+#headerMonth div{
+    display: flex;
+    align-items: center;
+}
+
+#headerMonth .previousRound{
+    margin-left: 3px;
+}
+
+#headerMonth a {
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    border: 1px solid silver;
+}
+
+#headerMonth a:hover {
+    background-color: #ddd;
+    color: black;
+    cursor: pointer;
+}
+
+#weekdays{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: solid #E0E0E0;
+    overflow: hidden;
+}
+
+#weekdays div{
+    text-align: center;
+    font-size: 10px;
+}
+
+#days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: solid #E0E0E0;
+    background: white;
+}
+
+.day{
+    text-align: center;
+    border: 0.1px solid silver;
+    opacity: 0.9;
+    padding: 10% 0;
+}
+
+.grayDay{
+    color: gray;
+}
+
+.unavailable{
+    background: #ff9999;
+    color: #ff6666;
+}
+
+.available{
+    background: #BCED91;
+    color: #61B329;
+}
+
+.unavailable:hover,
+.available:hover{
+    opacity: 1.0;
+    cursor: pointer;
+}
+ /*End of CalendarBox*/
+
+ /*start of booking*/
+
+ #seatsLeft{
+    background: orange;
+    border-radius: 5px;
+    padding: 1%;
+    margin-left: 3%;
+    color: white;
+ }
+
+ .pickDate > h4{
+     margin-bottom: 0;
+ }
+
+ .pickedDate{
+     display: grid;
+     grid-template-columns: 1fr;
+ }
+
+
+ .pickDate > div{
+     border: 1px solid;
+     padding-top: 0;
+     padding-right: 0;
+     padding-bottom: 5%;
+     padding-left: 5%;
+ }
+
+.containerBelow{
+    padding-top: 5%;
+    margin-right: 5%;
+    border-top: 1px solid;
+    font-size: 14px;
+}
+
+#selectContainer{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0;
+
+}
+
+.containerBelow > span > span{
+    color: gray;
+}
+
+select{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+    
+
+/*End of Booking*/

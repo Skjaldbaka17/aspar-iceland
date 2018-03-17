@@ -4,10 +4,13 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it'); //fyrir að skrifa og rendera md-file
 const matter = require('gray-matter');
+const formRouter = require('./form');
 
 const router = express.Router();
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
+
+router.use('/contact-us', formRouter);
 
 const md = new MarkdownIt();
 
@@ -15,6 +18,9 @@ const articlesPath = './articles';
 const picturesPath = './public/img';
 const glymurPicturesPath = './theTour/img';
 const peoplePath = "./people";
+const informationPath = "./theTour/informationTour.md";
+const aboveTextPath = "./theTour/above.md";
+const belowTextPath = "./theTour/below.md";
 
 
 function catchErrors(fn) {
@@ -30,16 +36,19 @@ async function readArticle(filePath){
       content,
       data: { // gray-matter pakki skilar efni í content og lýsigögnum í data
         title,
+        id,
+        href,
         slug,
         image,
         position,
       },
     } = data;
   
-    
     return {
-      content,
+      content: md.render(content),
       title,
+      id,
+      href,
       slug,
       image,
       position,
@@ -72,6 +81,7 @@ async function readPeople(filePath){
 async function readArticlesList(){
     const files = await readdirAsync(articlesPath);
 
+    
     const articles = files
       .filter(file => path.extname(file) === '.md')
       .map(file => readArticle(`${path.join(articlesPath, file)}`));
@@ -114,8 +124,39 @@ async function pictures(req, res){
     res.render('pictures', {height, image, pictures});
 }
 
+async function readInformation(filePath){
+    const file = await readFileAsync(filePath);
+
+    const data = matter(file);
+
+    const{
+        content,
+        data:{
+            duration,
+            peopleMax,
+            ageLimit,
+            time,
+            available,
+            difficulty,
+        },
+    } = data;
+
+    return {
+        content: md.render(content),
+        duration,
+        peopleMax,
+        ageLimit,
+        time,
+        available,
+        difficulty,
+    };
+}
+
 async function theTour(req, res){
     const files = await readdirAsync(glymurPicturesPath);
+    const information = await readInformation(informationPath);
+    const above = await readInformation(aboveTextPath);
+    const below = await readInformation(belowTextPath);
 
     var height = '400px';
     var image = 'img/pano1234/pano4.JPG';
@@ -123,7 +164,7 @@ async function theTour(req, res){
     const pictures = files
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
 
-    res.render('the-tour', {height, image, pictures});
+    res.render('the-tour', {height, image, pictures, information, above, below});
 }
 
 async function about_us(req, res){  
@@ -136,9 +177,25 @@ async function about_us(req, res){
     res.render('about-us', {height, image, people});
 }
 
+async function readTheArticle(req, res){
+    const files = await readArticlesList();
+    const { article } = req.params;
+
+    const theArticle = files
+        .find((a) => a.id === article);
+
+
+    var height = '400px';
+    var image = '../img/pano1234/pano4.JPG';
+
+    res.render('article', {height, image, theArticle});
+}
+
 
 router.get('/', catchErrors(list));
+router.get('/articles/:article', catchErrors(readTheArticle));
 router.get('/pictures', catchErrors(pictures));
 router.get('/the-tour', catchErrors(theTour));
 router.get('/about-us', catchErrors(about_us));
+
 module.exports = router;
