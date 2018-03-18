@@ -1,6 +1,6 @@
 <%- include('header')-%>
 <div class ="glymurHeading">
-        <h2>Glymur - Adventure tour</h2>
+        <h2>Glymur - Health & Adventure tour</h2>
     </div>
 
     
@@ -37,7 +37,7 @@
 
             <div id = "carousel" class="row" aria-live="polite" role="listbox">
                     
-                <% var a = 1; pictures.forEach((picture) =>{ %> 
+                <%pictures.forEach((picture) =>{ %> 
                     <div class="images">
                     <% if(picture) { %>
                         <img class="slides" aria-hidden="true" src="./img/<%= picture%>" onclick="car.moveToBig(this.src)">

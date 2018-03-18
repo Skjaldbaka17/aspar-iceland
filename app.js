@@ -2,17 +2,32 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const router = require('./router');
+const formRouter = require('./form');
+
 
 app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT || 5000));
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
+app.use('/contact-us', formRouter);
 
 
 app.use(express.static(path.join(__dirname, 'articles')));
 app.use(express.static(path.join(__dirname, 'theTour')));
 app.use(express.static(path.join(__dirname, 'people')));
+
+
+// hjálparfall fyrir view
+app.locals.isInvalid = (param, errors) => {
+  if (!errors) {
+    return false;
+  }
+
+  return Boolean(errors.find(i => i.param === param)) ? 'field-invalid': '';
+};
 
 
 

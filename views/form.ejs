@@ -1,13 +1,29 @@
 <%- include('header') -%>
 
+<div id="formPage" class="formid">
+    <div id="leftSidebar"></div>
 
-<form method="POST" id ="submitForm" action="/contact-us">
-        <input type="text" placeholder ="Your name" name="name" id="name">
-        <input type="text" placeholder ="Email" name="email" id="email">
-        <input type="text" placeholder ="Subject" name="subject" id="subject">
-        <textarea class = "about" placeholder ="About..." name="about" id="about"></textarea>
-        <input type="submit" value="submit">
-</form>
+    <div id="middle">
+
+        <% if(!formSent) {%>
+      <h1>Contact us about your Icelandic adventure</h1>
+      <p id="details">Tell us your name and email and what questions you have about our trip. 
+                      We will answer you as soon as possible. Thank you.</p>
+      <form method="POST" id ="submitForm" action="/contact-us">
+              <input  type="text" placeholder ="Your name" name="name" id="name" class ='<%=isInvalid("name", errors)%>'>
+              <input  type="text" placeholder ="Email" name="email" id="email" class ='<%=isInvalid("email", errors)%>'>
+              <input type="text" placeholder ="Subject" name="subject" id="subject">
+              <textarea class = "about <%=isInvalid("about", errors)%>" placeholder ="About..." name="about" id="about"></textarea>
+              <input id="send_button" type="submit" value="send">
+      </form>
+
+      <%} else{%>
+          <h1 id="thankYou">Thank You for contacting us!</h1>
+        <%}%>
+  </div> 
+    <div id="rightSidebar"></div>
+</div>
+
 
 <%- include('footer') -%>
     <!-- action="sendmail.js"

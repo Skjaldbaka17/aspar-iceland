@@ -4,13 +4,10 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it'); //fyrir að skrifa og rendera md-file
 const matter = require('gray-matter');
-const formRouter = require('./form');
 
 const router = express.Router();
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
-
-router.use('/contact-us', formRouter);
 
 const md = new MarkdownIt();
 

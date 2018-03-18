@@ -1,39 +1,36 @@
 <%- include('header') -%>
+<div onload="load();">
 <ul class="myndir" id="myList">
     <%pictures.forEach((picture) =>{%>
         <li>
             <% if (picture) {%>
-                <img src = "./img/<%= picture %>" alt="">
+                <img class="yoda" src = "./img/<%= picture %>" alt="" onclick="imageGal.openModal(this.src)">
             <% } %>
         </li>
         <% }) %>
 </ul>
 
 <div class = "meira">
-        <a href="#" id ="loadMore">more</a>
-      </div>
+    <a href="#" id ="loadMore">more</a>
+</div>
+
+<div id="myModal" class="modal" onclick="imageGal.closeModal();">
+    <div class="imageContainer">
+        <div></div>
+        <div class="theOneImage" id="largeImageContainer">
+            <a class="prevPic" onclick="imageGal.changePic(-1)">&#10094;</a>         
+            <img id="largeImage" src="">
+            <a class="nextPic" onclick="imageGal.changePic(+1)">&#10095;</a>     
+        </div>
+        <div></div>
+    </div>
+</div>
+</div>
 
       
       
-      <script>
-    
-            $('document').ready(function() {
-                
-                size_li = $("#myList li").length;
-                 
-                if(size_li <=9 ) $('#loadMore').hide();
-                else $('#loadMore').show();
-                 x=9;
-                 $('#myList li:lt('+x+')').show();
-                 $('#loadMore').click(function (e) {
-                    e.preventDefault();
-                 x= (x+9 <= size_li) ? x+9 : size_li;
-                 if(x >= size_li) $('#loadMore').hide();
-                 $('#myList li:lt('+x+')').show();
-                 });
-            });
+<script src = "/pictureGalleryHandler.js"></script>
                  
        
-                </script>
 
 <%- include('footer') -%>

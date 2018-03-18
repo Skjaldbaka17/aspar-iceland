@@ -5,6 +5,12 @@ const { sanitize } = require('express-validator/filter');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 
+
+var formSent = false;
+var height = '400px';
+var image = '../img/pano1234/pano4.JPG';
+
+
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -12,8 +18,6 @@ var transporter = nodemailer.createTransport({
       pass: 'NikolaT10071856'
     }
   });
-
-
 
 const formValidation = [
   check('name')
@@ -35,8 +39,9 @@ const formValidation = [
 ];
 
 function form(req, res) {
-  const data = {};
-  res.render('form', { data, title: 'Form' });
+    const data = {};
+    var errors = '';
+  res.render('form.ejs', { formSent, height, image,errors,  data, title: 'Form' });
 }
 
 async function formPost(req, res) {
@@ -62,21 +67,27 @@ async function formPost(req, res) {
 
   if (!validation.isEmpty()) {
     const errors = validation.array();
-    return res.render('form', { errors, data, title: 'Form' });
+    return res.render('form', { formSent, height, image, errors, data, title: 'Form' });
   }
 
+  
   await send(data);
 
-  return res.redirect('/thanks');
+
+
+  return res.render('form', {height, image, formSent: true});
 }
 
 //Start of email-sending
 async function send(data){
+    console.log("sending");
     var mailOptions = {
         from: 'thoragusts@gmail.com',
-        to: 'thoragusts@gmail.com',
+        to: 'skjaldbaka17@gmail.com',
         subject: `${data.subject}`,
-        text: `${data}`
+        text: `name of person: ${data.name}
+        email of person: ${data.email}
+        their question: ${data.about}`
       };
       
     transporter.sendMail(mailOptions, function(error, info){
@@ -91,11 +102,13 @@ async function send(data){
 //End of EmailSending
 
 function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir' });
+    console.log("redi");
+  return res.redirect('/');
 }
 
-router.get('/contact-us', form);
-router.post('/contact-us', formValidation, formPost);
+
+router.get('/', form);
+router.post('/', formValidation, formPost);
 router.get('/thanks', thanks);
 
 module.exports = router;

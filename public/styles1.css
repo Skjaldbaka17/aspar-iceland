@@ -5,7 +5,13 @@
     box-sizing: border-box; 
     
     color: gray;
+
+    line-height: 2.5;
+    
+
 }
+
+
 body{
     margin: 0 0 0 0;
     /*display: flex;
@@ -34,12 +40,15 @@ body{
 .logo{
     position: absolute;
 
-    margin: 20px 0;
-    
+    margin: 0.5% 0;
     
     font-size: 18px;
     box-sizing: border-box;
 
+}
+
+.logo a{
+    cursor: initial;
 }
 
 .logo img{
@@ -114,6 +123,8 @@ nav a:active{
 
     margin-top: 75px;
     justify-content: center;
+
+    
 }
 
 .kynning h3{
@@ -121,12 +132,14 @@ nav a:active{
     font-size: 4rem;
     margin-bottom: 30px;
     transform: scale(.8, 1);
+    cursor: default;
 }
 
 .kynning p{
     margin: 0 10% 5% 10%;
     font-size: 24px;
     padding: 0 10%;
+    cursor: default;
 
 }
 
@@ -160,7 +173,7 @@ nav a:active{
 }
 
 .photoContainer img{
-    width: 110%;
+    width: 100%;
 }
 
 /*End of article*/
@@ -190,6 +203,7 @@ nav a:active{
 .greinar li{
     opacity: 0.8;
     transition: all 1s;
+    
 }
 
 .greinar li:hover{
@@ -197,6 +211,7 @@ nav a:active{
     transform: scale(1.05);
 }
 
+/*Start of Pictures síðu*/
 
 .myndir {
     display: flex;
@@ -209,6 +224,76 @@ nav a:active{
     padding: 0;
 
 }
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    padding: 5% 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .imageContainer{
+      display: grid;
+      grid-template-columns: 0.5fr 2fr 0.5fr;
+      z-index: 4;
+  }
+
+  .theOneImage{
+      display: grid;
+      grid-template-columns: 0.5fr 10fr 0.5fr;
+  }
+
+  #largeImage{
+      border-radius: 3px;
+  }
+
+  .prevPic,
+.nextPic {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+  .prevPic{
+      left: 4.4%;
+  }
+
+  .nextPic{
+      display: flex;
+      justify-content: flex-end;
+      right :4.4%;
+  }
+
+  .prevPic:hover,
+  .nextPic:hover{
+    cursor: pointer;
+      background: white;
+      opacity: 0.3;
+  }
+
+
+  #largeImage{
+    width: 100%;
+  }
 
 
 .myndir img{
@@ -230,11 +315,44 @@ nav a:active{
     z-index: 1;
 }
 
+.meira {
+    
+    margin: 10px 10% 100px 10%;
+    text-align: center;
+}
+
+.meira a{
+    opacity: 0.7;
+    transition: all 1s;
+}
+
+.meira a:hover{
+    opacity: 1.0;
+}
+
+#myList li{
+    display: none;
+}
+#loadMore {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
+/*End of pictures page*/
+
 /*Start of theTour page*/
 
 .glymurHeading{
     display: flex;
     justify-content: center;
+    margin-left: 5%;
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 1.5;
+    transform: scale(.9, 1);
+
+    cursor: default;
 }
 
 .glymurHeading h2{
@@ -248,7 +366,31 @@ nav a:active{
     display: flex;
     justify-content: center;
     color: gray;
-    line-height: 1.5;
+    margin-bottom: 10%;
+}
+
+.upplýsingar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+    font-size: 16px;
+}
+
+.upplýsingar ul{
+    list-style: none;
+    background: white;
+    display: flex;
+    border: solid silver;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+.upplýsingar li{
+    margin-right: 2%;
+    flex-basis: 40%;
+    margin-bottom: 20px;
 }
 
 
@@ -256,7 +398,7 @@ nav a:active{
 
 .together{
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr 1fr;
+    grid-template-columns: 0.5fr 1.2fr 0.8fr;
     grid-gap: 10px;
 }
 
@@ -264,24 +406,27 @@ nav a:active{
 
 .myndaGallerý{
 overflow: hidden;
+margin-bottom: 10%;
+cursor: default;
 
 }
 .myndaGallerý h2{
     color: #696969;
 }
 .pictureKeeper{
-    padding: 10px;
-    padding-bottom: 0;
+    padding: 2%;
+    margin-bottom: 8%;
     border: solid darkgray;
     background: grey;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 .mainPic{
-    /*position: static;*/
+    margin: 0;
    display: flex;
    justify-content: center;
    overflow: hidden;
-   height: 30rem;
-   /*margin: 0 32%;*/
+   height: 35rem;
    margin-bottom: 0;
 }
 
@@ -296,13 +441,13 @@ overflow: hidden;
 .next {
     position: relative;
     display: flex;
-  cursor: pointer;
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  align-items: center;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    align-items: center;
 
 
   user-select: none;
@@ -310,13 +455,12 @@ overflow: hidden;
 }
 
 .prev{
-
-    left: 11.05%;
+   left: 9.3%;
 }
 
 /* Position the "next button" to the right */
 .next {
-   left: 107%;
+   left: 106%;
 
   border-radius: 3px 0 0 3px;
 }
@@ -326,8 +470,6 @@ overflow: hidden;
 .next:hover {
 
    background-color:rgba(0,0,0,0.8);
-   
-  
 }
 
  .row  {
@@ -335,9 +477,10 @@ overflow: hidden;
     flex-direction: row;
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 20px 20px 0 0;
  
     margin: 0;
+    margin-top: 2%;
+    
     height: 150px;
  }
 
@@ -376,31 +519,8 @@ overflow: hidden;
 
  /*End of together, myndG & Calendar*/
 
-.upplýsingar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10%;
-}
-
-.upplýsingar ul{
-    list-style: none;
-    display: flex;
-    border: solid silver;
-    flex-wrap: wrap;
-    padding: 10px;
-
-}
-
-.upplýsingar li{
-    margin-right: 2%;
-    flex-basis: 40%;
-    margin-bottom: 20px;
-}
-
 .upplýsingar .frekariLýsing{
     border: solid silver;
-    line-height: 1.5;
     color: #696969;
     padding: 20px;
 }
@@ -413,38 +533,26 @@ overflow: hidden;
 
 /*End of theTour page*/
 
-.meira {
-    
-    margin: 10px 10% 100px 10%;
-    text-align: center;
-}
-
-.meira a{
-    opacity: 0.7;
-    transition: all 1s;
-}
-
-.meira a:hover{
-    opacity: 1.0;
-}
-
-#myList li{
-    display: none;
-}
-#loadMore {
-    text-decoration: none;
-    color: black;
-    font-style: italic;
-}
-
 /*Byrjun á About-US síðu*/
 
+#peopleOfAspar{
+   text-align: center;
+   margin: 5% 0;
+   font-weight: 100;
+    font-size: 4rem;
+    transform: scale(.8, 1);
+
+    cursor: default;
+}
 .people{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin: 100px 10%;
+    margin: 0 10% 10% 10%;
     column-width: 10px;
     grid-column-gap: 10px;
+    line-height: 2;
+
+    cursor: default;
 
 }
 
@@ -474,7 +582,6 @@ overflow: hidden;
 .person .content{
     color: #696969;
     margin: 0 5%;
-    line-height: 1.5;
 
 }
 
@@ -486,47 +593,126 @@ overflow: hidden;
 /*Endir á About-US síðu*/
 
 
+/*Start á contact-us*/
+
+#middle{
+    margin-bottom: 15%;
+}
+
+#details{
+    margin-bottom: 10%;
+}
+
+.field-invalid{
+    background: #ff9999;
+}
+
+#formPage{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin: 5% 0 10% 0;
+}
+
+#middle h1, #middle p{
+    cursor: default;
+}
+
+#submitForm{
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-gap: 1rem;
+}
+
+#submitForm .about{
+    /*text-align: start;*/
+    min-height: 100px;
+    overflow: auto;
+    resize: none;
+    border-color: lightgray;
+}
+
+#middle h1{
+    text-align: center;
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 3.5rem;
+    line-height: 1.5;
+    transform: scale(.8, 1);
+}
+
+#middle p{
+    font-size: 20px;
+}
+
+#send_button{
+    font-size: 14px;
+    width: 12%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    
+}
+
+/*Endir á contact-us*/
+
 footer{
     border-top: solid;
     border-color: #C8C8C8;
     background-color: #D3D3D3;
+}
+.footerStuff{
     display: grid;
     grid-template-columns: 3fr 3fr 2fr 3fr 3fr;
+    margin-bottom: -1%;
 }
 
-footer .asparLogo{
+.footerStuff .asparLogo{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10% 0 0 0 ;
+
 }
-footer .asparLogo img{
+.footerStuff .asparLogo img{
     width: 50%;
     margin-bottom: 0;
 }
 
-footer .asparLogo h1{
+.footerStuff .asparLogo h1{
     margin-top: 1%;
     font-size: 14px;
     color: gray;
     font-style: italic;
+
+    cursor: default;
 }
 
-footer form{
+.footerStuff form{
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
-footer form input{
+.footerStuff form input{
 margin: 5px;
 }
 
-footer form .about{
+.footerStuff form .about{
     margin: 5px;
     text-align: start;
     min-height: 100px;
     overflow: auto;
     resize: none;
     border-color: lightgray;
+}
+
+.footerLink{
+    display: flex;
+    justify-content: flex-end;
+}
+.footerLink a{
+    text-decoration: none;
+    font-style: italic;
+    margin-right: 0.4%;
 }
