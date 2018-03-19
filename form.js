@@ -14,8 +14,8 @@ var image = '../img/pano1234/pano4.JPG';
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'thoragusts@gmail.com',
-      pass: 'NikolaT10071856'
+      user: 'aspariceland@gmail.com',
+      pass: 'DanielAgusts081096'
     }
   });
 
@@ -71,7 +71,7 @@ async function formPost(req, res) {
   }
 
   
-  await send(data);
+  await send(data)
 
 
 
@@ -80,10 +80,9 @@ async function formPost(req, res) {
 
 //Start of email-sending
 async function send(data){
-    console.log("sending");
     var mailOptions = {
-        from: 'thoragusts@gmail.com',
-        to: 'skjaldbaka17@gmail.com',
+        from: 'aspariceland@gmail.com',
+        to: 'aspariceland@gmail.com',
         subject: `${data.subject}`,
         text: `name of person: ${data.name}
         email of person: ${data.email}
@@ -95,6 +94,7 @@ async function send(data){
           console.log(error);
         } else {
           console.log('Email sent: ' + info.response);
+          return true;
         }
       });
 }
