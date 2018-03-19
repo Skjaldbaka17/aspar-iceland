@@ -1,10 +1,13 @@
  /*start of CalendarBox*/
 
+#dateNotShowed{
+    display: none;
+}
+
  #theCalendarBox{
-     padding: 12% 5% 0 10%;
+     padding: 2% 5% 0 10%;
      display: flex;
      flex-direction: column;
-     border: solid;
  }
  #theCalendar{
     display: flex;
@@ -97,6 +100,10 @@
 
  /*start of booking*/
 
+ #bookingInfo{
+     display: none;
+ }
+
  #seatsLeft{
     background: orange;
     border-radius: 5px;
@@ -134,9 +141,10 @@
     width: 25%;
     display: flex;
     flex-direction: column;
-    padding: 5% 0;
-
+    padding: 5% 0 0 0;
 }
+
+.
 
 .containerBelow > span > span{
     color: gray;
@@ -159,6 +167,48 @@ select{
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.totalPrice{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+#priceContainer strong{
+    font-size: 24px;
+}
+
+.totalPrice label{
+    width: 100%;
+    text-align: right;
+}
+
+#priceLabel{
+    font-size: 24px;
+}
+
+#thePrice{
+    font-size: 32px;
+    color: black;
+}
+
+#bookButton{
+    background: orange;
+    color: white;
+    border-radius: 10px;
+    flex-direction: row;
+    margin: 0;
+    width: 25%;
+    font-size: 20px;
+    border: solid;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bookButton:hover{
+
 }
     
 
