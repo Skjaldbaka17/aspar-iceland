@@ -144,11 +144,6 @@
     padding: 5% 0 0 0;
 }
 
-.
-
-.containerBelow > span > span{
-    color: gray;
-}
 
 select{
     display: block;
@@ -208,7 +203,15 @@ select{
 }
 
 #bookButton:hover{
+    background-color: #cc8400;
+}
 
+.button:hover {background-color: #3e8e41}
+
+#bookButton:active {
+  background-color: #cc8400;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
     
 
