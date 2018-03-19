@@ -37,7 +37,8 @@ function ImageGallery(){
 
                 this.current = i;
 
-                document.getElementById("largeImage").setAttribute('src', this.PICTURES[i].getAttribute('src'));
+                document.getElementById("largeImage").setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
+                alert(this.PICTURES[this.current].getAttribute('src'));
             }
 
             var imageGal = new ImageGallery();
