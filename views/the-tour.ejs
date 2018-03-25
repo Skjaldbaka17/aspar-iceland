@@ -57,6 +57,15 @@
             <script src = "/imageGalleryHandler.js"></script>
     </div>
 
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="S4CVX3Q9ZXB2E">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        
+        
+
     <div id="booking">
             <div id="theCalendarBox">
                     <div id="theCalendar">
@@ -81,6 +90,10 @@
                                 <div>SUN</div>
                             </div>
                             <div id="days"></div>
+                    </div>
+
+                    <div id="notAvailable">
+                            We are fullbooked on this day, sorry.
                     </div>
         
                     <div id="bookingInfo">
@@ -127,6 +140,7 @@
                             </div>
                             <div class="totalPrice" id="priceLabel">
                             <input id="bookButton" type="submit" value="Book">
+                            
                             </div>
                         </form>
                         </div>
@@ -197,7 +211,9 @@
         
                             DateTracker.prototype.setUpBookingFor = function(thisDay) {
                                 
+                                document.getElementById('notAvailable').style.display = "none";
                                 document.getElementById('bookingInfo').style.display = "grid";
+                                
                                 document.getElementById('dayPicked').innerHTML = WEEKDAYS[thisDay.getDay()] + " " + thisDay.getDate() + ". " + MONTH_NAMES[thisDay.getMonth()] + " " + thisDay.getFullYear();
                                 var seatsLeft = this.seatsLeft(thisDay);
                                 document.getElementById('seatsLeft').innerHTML ="Seats Left " + seatsLeft;
@@ -319,13 +335,8 @@
                                                 monthDay.classList.add("unavailable");
                                                 monthDay.onclick = function(){
                                                     temp.colorLastPickedBorderSilver();
-                                                    temp.deleteChildrenOf(document.getElementById('booking'));
-                                                    var div = document.createElement('div');
-                                                    div.id = "notAvailable";
-                                                    div.innerHTML = "We are fullbooked on this day, sorry.";
-                                                    
-                                                        //document.getElementById('datePicked').style.display = "none";
-                                                    document.getElementById('booking').appendChild(div);
+                                                    document.getElementById('bookingInfo').style.display = "none";
+                                                    document.getElementById('notAvailable').style.display = "flex";
                                                 }
                                             }
                                             }

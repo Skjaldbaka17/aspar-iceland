@@ -1,3 +1,4 @@
+require('dotenv').config();
 const xss = require('xss');
 const express = require('express');
 const { check, validationResult } = require('express-validator/check');
@@ -14,8 +15,8 @@ var image = '../img/pano1234/pano4.JPG';
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'aspariceland@gmail.com',
-      pass: 'DanielAgusts081096'
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     }
   });
 
@@ -81,8 +82,8 @@ async function formPost(req, res) {
 //Start of email-sending
 async function send(data){
     var mailOptions = {
-        from: 'aspariceland@gmail.com',
-        to: 'aspariceland@gmail.com',
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
         subject: `${data.subject}`,
         text: `name of person: ${data.name}
         email of person: ${data.email}
