@@ -21,7 +21,7 @@
                     
                     var context = this;
                     this.run = setTimeout(function() {
-                        context.next(this.interval);
+                        context.next();
                     }, this.interval);
                     
                 };
@@ -29,6 +29,8 @@
                 // PREVIOUS
                 Carousel.prototype.prev = function () {	
                     (this.current <= 0) ? this.current = this.total : this.current -= 1;
+
+                    alert(this.current);
                         
                     this.stop();	
                     this.slide(this.current);
@@ -37,7 +39,7 @@
 
                         var context = this;
                         this.run = setTimeout(function() {
-                            context.prev(this.interval);
+                            context.prev();
                         }, this.interval);
                     };
 
