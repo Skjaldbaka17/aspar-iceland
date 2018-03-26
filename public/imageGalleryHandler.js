@@ -28,7 +28,7 @@
 
                 // PREVIOUS
                 Carousel.prototype.prev = function () {	
-                    (this.current <= 0) ? this.current = this.total : this.current -= 1;
+                    (this.current <= 0) ? this.current = this.total-1 : this.current -= 1;
 
                     alert(this.current);
                         
