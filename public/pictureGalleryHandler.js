@@ -31,9 +31,9 @@ function ImageGallery(){
 
                 var i;
                 for(i = 0; i < this.PICTURES.length; i++){
-                    if(this.PICTURES[i].getAttribute('src') == firstPic){ break;}
-                    
+                    if(this.PICTURES[i].getAttribute('src') == firstPic){ break;}      
                 }
+                alert(i + " " + firstPic);
 
                 this.current = i;
 

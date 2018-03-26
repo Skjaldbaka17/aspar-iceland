@@ -29,8 +29,6 @@
                 // PREVIOUS
                 Carousel.prototype.prev = function () {	
                     (this.current <= 0) ? this.current = this.total-1 : this.current -= 1;
-
-                    alert(this.current);
                         
                     this.stop();	
                     this.slide(this.current);
@@ -56,9 +54,9 @@
                                 this.moveToBig(this.slides[s].getAttribute('src'));
                             } 
                         }
-                    } else {
+                    } /*else {
                         alert("Index " + index + " doesn't exist. Available : 0 - " + this.total);
-                    }
+                    }*/
                 };
 
                 Carousel.prototype.op = function(cl) {
