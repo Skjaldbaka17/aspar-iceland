@@ -2,7 +2,7 @@
                 function Carousel(containerID) {
                     this.container = document.getElementById(containerID) || document.body;
                     this.slides = this.container.querySelectorAll('.slides');
-                    this.total = this.slides.length - 1;
+                    this.total = this.slides.length;
                     this.current = 0;
                     this.interval = 5000;
                     
@@ -14,7 +14,7 @@
 
                 // NEXT
                 Carousel.prototype.next = function () {
-                    (this.current === this.total) ? this.current = 0 : this.current += 1;
+                    this.current = (this.current+1)%this.total;
                     
                     this.stop();	
                     this.slide(this.current);
@@ -28,7 +28,7 @@
 
                 // PREVIOUS
                 Carousel.prototype.prev = function () {	
-                    (this.current === 0) ? this.current = this.total : this.current -= 1;
+                    (this.current <= 0) ? this.current = this.total : this.current -= 1;
                         
                     this.stop();	
                     this.slide(this.current);
@@ -47,9 +47,9 @@
                 };
                 // SELECT SLIDE
                 Carousel.prototype.slide = function (index) {	
-                    if (index >= 0 && index <= this.total) { 
+                    if (index >= 0 && index < this.total) { 
                         this.stop();
-                        for (var s = 0; s <= this.total; s++) {
+                        for (var s = 0; s < this.total; s++) {
                             if (s === index) {
                                 this.moveToBig(this.slides[s].getAttribute('src'));
                             } 
@@ -60,7 +60,7 @@
                 };
 
                 Carousel.prototype.op = function(cl) {
-                    for(var i = 0; i <= this.total; i++){
+                    for(var i = 0; i < this.total; i++){
                         this.slides[i].style.opacity = 0.8;
                         }
                         this.slides[cl].style.opacity = 1.0;
@@ -71,7 +71,7 @@
                     var i;
                     var newPic = source.replace('http://localhost:5000', '.');
 
-                    for(i = 0; i <= this.total; i++){
+                    for(i = 0; i < this.total; i++){
                         if(this.slides[i].getAttribute('src').match(newPic)){ 
                             /* To make scroll move with pictures!
                             var el = document.getElementById('carousel');
@@ -81,7 +81,7 @@
                         }
                      }
 
-                     this.current = i;
+                     this.current = i%this.total;
                      fadeOutAndCallback(document.getElementById('showPic'),
                         function(){
                             document.getElementById('showPic').setAttribute('src', source);
