@@ -12,7 +12,7 @@ ImageGallery.prototype.changePic = function (x) {
 
 
 
-    document.getElementById("largeImage").setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
+    document.getElementById('largeImage').setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
 }
 
 
@@ -30,6 +30,7 @@ ImageGallery.prototype.openModal = function (source) {
 
 
     var i;
+    alert(this.PICTURES[1].getAttribute('src') + " " + firstPic);
     for (i = 0; i < this.PICTURES.length; i++) {
         if (this.PICTURES[i].getAttribute('src') === firstPic) { break; }
     }
@@ -37,7 +38,7 @@ ImageGallery.prototype.openModal = function (source) {
 
     this.current = i;
 
-    document.getElementById("largeImage").setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
+    document.getElementById('largeImage').setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
     alert(this.PICTURES[this.current].getAttribute('src'));
 }
 
