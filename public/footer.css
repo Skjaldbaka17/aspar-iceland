@@ -1,0 +1,61 @@
+footer{
+    border-top: solid;
+    border-color: #C8C8C8;
+    background-color: #D3D3D3;
+}
+.footerStuff{
+    display: grid;
+    grid-template-columns: 3fr 3fr 2fr 3fr 3fr;
+    margin-bottom: -1%;
+}
+
+.footerStuff .asparLogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10% 0 0 0 ;
+
+}
+.footerStuff .asparLogo img{
+    width: 50%;
+    margin-bottom: 0;
+}
+
+.footerStuff .asparLogo h1{
+    margin-top: 1%;
+    font-size: 14px;
+    color: gray;
+    font-style: italic;
+
+    cursor: default;
+}
+
+.footerStuff form{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.footerStuff form input{
+margin: 5px;
+}
+
+.footerStuff form .about{
+    margin: 5px;
+    text-align: start;
+    min-height: 100px;
+    overflow: auto;
+    resize: none;
+    border-color: lightgray;
+}
+
+.footerLink{
+    display: flex;
+    justify-content: flex-end;
+}
+.footerLink a{
+    text-decoration: none;
+    font-style: italic;
+    margin-right: 0.4%;
+}

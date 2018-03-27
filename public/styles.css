@@ -1,32 +1,23 @@
 *{
-    background-color: #E0E0E0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	
+    box-sizing: border-box; 
+    
+    color: gray;
 
-html{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-
-.error{
-    font-weight: bold;
-    font-size: 5rem;
-    text-align: center;
+    line-height: 2.5;
+    
 
 }
 
-.mynd{
-    display: flex;
-    align-items: center;
-    margin-top: -50px;
-}
+body{
+    margin: 0 0 0 0;
+    /*display: flex;
+    flex-direction: column;*/
+    background-color: #F8F8F8;
 
-.mynd img{
-    width: 16rem;
+    position: static;
+    z-index: 0;
+
 }

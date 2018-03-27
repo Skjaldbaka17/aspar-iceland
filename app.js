@@ -12,13 +12,13 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'tours')));
+app.use(express.static(path.join(__dirname, 'people')));
 app.use('/', router);
 app.use('/contact-us', formRouter);
 
 
-app.use(express.static(path.join(__dirname, 'articles')));
-app.use(express.static(path.join(__dirname, 'theTour')));
-app.use(express.static(path.join(__dirname, 'people')));
+
 
 
 // hjálparfall fyrir view

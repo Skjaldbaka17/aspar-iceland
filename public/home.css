@@ -1,0 +1,71 @@
+.kynning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+
+    margin-top: 75px;
+    justify-content: center;
+
+    
+}
+
+.kynning h3{
+    font-weight: 100;
+    font-size: 4rem;
+    margin-bottom: 30px;
+    transform: scale(.8, 1);
+    cursor: default;
+}
+
+.kynning p{
+    margin: 0 10% 5% 10%;
+    font-size: 24px;
+    padding: 0 10%;
+    cursor: default;
+
+}
+
+.greinar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 10% 0 10%;
+
+    list-style: none;
+    padding: 0;
+
+}
+
+.greinar li{
+    margin-top: 100px;
+}
+.greinar a{
+    
+    color: black;
+    text-decoration:  none;
+    height: 100%;
+}
+
+
+.greinar img{
+    border-radius: 5px;
+    max-height: 400px;
+}
+
+.greinar h1{
+    text-align: center;
+    color: #323232;
+}
+
+.greinar li{
+    opacity: 0.8;
+    transition: all 1s;
+    
+}
+
+.greinar li:hover{
+    opacity: 1.0;
+    transform: scale(1.05);
+}

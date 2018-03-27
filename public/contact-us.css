@@ -1,0 +1,61 @@
+/*Start á contact-us*/
+
+#middle{
+    margin-bottom: 15%;
+}
+
+#details{
+    margin-bottom: 10%;
+}
+
+.field-invalid{
+    background: #ff9999;
+}
+
+#formPage{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin: 5% 0 10% 0;
+}
+
+#middle h1, #middle p{
+    cursor: default;
+}
+
+#submitForm{
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-gap: 1rem;
+}
+
+#submitForm .about{
+    /*text-align: start;*/
+    min-height: 100px;
+    overflow: auto;
+    resize: none;
+    border-color: lightgray;
+}
+
+#middle h1{
+    text-align: center;
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 3.5rem;
+    line-height: 1.5;
+    transform: scale(.8, 1);
+}
+
+#middle p{
+    font-size: 20px;
+}
+
+#send_button{
+    font-size: 14px;
+    width: 12%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    
+}
+
+/*Endir á contact-us*/

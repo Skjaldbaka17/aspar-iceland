@@ -11,13 +11,11 @@ const readFileAsync = util.promisify(fs.readFile);
 
 const md = new MarkdownIt();
 
-const articlesPath = './articles';
 const picturesPath = './public/img';
-const glymurPicturesPath = './theTour/img';
+const theTour = './tours/';
 const peoplePath = "./people";
-const informationPath = "./theTour/informationTour.md";
-const aboveTextPath = "./theTour/above.md";
-const belowTextPath = "./theTour/below.md";
+const informationPath = "./tours/";
+const toursPath = "./tours/all_tours";
 
 
 function catchErrors(fn) {
@@ -75,13 +73,13 @@ async function readPeople(filePath){
     };
 }
 
-async function readArticlesList(){
-    const files = await readdirAsync(articlesPath);
+async function readArticlesList(thePath){
+    const files = await readdirAsync(thePath);
 
     
     const articles = files
       .filter(file => path.extname(file) === '.md')
-      .map(file => readArticle(`${path.join(articlesPath, file)}`));
+      .map(file => readArticle(`${path.join(thePath, file)}`));
 
     return Promise.all(articles);
 }
@@ -97,7 +95,7 @@ async function readPeopleList(){
 }
 
 async function list(req, res){
-    const files = await readArticlesList();
+    const files = await readArticlesList(articlesPath);
 
     const articles = files
         .sort((a,b) => a.position > b.position);
@@ -106,8 +104,9 @@ async function list(req, res){
     var image = 'img/pano1234/pano4.JPG';
 
 
-    res.render('articles', {height, image, articles});
+    res.render('home', {height, image, articles});
 }
+
 
 async function pictures(req, res){
     const files = await readdirAsync(picturesPath);
@@ -149,19 +148,33 @@ async function readInformation(filePath){
     };
 }
 
-async function theTour(req, res){
-    const files = await readdirAsync(glymurPicturesPath);
-    const information = await readInformation(informationPath);
-    const above = await readInformation(aboveTextPath);
-    const below = await readInformation(belowTextPath);
+async function selectedTour(req, res){
+    const { tour } = req.params;
+    const files = await readdirAsync((theTour + tour + '/img'));
+    const information = await readInformation((theTour + tour + '/informationTour.md'));
+    const above = await readInformation(theTour + tour + '/above.md');
+    const below = await readInformation(theTour + tour + '/below.md');
 
     var height = '400px';
-    var image = 'img/pano1234/pano4.JPG';
+    var image = '../img/pano1234/pano4.JPG';
 
     const pictures = files
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
 
     res.render('the-tour', {height, image, pictures, information, above, below});
+}
+
+async function tours(req, res){
+    const files = await readArticlesList(toursPath);
+
+    const articles = files
+        .sort((a,b) => a.position > b.position);
+
+    var height = '700px';
+    var image = 'img/pano1234/pano4.JPG';
+
+
+    res.render('tours', {height, image, articles});
 }
 
 async function about_us(req, res){  
@@ -175,7 +188,7 @@ async function about_us(req, res){
 }
 
 async function readTheArticle(req, res){
-    const files = await readArticlesList();
+    const files = await readArticlesList(articlesPath);
     const { article } = req.params;
 
     const theArticle = files
@@ -192,7 +205,9 @@ async function readTheArticle(req, res){
 router.get('/', catchErrors(list));
 router.get('/articles/:article', catchErrors(readTheArticle));
 router.get('/pictures', catchErrors(pictures));
-router.get('/the-tour', catchErrors(theTour));
+router.get('/tours', catchErrors(tours));
+router.get('/tours/:tour', catchErrors(selectedTour));
+//router.get('/the-tour', catchErrors(theTour));
 router.get('/about-us', catchErrors(about_us));
 
 module.exports = router;

@@ -1,0 +1,58 @@
+/*Byrjun á About-US síðu*/
+
+#peopleOfAspar{
+   text-align: center;
+   margin: 5% 0;
+   font-weight: 100;
+    font-size: 4rem;
+    transform: scale(.8, 1);
+
+    cursor: default;
+}
+.people{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 10% 10% 10%;
+    column-width: 10px;
+    grid-column-gap: 10px;
+    line-height: 2;
+
+    cursor: default;
+
+}
+
+.people h1{
+    color: gray;
+}
+.people h2{
+    font-style: italic;
+    color: darkgray;
+}
+
+.mynd{
+    margin: 0 20%;
+    height: 425px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.person{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: lightgray;
+    padding: 20px 5% 20px 0;
+}
+
+.person .content{
+    color: #696969;
+    margin: 0 5%;
+
+}
+
+
+.person img{
+    width: 100%;
+}
+
+/*Endir á About-US síðu*/

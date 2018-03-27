@@ -1,0 +1,193 @@
+/*Start of theTour page*/
+
+.glymurHeading{
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 1.5;
+    transform: scale(.9, 1);
+
+    cursor: default;
+}
+
+.glymurHeading h2{
+    text-align: center;
+    margin-top: 50px;
+    margin-right: 20%;
+    color: #696969;
+}
+
+.peppTexti{
+    display: flex;
+    justify-content: center;
+    color: gray;
+    margin-bottom: 10%;
+}
+
+.upplýsingar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+    font-size: 16px;
+}
+
+.upplýsingar ul{
+    list-style: none;
+    background: white;
+    display: flex;
+    border: solid silver;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+.upplýsingar li{
+    margin-right: 2%;
+    flex-basis: 40%;
+    margin-bottom: 20px;
+}
+
+
+/*Start of together, myndG & Calendar*/
+
+.together{
+    display: grid;
+    grid-template-columns: 0.5fr 1.2fr 0.8fr;
+    grid-gap: 10px;
+}
+
+/*Start of gallerý*/
+
+.myndaGallerý{
+overflow: hidden;
+margin-bottom: 10%;
+cursor: default;
+
+}
+.myndaGallerý h2{
+    color: #696969;
+}
+.pictureKeeper{
+    padding: 2%;
+    margin-bottom: 8%;
+    border: solid darkgray;
+    background: grey;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.mainPic{
+    margin: 0;
+   display: flex;
+   justify-content: center;
+   height: 35rem;
+   margin-bottom: 0;
+   width: 100%;
+}
+
+.mainPic img{
+    width: 100%;
+    border-radius: 2px;
+}
+
+
+/* Next & previous buttons */
+.prev,
+.next {
+    display: flex;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    align-items: center;
+    background-color:rgba(0,0,0,0.8);
+    opacity: 0.5;
+    width: 100%;
+
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prev{
+    border-radius: 3px 0 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  border-radius: 0 3px 3px 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+
+   opacity: 0.9;
+}
+
+ .row  {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+ 
+    margin: 0;
+    margin-top: 2%;
+    
+    height: 150px;
+ }
+
+ ::-webkit-scrollbar {
+   width: 0px;  /* remove scrollbar space */
+   background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+ .images {
+   margin: 0;
+   width: 33%;
+   height: 100%;
+
+   margin: 0 10px 0 0;
+   /*padding: 10px;*/
+   
+
+ }
+ .images img{
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     z-index: 0;
+     opacity: 0.8;
+ }
+
+ .images img:hover{
+     opacity: 1.0;
+ }
+
+ /*End of gallerý*/
+
+ /*start of Booking*/
+
+/*Sjá calendar&BookingStart.css file*/
+
+ /*End of Booking*/
+
+ /*End of together, myndG & Calendar*/
+
+.upplýsingar .frekariLýsing{
+    border: solid silver;
+    color: #696969;
+    padding: 20px;
+}
+
+.frekariLýsing a{
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
+/*End of theTour page*/

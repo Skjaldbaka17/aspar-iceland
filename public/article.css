@@ -1,0 +1,21 @@
+/*Start of article*/
+
+.articleContainer{
+    display: grid;
+    grid-template-columns: 0.6fr 1fr 0.6fr;
+    margin: 2% 0 10% 0;
+}
+
+.titleArticle{
+    font-size: 50px;
+}
+
+.contentArticle{
+    line-height: 1.5;
+}
+
+.photoContainer img{
+    width: 100%;
+}
+
+/*End of article*/

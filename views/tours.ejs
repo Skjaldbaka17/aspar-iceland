@@ -1,0 +1,23 @@
+<%- include('header') -%>
+
+        <div class = "kynning">
+            <h3>Join the team</h3>
+            <p>The island in the North. Home to many of the world's most magnificent
+                waterfalls, glaciers and landscapes. Iceland heals, fights and inspires like no other.
+            </p>
+        </div>
+            
+            <ul class = "greinar">
+                    <% articles.forEach((article) => { %>
+                        <li>
+                            <a href=<%=article.href%>>
+                              <% if (article.image) { %>
+                                <img src = "<%= article.image %>" alt="<%= article.title%>">
+                              <% } %>
+                              <h1><%= article.title%></h1>
+                            </a>
+                        </li>
+                      <% }) %>
+            </ul>
+
+<%- include('footer') -%>

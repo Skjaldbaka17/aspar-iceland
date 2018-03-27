@@ -1,0 +1,5 @@
+---
+title: below
+---
+
+In Hvalfjörður there is a beautiful hike close to one of the most beautiful waterfalls in Iceland, Glymur. The goal of this tour is to hike all the way to the top of the waterfall where you‘ll have a breathtaking view of Icelandic nature. When we have reached the top we will do yoga, icelandic style. This tour is meant to help you get in touch with icelandic nature and by doing Icelandic yoga on top of a mountain in an unspoiled nature is certainly a heavenly experience you‘ll never forget. You can find more information about the Icelandic yoga [here](../articles/iceYoga). After the yoga session we will offer you an Icelandic lunch. The food we serve is a typical traditional icelandic food. You can find more information about Icelandic food here and if you have some questiones about it or anything else you can contact us through this link. After eating we start hiking back down to the bus which will take us back to Reykjavik. The main goal of this tour is to make you feel connected to Icelandic nature so your experience here will be memorable.
