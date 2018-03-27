@@ -25,21 +25,18 @@ ImageGallery.prototype.openModal = function (source) {
     const theModal = document.getElementById('myModal');
     theModal.style.display = 'block';
 
-    const firstPic = source.replace('http://localhost:5000', '.');
+    const firstPic = source.replace(/.*\/img/g, './img');
 
 
 
     var i;
-    alert(this.PICTURES[1].getAttribute('src') + " " + firstPic);
     for (i = 0; i < this.PICTURES.length; i++) {
         if (this.PICTURES[i].getAttribute('src') === firstPic) { break; }
     }
-    alert(i + " " + firstPic);
 
     this.current = i;
 
     document.getElementById('largeImage').setAttribute('src', this.PICTURES[this.current].getAttribute('src'));
-    alert(this.PICTURES[this.current].getAttribute('src'));
 }
 
 const imageGal = new ImageGallery();
