@@ -7,17 +7,38 @@
             </p>
         </div>
             
-            <ul class = "greinar">
+            <div class = "greinar">
                     <% articles.forEach((article) => { %>
-                        <li>
-                            <a href=<%=article.href%>>
-                              <% if (article.image) { %>
-                                <img src = "<%= article.image %>" alt="<%= article.title%>">
-                              <% } %>
-                              <h1><%= article.title%></h1>
+                            <a class="linkurAGrein" href=<%=article.href%>>
+                                <% 
+                                var classinn = (article.position%2 === 0) ? 'right' : 'left';
+                                var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
+                                %>
+                                <div class="one"></div>
+                                <div class="two"></div>
+                                <div class="three"></div>
+                                <div class="<%=classinn%>">
+                                    <% if (article.image) { %>
+                                        <img src = "<%= article.image %>" alt="<%= article.title%>">
+                                    <% } %>
+                                </div>
+
+                                <div class="<%=textClassinn%>">
+                                    <div class="articleInfo">
+                                            <div class="articleTitle">
+                                                <h4><%= article.title%></h4>
+                                            </div>
+                                            <div class="articleDescription">
+                                                <h5><%= article.description%></h5>
+                                            </div>
+                                            <div class="articleContent">
+                                                <%- article.content%>
+                                            </div>
+                                    </div>
+                                </div>
+                              
                             </a>
-                        </li>
                       <% }) %>
-            </ul>
+            </div>
 
 <%- include('footer') -%>

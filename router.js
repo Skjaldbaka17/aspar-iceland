@@ -14,8 +14,8 @@ const md = new MarkdownIt();
 const picturesPath = './public/img';
 const theTour = './tours/';
 const peoplePath = "./people";
-const informationPath = "./tours/";
 const toursPath = "./tours/all_tours";
+const homePath = './home';
 
 
 function catchErrors(fn) {
@@ -31,6 +31,7 @@ async function readArticle(filePath){
       content,
       data: { // gray-matter pakki skilar efni í content og lýsigögnum í data
         title,
+        description,
         id,
         href,
         slug,
@@ -42,6 +43,7 @@ async function readArticle(filePath){
     return {
       content: md.render(content),
       title,
+      description,
       id,
       href,
       slug,
@@ -95,7 +97,7 @@ async function readPeopleList(){
 }
 
 async function list(req, res){
-    const files = await readArticlesList(articlesPath);
+    const files = await readArticlesList(homePath);
 
     const articles = files
         .sort((a,b) => a.position > b.position);
@@ -134,17 +136,25 @@ async function readInformation(filePath){
             time,
             available,
             difficulty,
+            price,
+            tourGuide,
+        whoAmI,
+        guidePic,
         },
     } = data;
 
     return {
-        content: md.render(content),
+        content,
         duration,
         peopleMax,
         ageLimit,
         time,
         available,
         difficulty,
+        price,
+        tourGuide,
+        whoAmI,
+        guidePic,
     };
 }
 
@@ -170,7 +180,7 @@ async function tours(req, res){
     const articles = files
         .sort((a,b) => a.position > b.position);
 
-    var height = '700px';
+    var height = '400px';
     var image = 'img/pano1234/pano4.JPG';
 
 
@@ -207,7 +217,6 @@ router.get('/articles/:article', catchErrors(readTheArticle));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
 router.get('/tours/:tour', catchErrors(selectedTour));
-//router.get('/the-tour', catchErrors(theTour));
 router.get('/about-us', catchErrors(about_us));
 
 module.exports = router;

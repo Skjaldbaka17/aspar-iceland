@@ -1,6 +1,7 @@
 <%- include('header')-%>
 <div class ="glymurHeading">
-        <h2>Glymur - Health & Adventure tour</h2>
+        <h2>Glymur</h2>
+        <h3>Health & Adventure tour</h3>
     </div>
 
     
@@ -16,7 +17,13 @@
                         <li><strong>Available:</strong> <%= information.available%></li>
                         <li><strong>Age limit:</strong> <%= information.ageLimit%></li>
                         <li><strong>Difficulty:</strong> <%= information.difficulty%></li>
-                    </ul></div>
+                    </ul>
+            </div>
+
+            <h5>Tour Highlights</h5>
+            <div id="tourHighlights">
+                <%-information.content%>
+            </div>
             <div class ="peppTexti">
                     <p>
                         <div class="aboveText">
@@ -53,19 +60,43 @@
             <div class="frekariLýsing belowText">
                 <%- below.content%>
             </div>
+
+            
         </div>
-            <script src = "/imageGalleryHandler.js"></script>
+        <div class="priceAndProfile">
+            <div id="priceTag">
+                    Price: <strong><%= information.price%></strong>
+            </div>
+
+            <div class="card">
+                <div class="infoOnTourGuide">
+                    <img src="<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
+                    <p class="tourGuide"><%=information.tourGuide%></p>
+                    <p class="profileTitle"><%=information.whoAmI%></p>
+                </div>
+                    
+                    <div class="socialMedia">
+                      <a href="#"><i class="fa fa-instagram"></i></a>  
+                      <a href="https://www.facebook.com/daniel.agustsson.37"><i class="fa fa-facebook"></i></a> 
+                   </div>
+            </div>
+        </div>
+            
+        
+        <script src = "/imageGalleryHandler.js"></script>
     </div>
 
+    <div></div>
+<!-- PAYPAL!!!!
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="S4CVX3Q9ZXB2E">
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
+    -->
         
-        
-
+<!-- BOOKING!!!!!
     <div id="booking">
             <div id="theCalendarBox">
                     <div id="theCalendar">
@@ -360,7 +391,7 @@
                                 var orderDate = new DateTracker();
                                 
                         </script>
-    </div>
+    </div> -->
 </div>
 
 <%- include('footer')-%>
