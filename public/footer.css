@@ -54,9 +54,12 @@ margin: 5px;
 .footerLink{
     display: flex;
     justify-content: flex-end;
+
 }
 .footerLink a{
     text-decoration: none;
     font-style: italic;
     margin-right: 0.4%;
+    color: black;
+    
 }

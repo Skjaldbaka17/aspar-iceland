@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'tours')));
 app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));
-app.use(express.static(path.join(__dirname, 'tours/glymur/img')));
+app.use(express.static(path.join(__dirname, 'tours/glymur')));
 app.use('/', router);
 app.use('/contact-us', formRouter);
 

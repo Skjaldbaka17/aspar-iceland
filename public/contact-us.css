@@ -16,6 +16,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     margin: 5% 0 10% 0;
+    color: gray;
 }
 
 #middle h1, #middle p{
@@ -26,6 +27,9 @@
    display: grid;
    grid-template-columns: 1fr;
    grid-gap: 1rem;
+}
+#submitForm input{
+    min-height: 40px;
 }
 
 #submitForm .about{

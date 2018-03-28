@@ -1,4 +1,5 @@
 <%- include('header')-%>
+<div id="theTour">
 <div class ="glymurHeading">
         <h2>Glymur</h2>
         <h3>Health & Adventure tour</h3>
@@ -65,21 +66,26 @@
         </div>
         <div class="priceAndProfile">
             <div id="priceTag">
-                    Price: <strong><%= information.price%></strong>
+                <p>Price: <strong><%= information.price%></strong></p>
             </div>
 
-            <div class="card">
-                <div class="infoOnTourGuide">
-                    <img src="<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
-                    <p class="tourGuide"><%=information.tourGuide%></p>
-                    <p class="profileTitle"><%=information.whoAmI%></p>
+            <div id="cardContainer">
+                <div class="card">
+                    <div class="infoOnTourGuide">
+                        <img src="<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
+                        <p class="tourGuide"><%=information.tourGuide%></p>
+                        <p class="profileTitle"><%=information.whoAmI%></p>
+                    </div>
+                        
+                        <div class="socialMedia">
+                        <a href="#"><i class="fa fa-instagram"></i></a>  
+                        <a href="https://www.facebook.com/daniel.agustsson.37"><i class="fa fa-facebook"></i></a> 
+                    </div>
                 </div>
-                    
-                    <div class="socialMedia">
-                      <a href="#"><i class="fa fa-instagram"></i></a>  
-                      <a href="https://www.facebook.com/daniel.agustsson.37"><i class="fa fa-facebook"></i></a> 
-                   </div>
             </div>
+        </div>
+        <div id="contactUsContainer">
+            <button>Contact Us</button> 
         </div>
             
         
@@ -392,6 +398,7 @@
                                 
                         </script>
     </div> -->
+</div>
 </div>
 
 <%- include('footer')-%>

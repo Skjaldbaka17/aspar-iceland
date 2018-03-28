@@ -1,5 +1,8 @@
 /*Start of theTour page*/
 
+#theTour{
+    line-height: 2.5;
+}
 .glymurHeading{
     display: flex;
     justify-content: center;
@@ -217,13 +220,18 @@ cursor: default;
 }
 
 
-.card {
+#cardContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.card { 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 250px;
-    max-height: 500px;
-    margin: 0;
+    overflow: visible;
+    margin: 0 0 10px 0;
     text-align: center;
     font-family: arial;
+    color: gray;
   }
   
 .profileTitle {
@@ -246,9 +254,10 @@ cursor: default;
   }
 
   .priceAndProfile{
+      margin-top: 50px;
       display: grid;
       grid-template-columns: 2fr 2fr;
-
+      grid-gap: 10px;
   }
 
   .card img{
@@ -277,6 +286,38 @@ cursor: default;
       display: flex;
       flex-direction: column;
   }
+
+  #contactUsContainer{
+      margin-top: 50px;
+      display: flex;
+      justify-content: flex-end;
+      overflow: visible;
+      min-height: 100px;
+      padding-right: 10px;
+  }
+  #contactUsContainer button{
+    border: none;
+    border-radius: 5px;
+    background: #e7d9cf;
+    box-shadow: 2px 5px #999;
+    max-height: 50px;
+
+    font: inherit;
+    cursor: pointer;
+  }
+
+  #contactUsContainer button:hover{
+      background-color: #c5a289;
+  }
+
+  #contactUsContainer button:active{
+    box-shadow: 0 2px #999;
+}
+
+#contactUsContainer button:focus{
+    outline:0;
+}
+
 
 
 /*End of theTour page*/
