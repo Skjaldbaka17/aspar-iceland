@@ -72,21 +72,21 @@
             <div id="cardContainer">
                 <div class="card">
                     <div class="infoOnTourGuide">
-                        <img src="/<%=tour%>/<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
+                        <img src="/img/<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
                         <p class="tourGuide"><%=information.tourGuide%></p>
                         <p class="profileTitle"><%=information.whoAmI%></p>
                     </div>
                         
                         <div class="socialMedia">
-                        <a href="#"><i class="fa fa-instagram"></i></a>  
-                        <a href="https://www.facebook.com/daniel.agustsson.37"><i class="fa fa-facebook"></i></a> 
+                        <a href="<%=information.instagram%>"><i class="fa fa-instagram"></i></a>  
+                        <a href="<%=information.facebook%>"><i class="fa fa-facebook"></i></a> 
                     </div>
                 </div>
             </div>
         </div>
-        <div id="contactUsContainer">
-            <button action="/contact-us">Contact Us</button> 
-        </div>
+        <form action="/contact-us" id="contactUsContainer">
+            <button>Contact Us</button> 
+        </form>
             
         
         <script src = "/imageGalleryHandler.js"></script>

@@ -48,7 +48,7 @@
     padding: 50px 10% 50px 10%;
     margin: 0 2%;
     background-color: #7f7fff;
-    min-height: 375px;
+    max-height: 400px;
     display: grid;
     grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
     text-decoration:  none;
@@ -85,6 +85,8 @@
 
 .right{
     order: 4;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .rightText{
@@ -96,15 +98,11 @@
     order: 0;
 }
 
-/*.greinar div
-{
-    border: solid;
-}*/
-
 .greinar img{
+    flex: 0 0 auto;
+    max-height: 300px;
+    min-width: 300px;
     border-radius: 50%;
-    min-height: 100%;
-    width: 100%;
 }
 
 

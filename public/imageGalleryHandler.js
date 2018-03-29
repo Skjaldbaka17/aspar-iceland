@@ -29,7 +29,7 @@
                 // PREVIOUS
                 Carousel.prototype.prev = function () {	
                     (this.current <= 0) ? this.current = this.total-1 : this.current -= 1;
-                        
+
                     this.stop();	
                     this.slide(this.current);
                     
@@ -69,7 +69,8 @@
 
                 Carousel.prototype.moveToBig = function (source){
                     var i;
-                    var newPic = source.replace(/.*\/img/, './img');
+                    var newPic = source.replace(/.*\/img/, '/img');
+
 
                     for(i = 0; i < this.total; i++){
                         if(this.slides[i].getAttribute('src').match(newPic)){ 

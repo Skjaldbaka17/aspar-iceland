@@ -144,6 +144,8 @@ async function readInformation(filePath){
             tourGuide,
         whoAmI,
         guidePic,
+        facebook,
+        instagram,
         },
     } = data;
 
@@ -161,6 +163,8 @@ async function readInformation(filePath){
         tourGuide,
         whoAmI,
         guidePic,
+        facebook,
+        instagram,
     };
 }
 
@@ -179,7 +183,7 @@ async function selectedTour(req, res){
     const pictures = files
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
 
-    res.render('the-tour', {tour, height, image, pictures, information, above, below});
+    res.render('the-tour', {height, image, pictures, information, above, below});
 }
 
 async function tours(req, res){
