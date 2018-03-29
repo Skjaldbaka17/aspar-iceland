@@ -75,7 +75,7 @@ async function readPeople(filePath){
     };
 }
 
-async function readArticlesList(thePath){
+async function readToursList(thePath){
     const files = await readdirAsync(thePath);
 
     
@@ -97,7 +97,7 @@ async function readPeopleList(){
 }
 
 async function list(req, res){
-    const files = await readArticlesList(homePath);
+    const files = await readToursList(homePath);
 
     const articles = files
         .sort((a,b) => a.position > b.position);
@@ -111,13 +111,15 @@ async function list(req, res){
 
 
 async function pictures(req, res){
-    const files = await readdirAsync(picturesPath);
+    const tours = await readToursList(homePath);
+    const pictures = (await readdirAsync((theTour + 'img')))
+    .filter(file => (!file.match(/.*\.DS_Store.*/)))
+           
+            
     
     var height = '400px';
     var image = 'img/pano1234/pano3.JPG';
 
-    const pictures = files
-        .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
     
     res.render('pictures', {height, image, pictures});
 }
@@ -130,6 +132,8 @@ async function readInformation(filePath){
     const{
         content,
         data:{
+            about,
+            title,
             duration,
             peopleMax,
             ageLimit,
@@ -145,6 +149,8 @@ async function readInformation(filePath){
 
     return {
         content,
+        about,
+        title,
         duration,
         peopleMax,
         ageLimit,
@@ -160,7 +166,9 @@ async function readInformation(filePath){
 
 async function selectedTour(req, res){
     const { tour } = req.params;
-    const files = await readdirAsync((theTour + tour + '/img'));
+    var regex = new RegExp(tour);
+    const files = (await readdirAsync((theTour + 'img')))
+.filter((file) => file.match(regex));
     const information = await readInformation((theTour + tour + '/informationTour.md'));
     const above = await readInformation(theTour + tour + '/above.md');
     const below = await readInformation(theTour + tour + '/below.md');
@@ -171,11 +179,11 @@ async function selectedTour(req, res){
     const pictures = files
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
 
-    res.render('the-tour', {height, image, pictures, information, above, below});
+    res.render('the-tour', {tour, height, image, pictures, information, above, below});
 }
 
 async function tours(req, res){
-    const files = await readArticlesList(toursPath);
+    const files = await readToursList(toursPath);
 
     const articles = files
         .sort((a,b) => a.position > b.position);
@@ -198,7 +206,7 @@ async function about_us(req, res){
 }
 
 async function readTheArticle(req, res){
-    const files = await readArticlesList(articlesPath);
+    const files = await readToursList(articlesPath);
     const { article } = req.params;
 
     const theArticle = files

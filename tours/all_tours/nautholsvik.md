@@ -3,6 +3,6 @@ title: Nauthólsvík
 id: nautholsvik
 href: /tours/nautholsvik
 slug: /nautholsvik
-image: ../img/iceYoga.JPG
+image: NauthóllForsíða.JPG
 position: 2
 ---

@@ -1,6 +1,6 @@
 ---
-title: the Random Tour
-description: Be prepared
+title: Random
+description: Surprise trip
 id: random
 href: /tours/random
 slug: /random
@@ -9,6 +9,6 @@ position: 3
 ---
 
 * ?
-* ??
-* ???
-* ????
+* ?
+* ?
+* ?

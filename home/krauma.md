@@ -8,7 +8,7 @@ image: ../img/krauma.jpg
 position: 1
 ---
 
-* listi1
-* listi2
-* listi3
-* listi4
+* Hiking
+* Nature
+* Krauma Health Spa
+* Reykholt

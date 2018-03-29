@@ -1,8 +1,19 @@
 ---
-duration: 6-7 hours
-peopleMax: 8 persons
+title: Random
+about: Surprise Trip
+duration: ??
+peopleMax: ??
 ageLimit: All ages
-time: 09:00
-available: Summer (April-September)
-difficulty: Medium
+time: ??
+available: Summer (10. June-10. August)
+difficulty: ??
+price: ??? ISK
+tourGuide: ?
+whoAmI: Random guide
+guidePic: randomTourGuide.png
 ---
+
+<div>&#10003; ? </div>
+<div>&#10003; ? </div>
+<div>&#10003; ? </div>
+<div>&#10003; ? </div>

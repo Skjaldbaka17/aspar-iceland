@@ -8,7 +8,7 @@ image: ../img/glymur.JPG
 position: 0
 ---
 
-* listi1
-* listi2
-* listi3
-* listi4
+* Hiking
+* Icelandic Yoga
+* Nature
+* Icelandic Food

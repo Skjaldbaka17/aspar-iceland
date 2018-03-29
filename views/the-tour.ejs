@@ -1,8 +1,8 @@
 <%- include('header')-%>
 <div id="theTour">
 <div class ="glymurHeading">
-        <h2>Glymur</h2>
-        <h3>Health & Adventure tour</h3>
+        <h2><%=information.title%></h2>
+        <h3><%=information.about%></h3>
     </div>
 
     
@@ -39,7 +39,7 @@
 
             <div class ="mainPic">
                 <a class="prev" onclick="car.prev()">&#10094;</a>
-                <img id ="showPic" src="./img/IMG_0160.JPG">
+                <img id ="showPic" src="">
                 <a class="next" onclick="car.next()">&#10095;</a>
             </div>
 
@@ -48,7 +48,7 @@
                 <%pictures.forEach((picture) =>{ %> 
                     <div class="images">
                     <% if(picture) { %>
-                        <img class="slides" aria-hidden="true" src="../img/<%= picture%>" onclick="car.moveToBig(this.src)">
+                        <img class="slides" aria-hidden="true" src="/img/<%= picture%>" onclick="car.moveToBig(this.src)">
                     <% } %>
                 </div>
               
@@ -72,7 +72,7 @@
             <div id="cardContainer">
                 <div class="card">
                     <div class="infoOnTourGuide">
-                        <img src="<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
+                        <img src="/<%=tour%>/<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
                         <p class="tourGuide"><%=information.tourGuide%></p>
                         <p class="profileTitle"><%=information.whoAmI%></p>
                     </div>
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div id="contactUsContainer">
-            <button>Contact Us</button> 
+            <button action="/contact-us">Contact Us</button> 
         </div>
             
         

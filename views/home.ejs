@@ -9,11 +9,12 @@
             
             <div class = "greinar">
                     <% articles.forEach((article) => { %>
-                            <a class="linkurAGrein" href=<%=article.href%>>
-                                <% 
-                                var classinn = (article.position%2 === 0) ? 'right' : 'left';
-                                var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
-                                %>
+                        <% 
+                        var classinn = (article.position%2 === 0) ? 'right' : 'left';
+                        var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
+                        var limmidi = (article.position%2 === 1) ? 'otherCol' : 'thisCol';
+                        %>
+                            <a class="linkurAGrein <%=limmidi%>" href=<%=article.href%>>
                                 <div class="one"></div>
                                 <div class="two"></div>
                                 <div class="three"></div>

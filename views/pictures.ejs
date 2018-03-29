@@ -1,13 +1,14 @@
 <%- include('header') -%>
 <div onload="load();">
 <ul class="myndir" id="myList">
-    <%pictures.forEach((picture) =>{%>
+    <%var a = 0; pictures.forEach((picture) =>{%>
         <li>
             <% if (picture) {%>
                 <img class="yoda" src = "./img/<%= picture %>" alt="" onclick="imageGal.openModal(this.src)">
             <% } %>
         </li>
-        <% }) %>
+
+        <%}); %>
 </ul>
 
 <div class = "meira">

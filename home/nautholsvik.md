@@ -4,11 +4,10 @@ description: Experience the cold
 id: nautholsvik
 href: /tours/nautholsvik
 slug: /nautholsvik
-image: ../img/nautholsvik.jpg
+image: ../img/nauthóllForsíða.jpg
 position: 2
 ---
 
-* listi1
-* listi2
-* listi3
-* listi4
+* Cold Water Swimming
+* Icelandic Culture
+* Steambath & hot-tub

@@ -6,8 +6,6 @@
 
     margin-top: 75px;
     justify-content: center;
-
-    
 }
 
 .kynning h3{
@@ -23,14 +21,13 @@
     font-size: 24px;
     padding: 0 10%;
     cursor: default;
-
+    text-align: center;
 }
 
 .greinar{
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 100px;
-    margin: 100px 10% 0 10%;
+    margin: 100px 0 0 0;
     list-style: none;
     padding: 0;
 }
@@ -48,12 +45,23 @@
 }*/
 
 .linkurAGrein{
+    padding: 50px 10% 50px 10%;
+    margin: 0 2%;
+    background-color: #7f7fff;
     min-height: 375px;
     display: grid;
     grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
     text-decoration:  none;
-    color: black;
+    color: grey;
     transition: all 1.5s;
+}
+
+.otherCol{
+    background-color: #f1f1f1/*#f9f9ea*/;
+}
+
+.thisCol{
+    background-color: #deeff5;
 }
 
 .linkurAGrein:hover{
@@ -111,7 +119,11 @@
     text-align: center;
     margin: 0;
 }
+
+.articleContent {
+    line-height: 2.5;
+}
 .articleInfo .articleContent li{
-    margin: 0 0 0 0 ;
+    margin: 0 0 0 0;
 }
 

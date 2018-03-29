@@ -1,4 +1,6 @@
 ---
+title: Glymur
+about: Health and Adventure
 duration: 6-7 hours
 peopleMax: 8 persons
 ageLimit: All ages
@@ -7,8 +9,8 @@ available: Summer (April-September)
 difficulty: Medium
 price: 14.990 ISK
 tourGuide: Daníel Aspar
-whoAmI: Teacher of Philosophy
-guidePic: ../daniel.PNG
+whoAmI: Glymur guide
+guidePic: daniel.PNG
 ---
 
 <div>&#10003; Hiking </div>
