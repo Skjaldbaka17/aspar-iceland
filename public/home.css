@@ -204,7 +204,7 @@
     } */
 }
 
-@media (max-width: 750px){
+@media screen and (max-width: 750px){
     .tourGrid{
         min-height: 400px;
         display: grid;
