@@ -56,6 +56,12 @@
     overflow: visible;
 }
 
+@media (min-width: 1000px){
+    .linkurAGrein{
+        margin: 0 10%;
+    }
+}
+
 .linkurAGrein button{
     background: none;
     /*border: #deeff5 solid;*/
