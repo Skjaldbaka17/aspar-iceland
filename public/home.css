@@ -170,6 +170,10 @@
     /*border-radius: 50%;*/
 }
 
+#lastOne{
+    max-height: 450px;
+}
+
 
 .articleInfo .articleTitle h4{
     font-size: 30px;
@@ -198,6 +202,12 @@
     .greinar img{
         max-height: 600px;
     }
+
+    #lastOne{
+        max-height: 600px;
+    }
+
+
 
     /*.rightText, .leftText{
         margin-top: 7.5%;
