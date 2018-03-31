@@ -24,13 +24,13 @@
     text-align: center;
 }
 
-.greinar{
+/*.greinar{
     display: grid;
     grid-template-columns: 1fr;
     margin: 100px 0 0 0;
     list-style: none;
     padding: 0;
-}
+}*/
 
 /* .greinar a{
     display: flex;
@@ -49,7 +49,7 @@
     margin: 0 0;
     max-height: 400px;
     display: grid;
-    grid-template-columns: 5fr 0fr 0fr 0fr 5fr;
+    grid-template-columns: 5fr 5fr;
     text-decoration:  none;
     color: grey;
     transition: all 1.5s;
@@ -126,19 +126,6 @@
     background-color: #cde7f0/*#deeff5*/;
 }
 
-
-.one{
-    order: 1;
-}
-
-.two{
-    order: 2;
-}
-
-.three{
-    order: 3;
-}
-
 .leftText{
     order: 0;
     margin: 10%;
@@ -166,12 +153,17 @@
     flex: 0 0 auto;
     /*max-height: 100%;*/
     max-height: 450px;
+    min-height: 400px;
     width: 100%;
     /*border-radius: 50%;*/
 }
 
 #lastOne{
     max-height: 450px;
+}
+
+#lastOne img{
+    min-height: 450px;
 }
 
 
@@ -200,18 +192,36 @@
     }
 
     .greinar img{
+        margin:0;
         max-height: 600px;
     }
 
     #lastOne{
         max-height: 600px;
     }
-
-
-
     /*.rightText, .leftText{
         margin-top: 7.5%;
         margin-bottom: 10%;
     } */
+}
+
+@media (max-width: 600px){
+    .linkurAGrein{
+        
+        max-height: 400px;
+    }
+
+    .linkurAGrein img{
+        height: 100%;
+        width: 50%;
+    }
+
+    .leftText{z-index: 0;}
+
+    
+
+    .right{z-index: 0;}
+    .left{z-index: 0;}
+    .rightText{z-index: 0;}
 }
 
