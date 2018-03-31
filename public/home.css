@@ -56,17 +56,6 @@
     overflow: visible;
 }
 
-@media (min-width: 1500px){
-    .linkurAGrein{
-        margin: 0 10%;
-    }
-
-    .rightText, .leftText{
-        margin-top: 5%;
-        margin-bottom: 10%;
-    } 
-}
-
 .linkurAGrein button{
     background: none;
     /*border: #deeff5 solid;*/
@@ -199,5 +188,16 @@
 }
 .articleInfo .articleContent li{
     margin: 0 0 0 0;
+}
+
+@media (min-width: 1500px){
+    .linkurAGrein{
+        margin: 0 10%;
+    }
+
+    .rightText, .leftText{
+        margin-top: 7.5%;
+        margin-bottom: 10%;
+    } 
 }
 
