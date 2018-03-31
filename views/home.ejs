@@ -7,14 +7,14 @@
             </p>
         </div>
             
-            <div class = "greinar">
+            <div class = "greinar" id="greinarHome">
                     <% articles.forEach((article) => { %>
                         <% 
                         var classinn = (article.position%2 === 0) ? 'right' : 'left';
                         var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
                         var limmidi = (article.position%2 === 1) ? 'otherCol' : 'thisCol';
                         %>
-                            <a class="linkurAGrein <%=limmidi%>" href=<%=article.href%>>
+                            <div class="linkurAGrein <%=limmidi%>">
                                 <div class="one"></div>
                                 <div class="two"></div>
                                 <div class="three"></div>
@@ -36,10 +36,29 @@
                                                 <%- article.content%>
                                             </div>
                                     </div>
+                                        <form id="tourButton" action="<%=article.href%>">
+                                            <button>More info</button> 
+                                        </form>
                                 </div>
                               
-                            </a>
+                            </div>
                       <% }) %>
             </div>
+
+            <script>
+                
+                    let t = document.getElementById('greinarHome').getElementsByClassName('linkurAGrein');
+
+                    var size = t.length;
+
+                    //t[size-1].style.overflow = 'hidden';
+                    t[size-1].style.maxHeight = '450px';
+
+                    
+
+
+
+                    
+                </script>
 
 <%- include('footer') -%>

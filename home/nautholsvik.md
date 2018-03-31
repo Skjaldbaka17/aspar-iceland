@@ -4,7 +4,7 @@ description: Experience the cold
 id: nautholsvik
 href: /tours/nautholsvik
 slug: /nautholsvik
-image: ../img/nautholsvik.jpg
+image: ../img/nautholsvik.JPG
 position: 2
 ---
 

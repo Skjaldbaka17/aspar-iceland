@@ -45,28 +45,88 @@
 }*/
 
 .linkurAGrein{
-    padding: 50px 10% 50px 10%;
-    margin: 0 2%;
-    background-color: #7f7fff;
+    padding: 0 0 0 0;
+    margin: 0 0;
     max-height: 400px;
     display: grid;
-    grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
+    grid-template-columns: 5fr 0fr 0fr 0fr 5fr;
     text-decoration:  none;
     color: grey;
     transition: all 1.5s;
+    overflow: visible;
+}
+
+.linkurAGrein button{
+    background: none;
+    /*border: #deeff5 solid;*/
+    border: none;
+    transition: all 1.5s;
+    padding: 13px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#tourButton{
+    margin-left: 45%;
+}
+
+.linkurAGrein:hover button{
+    box-shadow: 2px 3px gray;
+    border: #e6f3f7 solid 1px;
+    color: #e6f3f7;
+}
+
+.thisCol button{
+    color: #e6f3f7;
+}
+
+.otherCol button{
+    color: #ccffcc;
+}
+
+.thisCol:hover button{
+    background: #add8e6;
+    transition: all 1s;
+}
+
+.thisCol:hover button:hover{
+    background-color: #9bc2cf;
+}
+
+.linkurAGrein:hover button:active{
+    transition: all 0s;
+    box-shadow: 1px 1px gray;
+}
+
+.linkurAGrein button:focus {outline:none;}
+
+
+
+.thisCol{
+    background-color: #e6f3f7/*#eef7fa*/;
+}
+.otherCol:hover{
+    background-color: #b2ffb2/*#f9f9ea*/;
+}
+
+.otherCol:hover button{
+    background-color: #99ff99;
+}
+
+.otherCol:hover button:hover{
+    background-color: #7fff7f;
 }
 
 .otherCol{
-    background-color: #f1f1f1/*#f9f9ea*/;
+    background-color: #ccffcc;
 }
 
-.thisCol{
-    background-color: #deeff5;
+.thisCol:hover{
+    background-color: #cde7f0/*#deeff5*/;
 }
 
-.linkurAGrein:hover{
-    transform: scale(1.05);
-}
+
 .one{
     order: 1;
 }
@@ -81,28 +141,33 @@
 
 .leftText{
     order: 0;
+    margin: 10%;
 }
 
 .right{
     order: 4;
-    display: flex;
-    justify-content: flex-end;
+    z-index: 0;
+    /*display: flex;
+    justify-content: flex-end;*/
 }
 
 .rightText{
     order: 4;
     grid-column: 4fr;
+    margin: 10%;
 }
 
 .left{
     order: 0;
+    z-index: 0;
 }
 
 .greinar img{
     flex: 0 0 auto;
-    max-height: 300px;
-    min-width: 300px;
-    border-radius: 50%;
+    /*max-height: 100%;*/
+    max-height: 450px;
+    width: 100%;
+    /*border-radius: 50%;*/
 }
 
 

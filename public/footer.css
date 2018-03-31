@@ -1,8 +1,8 @@
 footer{
     margin-top: 10%;
     border-top: solid;
-    border-color: #cde7f0;
-    background-color: #d6ebf2;
+    border-color: #D3D3D3;
+    background-color: #DCDCDC;
 }
 .footerStuff{
     display: grid;
@@ -26,7 +26,7 @@ footer{
 .footerStuff .asparLogo h1{
     margin-top: 1%;
     font-size: 14px;
-    color: #0D4F8B;
+    color: #808080;
     font-style: italic;
 
     cursor: default;
@@ -60,5 +60,5 @@ margin: 5px;
     text-decoration: none;
     font-style: italic;
     margin-right: 0.4%;
-    color: black;
+    color: #808080;
 }

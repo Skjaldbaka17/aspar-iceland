@@ -85,8 +85,8 @@ cursor: default;
 .pictureKeeper{
     padding: 2%;
     margin-bottom: 8%;
-    border: solid darkgray;
-    background: grey;
+    /*border: solid darkgray;*/
+    /*background: grey;*/
     display: grid;
     grid-template-columns: 1fr;
 }
