@@ -96,7 +96,7 @@ nav a:active{
     color: #014dd9;
 }
 
-@media (max-width: 600px){
+@media (max-width: 750px){
    
     nav{
         height: 300px;
