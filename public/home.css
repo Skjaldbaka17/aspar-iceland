@@ -56,10 +56,15 @@
     overflow: visible;
 }
 
-@media (min-width: 1000px){
+@media (min-width: 1500px){
     .linkurAGrein{
         margin: 0 10%;
     }
+
+    .rightText, .leftText{
+        margin-top: 5%;
+        margin-bottom: 10%;
+    } 
 }
 
 .linkurAGrein button{
