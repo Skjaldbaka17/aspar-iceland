@@ -44,6 +44,10 @@
     text-shadow: 3px 3px 0 #014dd9;  
 }
 
+.menuBar{
+    display: none;
+}
+
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -64,8 +68,10 @@ nav {
 }
 nav:hover{
     opacity: 0.9;
-    background-color: #F5F5F5;
-
+    background-color: #ffffff;
+}
+nav ul{
+    display: none;
 }
 
 nav a{
@@ -88,4 +94,30 @@ nav a:hover{
 
 nav a:active{
     color: #014dd9;
+}
+
+@media (max-width: 600px){
+   
+    nav{
+        height: 300px;
+        clear: both;
+        margin: 0;
+        background-color: #ffffff;
+        opacity: 0.9;
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+
+    nav a{
+        border-bottom: solid 1px gray;
+
+        text-align: left;
+
+        
+    }
+    
+
+    
+    /*nav select { display: inline-block; }*/
 }

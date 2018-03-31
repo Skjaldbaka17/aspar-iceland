@@ -7,22 +7,20 @@
             </p>
         </div>
             
-            <div class = "greinar" id="greinarHome">
+            <div class = "tourGrid" id="greinarHome">
                     <% articles.forEach((article) => { %>
                         <% 
                         var classinn = (article.position%2 === 0) ? 'right' : 'left';
                         var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
                         var limmidi = (article.position%2 === 1) ? 'otherCol' : 'thisCol';
-                        %>
-                            <div class="linkurAGrein <%=limmidi%>">
-                                
-                                <div class="<%=classinn%>">
+                        %>                             
+                                <div class="grPic linkurAGrein <%=classinn%>">
                                     <% if (article.image) { %>
                                         <img src = "<%= article.image %>" alt="<%= article.title%>">
                                     <% } %>
                                 </div>
 
-                                <div class="<%=textClassinn%>">
+                                <div class="linkurAGrein <%=textClassinn%> <%=limmidi%>">
                                     <div class="articleInfo">
                                             <div class="articleTitle">
                                                 <h4><%= article.title%></h4>
@@ -39,7 +37,7 @@
                                         </form>
                                 </div>
                               
-                            </div>
+                        
                       <% }) %>
             </div>
 
@@ -49,14 +47,23 @@
 
                     var size = t.length;
 
-                    //t[size-1].style.overflow = 'hidden';
+                    
                     t[size-1].id = 'lastOne';
+                   
+                    let greinar = document.getElementsByClassName('linkurAGrein');
+                    var i = 0;
 
-                    
-
-
-
-                    
+                    while(i < size){
+                            if(i % 4 === 0){
+                                greinar[i].style.order = i+1;
+                                greinar[i+1].style.order = i;
+                            } 
+                            else if(i%2 === 0){
+                                greinar[i].style.order = i;
+                                greinar[i+1].style.order = i+1;
+                            }
+                            i++;
+                    }
                 </script>
 
 <%- include('footer') -%>
