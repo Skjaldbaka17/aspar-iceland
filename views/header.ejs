@@ -34,13 +34,43 @@
         </div>
 
 
-        <div class="menuBar"></div>
-        <div class="menuBar"></div>
-        <div class="menuBar"></div>
-        <nav>
+        <div id="nav">
+                <div id="menuBar" onclick="dropdown(1);">
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                        <div class="menuBar"></div>
+                </div>
+
+            <nav>
                 <a href = "/">Home</a>
                 <a href = "/tours">Tours</a>
                 <a href = "/pictures">Pictures</a>
                 <a href = "/about-us">About us</a>
                 <a href = "/contact-us">Contact us</a>
-        </nav>
+            </nav>
+        </div>
+
+        <script>
+
+var x = 0;
+function dropdown(t){
+    x += t;
+    if(x%2===0) cleanUp();
+    else dropIt();
+}
+
+function cleanUp() {
+    const doc = document.getElementsByTagName('nav');
+    var as = doc[0].getElementsByTagName('a');
+
+    doc[0].style.display = 'none';
+    
+}
+
+function dropIt(){
+    const doc = document.getElementsByTagName('nav');
+    var as = doc[0].getElementsByTagName('a');
+
+  doc[0].style.display = 'grid';
+}
+        </script>

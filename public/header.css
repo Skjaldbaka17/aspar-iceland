@@ -44,11 +44,11 @@
     text-shadow: 3px 3px 0 #014dd9;  
 }
 
-.menuBar{
+#menuBar{
     display: none;
 }
 
-nav {
+#nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -66,15 +66,13 @@ nav {
     z-index: 2;
     transition: all 1s;
 }
-nav:hover{
+#nav:hover{
     opacity: 0.9;
     background-color: #ffffff;
 }
-nav ul{
-    display: none;
-}
 
-nav a{
+
+#nav a{
     font-family: 'Josefin Sans', sans-serif;
     color: black;
     text-decoration:  none;
@@ -88,33 +86,52 @@ nav a{
     transition: font-size 1s;
 }
 
-nav a:hover{
+#nav a:hover{
     font-size: 24px;
 }
 
-nav a:active{
+#nav a:active{
     color: #014dd9;
 }
 
 @media only screen and (max-width : 750px){
    
-    nav{
-        position: fixed !important;
+
+    #nav{
+        position: sticky;
         top: 0;
-        height: 300px;
+        /*height: 300px;*/
+
         clear: both;
         margin: 0;
         background-color: #ffffff;
         opacity: 0.9;
-        display: grid;
-        grid-template-columns: 1fr;
-
+        display: flex;
+        flex-direction: row;
+        align-content: center;
     }
 
-    nav a{
+    nav{
+        display: none;
+        grid-template-columns: 1fr;
+    }
+
+    .menuBar{
+        width: 100px;
+        height: 10px;
+        border: solid #ffffff;
+        background: black;
+        z-index: 20;
+    }
+
+    #nav a{
         border-bottom: solid 1px gray;
         text-align: left;
-        display: none;
+    }
+
+    #menuBar{
+        display: flex;
+        flex-direction: column;
     }
     
 
