@@ -25,8 +25,9 @@
 }
 
 .greinarTours{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 10% 0 10%;
@@ -36,11 +37,14 @@
 
 }
 
+.greinarTours img{
+    width: 100%;
+}
+
 .greinarTours li{
     margin-top: 100px;
 }
 .greinarTours a{
-    
     color: black;
     text-decoration:  none;
     height: 100%;
@@ -49,7 +53,7 @@
 
 .greinarTours img{
     border-radius: 5px;
-    max-height: 400px;
+    height: 280px;
 }
 
 .greinarTours h1{
@@ -59,11 +63,23 @@
 
 .greinarTours li{
     opacity: 0.8;
-    transition: all 1s;
-    
+    transition: all 1s;  
 }
 
 .greinarTours li:hover{
     opacity: 1.0;
     transform: scale(1.05);
+    z-index: 1;
+}
+
+@media screen and (max-width: 750px){
+
+    .greinarTours{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    
+
 }
