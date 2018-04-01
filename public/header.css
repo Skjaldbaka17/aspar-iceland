@@ -134,10 +134,10 @@
     }
 
     .menuBar{
-        width: 100px;
+        width: 50px;
         height: 10px;
         border: solid #ffffff;
-        background: black;
+        background: gray;
     }
 
     #nav a{
