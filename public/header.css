@@ -99,8 +99,8 @@ nav a:active{
 @media only screen and (max-width : 750px){
    
     nav{
-        position: sticky;
-    top: 0;
+        position: fixed !important;
+        top: 0;
         height: 300px;
         clear: both;
         margin: 0;
