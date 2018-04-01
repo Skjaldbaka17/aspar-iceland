@@ -79,6 +79,10 @@
     .greinarTours li{
         opacity: 1.0;
     }
+
+    .greinarTours h1{
+        color: gray;
+    }
     .greinarTours li:nth-child(2){
         margin-top: 30px;
     }
