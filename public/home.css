@@ -67,57 +67,53 @@
     padding: 13px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 #tourButton{
     margin-left: 45%;
 }
 
-.linkurAGrein:hover button{
+.linkurAGrein button{
     box-shadow: 2px 3px gray;
-    border: #e6f3f7 solid 1px;
-    color: #e6f3f7;
+    /*border: #e6f3f7 solid 1px;*/
+    border: none;
+    color: white;
 }
 
 .thisCol button{
-    color: #e6f3f7;
-}
-
-.otherCol button{
-    color: #ccffcc;
-}
-
-.thisCol:hover button{
     background: #add8e6;
 }
 
-.thisCol:hover button:hover{
+.thisCol button:hover{
     transition: all 0s;
     background-color: #9bc2cf;
 }
 
-.linkurAGrein:hover button:active{
+.linkurAGrein button:active{
     transition: all 0s;
     box-shadow: 1px 1px gray;
 }
 
 .linkurAGrein button:focus {outline:none;}
 
-
-
 .thisCol{
-    background-color: #e6f3f7/*#eef7fa*/;
-}
-.otherCol:hover{
-    background-color: #b2ffb2/*#f9f9ea*/;
+    background-color: #e6f3f7;
 }
 
-.otherCol:hover button{
+.thisCol:hover{
+    background-color: #cde7f0;
+}
+
+.otherCol button{
     background-color: #99ff99;
 }
 
-.otherCol:hover button:hover{
+.otherCol:hover{
+    background-color: #b2ffb2;
+}
+
+.otherCol button:hover{
     transition: all 0s;
     background-color: #7fff7f;
 }
@@ -126,13 +122,8 @@
     background-color: #ccffcc;
 }
 
-.thisCol:hover{
-    background-color: #cde7f0/*#deeff5*/;
-}
 
-.leftText{
-    padding: 10%;
-}
+
 
 .right{
     z-index: 1;
@@ -140,12 +131,8 @@
     justify-content: flex-end;*/
 }
 
-.rightText{
+.rightText, .leftText{
     padding: 10%;
-}
-
-.left{
-    z-index: 0;
 }
 
 .linkurAGrein img{
@@ -186,6 +173,10 @@
 }
 
 @media (min-width: 1500px){
+    .tourGrid{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
     .linkurAGrein{
         max-height: 500px;
     }
@@ -204,7 +195,7 @@
     } */
 }
 
-@media screen and (max-width: 750px){
+@media only screen and (max-width: 768px){
     .tourGrid{
         min-height: 400px;
         display: grid;
@@ -218,6 +209,21 @@
         width: 100%;
     }
 
+
+
+    .otherCol button{
+        background-color: #99ff99;
+    }
+
+    .linkurAGrein button{
+        box-shadow: 2px 3px gray;
+        border: #e6f3f7 solid 1px;
+        color: #e6f3f7;
+    }
+    
+    .thisCol:hover button{
+        background: #add8e6;
+    }
     
 }
 
