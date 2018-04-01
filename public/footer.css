@@ -6,7 +6,7 @@ footer{
 }
 .footerStuff{
     display: grid;
-    grid-template-columns: 3fr 3fr 2fr 3fr 3fr;
+    grid-template-columns: 6fr 2fr 6fr;
     margin-bottom: -1%;
 }
 
@@ -19,7 +19,7 @@ footer{
 
 }
 .footerStuff .asparLogo img{
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
 }
 
@@ -32,33 +32,17 @@ footer{
     cursor: default;
 }
 
-.footerStuff form{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.footerStuff form input{
-margin: 5px;
-}
-
-.footerStuff form .about{
-    margin: 5px;
-    text-align: start;
-    min-height: 100px;
-    overflow: auto;
-    resize: none;
-    border-color: lightgray;
-}
-
 .footerLink{
     display: flex;
     justify-content: flex-end;
-
 }
 .footerLink a{
     text-decoration: none;
     font-style: italic;
     margin-right: 0.4%;
     color: #808080;
+}
+
+@media screen and (max-width: 750px){
+
 }

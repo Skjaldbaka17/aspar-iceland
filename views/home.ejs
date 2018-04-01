@@ -42,7 +42,34 @@
             </div>
 
             <script>
+                var fun = true;
+if($(window).width() < 751) rightOrder();
+else funOrder();
+                $(window).on('resize', function(event){
+                    var windowWidth = $(window).width();
+                if(windowWidth < 751 && fun){
+                        rightOrder();
+                    }
+                    else if(!fun){
+                        funOrder();
+                    }
+                    });
+
+                    function rightOrder(){
+                        var i = 0;
+                        var linkar = document.getElementsByClassName('linkurAGrein');
+                        fun = false;
+
+                        while(i < linkar.length){
+                            linkar[i].style.order = i;
+                            i++;
+                        }
+                    }
+                        
                 
+
+                function funOrder(){
+                    fun = true;
                     let t = document.getElementById('greinarHome').getElementsByClassName('linkurAGrein');
 
                     var size = t.length;
@@ -63,6 +90,7 @@
                                 greinar[i+1].style.order = i+1;
                             }
                             i++;
+                    }
                     }
                 </script>
 
