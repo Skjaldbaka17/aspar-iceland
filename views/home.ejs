@@ -43,6 +43,7 @@
 
             <script>
                 var fun = true;
+                var mobile = false;
 
                 $( document ).ready(function() {      
     var isMobile = window.matchMedia("only screen and (max-width: 760px)");
@@ -51,9 +52,13 @@
         rightOrder();
     }
  });
-if($(window).width() < 751) rightOrder();
-else funOrder();
+
+
+if($(window).width() < 751 && !mobile) rightOrder();
+else if(!mobile) funOrder();
+                
                 $(window).on('resize', function(event){
+                    if(mobile) return;
                     var windowWidth = $(window).width();
                 if(windowWidth < 751 && fun){
                         rightOrder();
