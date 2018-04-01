@@ -99,6 +99,8 @@ nav a:active{
 @media only screen and (max-width : 750px){
    
     nav{
+        position: sticky;
+    top: 0;
         height: 300px;
         clear: both;
         margin: 0;
@@ -111,10 +113,8 @@ nav a:active{
 
     nav a{
         border-bottom: solid 1px gray;
-
         text-align: left;
-
-        
+        display: none;
     }
     
 
