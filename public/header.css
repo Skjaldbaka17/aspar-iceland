@@ -138,6 +138,10 @@
         grid-column: "div1";
     }
 
+    #nav a:last-child{
+        border-bottom: none;
+    }
+
     #menuBar{
         margin: 2% 0; 
         display: flex;
