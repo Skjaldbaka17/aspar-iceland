@@ -166,11 +166,14 @@ cursor: default;
 
    margin: 0 10px 0 0;
    /*padding: 10px;*/
-   
+ }
 
+ #carousel{
+     overflow-y: hidden;
+     height: 120px;
  }
  .images img{
-     height: 100%;
+     width: 150px;
      margin: 0;
      padding: 0;
      z-index: 0;
@@ -323,6 +326,8 @@ cursor: default;
         flex-direction: column;
         margin: 0 5%;
     }
+
+    
 }
 
 
