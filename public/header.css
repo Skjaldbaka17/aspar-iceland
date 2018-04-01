@@ -96,7 +96,7 @@ nav a:active{
     color: #014dd9;
 }
 
-@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait) {
+@media only screen and (min-width : 414px) and (max-width : 736px) and (-webkit-device-pixel-ratio : 2){
    
     nav{
         height: 300px;
