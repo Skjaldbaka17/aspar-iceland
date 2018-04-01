@@ -45,4 +45,8 @@ footer{
 
 @media screen and (max-width: 750px){
 
+    .footerStuff .asparLogo img{
+        width: 100px;
+    }
+
 }
