@@ -201,13 +201,38 @@
         display: grid;
         grid-template-columns: 1fr;
         overflow: visible;
-        order: inital;
     }
 
-    .linkurAGrein img{
-        height: 100%;
-        width: 100%;
-    } 
+    .linkurAGrein{
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+   /* .kynning{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: gray;
+    
+        margin-top: 75px;
+        justify-content: center;
+    }
+    
+    .kynning h3{
+        font-weight: 100;
+        font-size: 4rem;
+        margin-bottom: 30px;
+        transform: scale(.8, 1);
+        cursor: default;
+    }
+    
+    .kynning p{
+        margin: 0 10% 5% 10%;
+        font-size: 24px;
+        padding: 0 10%;
+        cursor: default;
+        text-align: center;
+    }*/
 }
 
 /*.linkurAGrein{
