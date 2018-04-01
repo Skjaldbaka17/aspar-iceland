@@ -89,6 +89,7 @@ cursor: default;
     /*background: grey;*/
     display: grid;
     grid-template-columns: 1fr;
+    overflow: visible;
 }
 .mainPic{
     margin: 0;
@@ -314,6 +315,14 @@ cursor: default;
 
 #contactUsContainer button:focus{
     outline:0;
+}
+
+@media only screen and (max-width: 750px){
+    .together{
+        display: flex;
+        flex-direction: column;
+        margin: 0 5%;
+    }
 }
 
 
