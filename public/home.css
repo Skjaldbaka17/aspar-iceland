@@ -195,7 +195,7 @@
     } */
 }
 
-@media only screen and (max-width: 1300px){
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait) {
     .tourGrid{
         min-height: 400px;
         display: grid;
@@ -207,24 +207,7 @@
     .linkurAGrein img{
         height: 100%;
         width: 100%;
-    }
-
-
-
-    .otherCol button{
-        background-color: #99ff99;
-    }
-
-    .linkurAGrein button{
-        box-shadow: 2px 3px gray;
-        border: #e6f3f7 solid 1px;
-        color: #e6f3f7;
-    }
-    
-    .thisCol:hover button{
-        background: #add8e6;
-    }
-    
+    } 
 }
 
 /*.linkurAGrein{
