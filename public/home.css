@@ -195,7 +195,7 @@
     } */
 }
 
-@media only screen and (min-width : 414px) and (max-width : 736px) and (orientation : portrait) {
+@media only screen and (max-width : 750px) and (-webkit-device-pixel-ratio : 2){
     .tourGrid{
         min-height: 400px;
         display: grid;
