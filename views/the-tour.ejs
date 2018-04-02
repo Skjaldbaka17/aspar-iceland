@@ -44,9 +44,8 @@
             </div>
 
             <div id = "carousel" class="row" aria-live="polite" role="listbox">
-                    
+                <div class="images">
                 <%pictures.forEach((picture) =>{ %> 
-                    <div class="images">
                     <% if(picture) { %>
                         <img class="slides" aria-hidden="true" src="/img/<%= picture%>" onclick="car.moveToBig(this.src)">
                     <% } %>

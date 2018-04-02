@@ -1,10 +1,9 @@
 /*Start of Pictures síðu*/
 
 .myndir {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
     margin: 100px 10% 0 10%;
 
     list-style: none;
@@ -29,6 +28,7 @@
       display: grid;
       grid-template-columns: 0.5fr 2fr 0.5fr;
       z-index: 4;
+      position: fixed;
   }
 
   .theOneImage{
@@ -85,15 +85,16 @@
 
 .myndir img{
     border-radius: 5px;
-    height: 17.75rem;
-    width: 23.5rem;
-
+    width: 100%;
+    height: 280px;
+    /*height: 17.75rem;
+    width: 23.5rem;*/
 }
 
 .myndir li{
     transition: all 1s;
-    margin-bottom: 0.3rem;
     opacity: 0.9;
+    overflow: hidden;
 }
 
 .myndir li:hover{
@@ -120,10 +121,36 @@
 #myList li{
     display: none;
 }
+
 #loadMore {
     text-decoration: none;
     color: black;
     font-style: italic;
+}
+
+@media screen and (max-width: 750px){
+    .myndir{
+        
+        display: flex;
+        flex-direction: column;
+        margin: 1% 0;
+        margin-top: 20px;
+    }
+
+    .myndir img{
+        height: 200px;
+    }
+
+    .imageContainer{
+        top: 40%;
+    }
+
+    .theOneImage{
+        display: grid;
+        grid-template-columns: 0.5fr 10fr 0.5fr;
+    }
+    
+
 }
 
 /*End of pictures page*/
