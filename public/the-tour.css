@@ -328,9 +328,10 @@ cursor: default;
     }
 
     .upplýsingar ul{
-        border: solid;
-        padding : 0;
-        height: 100px;
+        line-height: 1.0;
+        padding-top: 5%;
+        height: auto;
+        color: rgba(19, 17, 17, 0.486);
     }
 
     .upplýsingar li{
