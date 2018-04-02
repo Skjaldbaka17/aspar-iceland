@@ -3,9 +3,7 @@
 <div class ="glymurHeading">
         <h2><%=information.title%></h2>
         <h3><%=information.about%></h3>
-    </div>
-
-    
+    </div> 
 
 <div class = "together">
     <div class="sidebar"></div>
@@ -24,7 +22,7 @@
             <h5>Tour Highlights</h5>
             <div id="tourHighlights">
                 <%-information.content%>
-            </div>
+                </div>
             <div class ="peppTexti">
                     <p>
                         <div class="aboveText">
@@ -46,12 +44,14 @@
             <div id = "carousel" class="row" aria-live="polite" role="listbox">
                 <div class="images">
                 <%pictures.forEach((picture) =>{ %> 
+                    
                     <% if(picture) { %>
                         <img class="slides" aria-hidden="true" src="/img/<%= picture%>" onclick="car.moveToBig(this.src)">
                     <% } %>
-                </div>
-              
-              <% }); %>
+                    
+                <% });%>
+            </div>
+                
             </div>
         </div>
             
@@ -60,8 +60,6 @@
             <div class="frekariLýsing belowText">
                 <%- below.content%>
             </div>
-
-            
         </div>
         <div class="priceAndProfile">
             <div id="priceTag">
@@ -90,314 +88,13 @@
         
         <script src = "/imageGalleryHandler.js"></script>
     </div>
+    <div></div>
 
+
+</div>
+</div>
     
-<!-- PAYPAL!!!!
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="S4CVX3Q9ZXB2E">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
-    -->
-        
-<!-- BOOKING!!!!!!
-    <div id="booking">
-            <div id="theCalendarBox">
-                    <div id="theCalendar">
-                            <div id ="headerMonth">
-                                <div class="previousRound" onclick="orderDate.prevMonth()">
-                                        <a>&#8249;</a>
-                                </div>
-                                <div class="theMonth"> <h1 id="month">Month</h1> </div>
-                               
-                                <div class="nextRound" onclick="orderDate.nextMonth()">
-                                        <a>&#8250;</a>
-                                </div>
-                                
-                            </div>
-                            <div id="weekdays">
-                                <div>MON</div>
-                                <div>TUE</div>
-                                <div>WED</div>
-                                <div>THU</div>
-                                <div>FRI</div>
-                                <div>SAT</div>
-                                <div>SUN</div>
-                            </div>
-                            <div id="days"></div>
-                    </div>
-
-                    <div id="notAvailable">
-                            We are fullbooked on this day, sorry.
-                    </div>
-        
-                    <div id="bookingInfo">
-        
-                        <form id="allInfoForBook" action="/">
-                            <div id="datePicked" class="pickDate">
-                                <h4>Dates</h4>
-                                <div>
-                                    <h3 id="dayPicked">Fös</h3>
-                                    <input id="dateNotShowed" value="2018-06-16" min="2018-06-16" max="2018-06-16" type="date">
-                                    <div id="radioContainer" class="containerBelow">
-                                        <input id="radio" type="radio" checked="true" disabled="true">
-                                        <label id="time">09:00</label>
-                                        <label id="seatsLeft">Seats Left: 8</label>
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <div id="amountOfPeople" class="pickDate">
-                                <h4>People</h4>
-                                <div>
-                                    <div id="selectContainer">
-                                        <label id="persons">Persons</label>
-                                        <select required id="selectAmount" onchange="orderDate.totalPrice()">
-                                        </select>
-                                    </div>
-                                    <div id="priceContainer">
-                                        <span>
-                                            <strong>ISK 14,990</strong> per person
-                                        </span>
-                                    </div>
-                                    <div class="containerBelow">
-                                        <input type="checkbox" checked="true" disabled="true">
-                                            <span>
-                                                <strong>Yes</strong>,
-                                                we would like to be picked up. <span>(included in price)</span>
-                                            </span>
-                                    </div>
-            
-                                </div>
-                            </div>
-                            <div class="totalPrice">
-                                <label>Total: <strong id="thePrice"></strong></label>
-                            </div>
-                            <div class="totalPrice" id="priceLabel">
-                            <input id="bookButton" type="submit" value="Book">
-                            
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                    
-            </div>
-                        <script>
-                            const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-                            "July", "August", "September", "October", "November", "December"
-                            ];
-        
-                            const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        
-                            function DateTracker(){
-                               
-                                this.today = new Date();
-                                var day = this.today.getDate();
-                               
-                                var month = this.today.getMonth(); //January is 0!
-                                var year = this.today.getFullYear();
-        
-                                this.newPickDate(year, month, day+1);
-        
-                                this.setup();
-                            }
-
-                            DateTracker.prototype.totalPrice = function(){
-                               var amount = document.getElementById("selectAmount").selectedIndex;
-                               var price = document.getElementById('thePrice');
-                               price.innerHTML = "ISK " + (amount*14990);
-
-                            }
-        
-                            DateTracker.prototype.newPickDate = function(year, month, day){
-                                this.datePicked = new Date(year, month, day);
-                                this.day = this.datePicked.getDate();
-                                this.month = this.datePicked.getMonth();
-                                this.year = this.datePicked.getFullYear();
-                            };
-        
-                            //theDay is the html-element for the picked day!
-                            DateTracker.prototype.pickDate = function(theDay) {
-        
-                                this.colorLastPickedBorderSilver();
-                                this.newPickDate(this.year, this.month, theDay.innerHTML);
-        
-        
-                                theDay.style.border = "1px solid black";
-        
-        
-                                /*this.deleteChildrenOf(document.getElementById('booking'));*/
-        
-                                this.setUpBookingFor(this.datePicked);
-                                
-                                
-                            };
-        
-                            DateTracker.prototype.colorLastPickedBorderSilver = function() {
-                                var days = document.getElementsByClassName('day')
-                                for(var i=0; i < days.length; i++){
-                                    if(days[i].innerHTML == this.day){
-                                        days[i].style.border = "1px solid silver";
-                                    }
-                                }
-                            }
-
-                            
-        
-                            DateTracker.prototype.setUpBookingFor = function(thisDay) {
-                                
-                                document.getElementById('notAvailable').style.display = "none";
-                                document.getElementById('bookingInfo').style.display = "grid";
-                                
-                                document.getElementById('dayPicked').innerHTML = WEEKDAYS[thisDay.getDay()] + " " + thisDay.getDate() + ". " + MONTH_NAMES[thisDay.getMonth()] + " " + thisDay.getFullYear();
-                                var seatsLeft = this.seatsLeft(thisDay);
-                                document.getElementById('seatsLeft').innerHTML ="Seats Left " + seatsLeft;
-                                var select = document.getElementById('selectAmount');
 
 
-                                for(var x = 0; x <= seatsLeft; x++){
-
-                                    var option = document.createElement('option');
-                                    option.text = x;
-                                    option.value = x;
-                                    if(x === 0) option.value = "";
-                                    select.add(option);
-                                }       
-                            }
-        
-                            DateTracker.prototype.seatsLeft = function(thisDay){
-                                return 8;
-                            }
-        
-                            DateTracker.prototype.nextMonth = function(){
-        
-                                this.datePicked = new Date(this.year, this.month+1, 1);
-                                this.day = this.datePicked.getDate();
-                                this.month = this.datePicked.getMonth();
-                                this.year = this.datePicked.getFullYear();
-        
-                                if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
-                                    this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
-                                    this.day = this.datePicked.getDate();
-                                    this.month = this.datePicked.getMonth();
-                                    this.year = this.datePicked.getFullYear();
-                                }
-        
-                                this.deleteChildrenOf(document.getElementById('days'));
-        
-                                this.setup();
-                            }
-        
-                            DateTracker.prototype.prevMonth = function(){
-                                this.datePicked = new Date(this.year, this.month-1, 1);
-                                this.day = this.datePicked.getDate();
-                                this.month = this.datePicked.getMonth();
-                                this.year = this.datePicked.getFullYear();
-        
-        
-                                    if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
-                                    this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
-                                    this.day = this.datePicked.getDate();
-                                    this.month = this.datePicked.getMonth();
-                                    this.year = this.datePicked.getFullYear();
-                                }
-        
-                                this.deleteChildrenOf(document.getElementById('days'));
-        
-                                this.setup();
-                            }
-        
-                            DateTracker.prototype.deleteChildrenOf = function(parent) {
-                                    //Delete all days:
-                                        while (parent.firstChild) {
-                                            parent.removeChild(parent.firstChild);
-                                        }
-                            }
-        
-                                
-                            DateTracker.prototype.isAvailable = function(x) {
-                                    if(x == 1) return false;
-                                    return true;
-                            }
-                            
-                            
-                            DateTracker.prototype.setup = function() {
-                                var temp = this;
-                                document.getElementById('month').innerHTML = MONTH_NAMES[this.month] + " " + this.year;
-        
-                                var day1 = new Date(this.year, this.month, 1).getDay()
-                                day1 = (day1===0) ? 7 : day1;
-                               
-                    
-                                 // pass in any date as parameter anyDateInMonth, margir dagar í tilteknum mánuði
-                                function daysInMonth(anyDateInMonth) {
-                                    return new Date(anyDateInMonth.getYear(), anyDateInMonth.getMonth()+1, 0).getDate();
-                                }
-                                
-                                var amountOfDaysThisMonth = daysInMonth(this.today);
-                                var lastMonthDate = new Date(this.today.getFullYear(), this.today.getMonth()-1);
-                                var amountOfDaysLastMonth = daysInMonth(lastMonthDate);
-                               for(var x =(amountOfDaysLastMonth - (day1-1))+1; x <= amountOfDaysLastMonth; x++){
-                                    var monthDay = document.createElement('div');
-                                        monthDay.innerHTML = x;
-                                        monthDay.className = 'day';
-                                        monthDay.classList.add('grayDay');
-                                        monthDay.style.background = "#E0E0E0";
-                                        document.getElementById('days').appendChild(monthDay);          
-                               }
-        
-                                for(var x = 1; x <= amountOfDaysThisMonth; x++){
-                                    var monthDay = document.createElement('div');
-                                    monthDay.innerHTML = x;
-                                    monthDay.className = 'day';
-        
-                                    if(x === this.day && !(this.datePicked < this.today)) monthDay.style.fontWeight = "bold";
-                                    //if(x === this.day-1 && !(this.datePicked < this.today)) monthDay.style.border = "1px solid black";
-                                    if(x > this.day-1){ 
-                                        
-                                        if(this.datePicked < this.today){monthDay.style.background = "white";}
-                                        else{
-        
-                                            if(this.isAvailable(x%2)){
-                                                monthDay.id = `day`+x;
-                                                monthDay.classList.add("available");
-                                                monthDay.onclick = function() {
-                                                    //Inside this function 'this' means the html-element
-                                                    temp.pickDate(this);
-                                                };
-                                            }
-                                            else{
-                                                monthDay.classList.add("unavailable");
-                                                monthDay.onclick = function(){
-                                                    temp.colorLastPickedBorderSilver();
-                                                    document.getElementById('bookingInfo').style.display = "none";
-                                                    document.getElementById('notAvailable').style.display = "flex";
-                                                }
-                                            }
-                                            }
-                                        }
-                                        
-                                        document.getElementById('days').appendChild(monthDay);
-                                }
-                    
-                                if((amountOfDaysThisMonth+(day1-1))%7 !== 0){
-                                    for(var x = 1; x <= 7 - (amountOfDaysThisMonth+(day1-1))%7; x++){
-                                        var monthDay = document.createElement('div');
-                                    monthDay.innerHTML = x;
-                                    monthDay.className = 'day';
-                                    monthDay.classList.add('grayDay');
-                                    monthDay.style.background = "#E0E0E0";
-                                    document.getElementById('days').appendChild(monthDay);
-                                    }
-                                    }
-                                };
-        
-                                var orderDate = new DateTracker();
-                                
-                        </script>
-    </div> -->
-</div>
-</div>
 
 <%- include('footer')-%>
