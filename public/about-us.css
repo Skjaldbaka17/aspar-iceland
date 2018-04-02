@@ -11,9 +11,8 @@
 }
 .people{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     margin: 0 10% 10% 10%;
-    column-width: 10px;
     grid-column-gap: 10px;
     line-height: 2;
 
@@ -31,7 +30,7 @@
 
 .mynd{
     margin: 0 20%;
-    height: 425px;
+    height: auto;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -54,7 +53,30 @@
 
 .person img{
     width: 100%;
-    max-height: 330px;
+    height: 330px;
+    border-radius: 5px;
 }
 
 /*Endir á About-US síðu*/
+
+@media only screen and (max-width: 750px){
+    .people{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .person{
+        margin-top: 20px;
+        padding: 2% 0 5% 0;
+    }
+
+    .person .mynd{
+        margin: 0 2%;
+    }
+
+
+    .person img{
+        height: 245px;
+        width: 230px;
+    }
+}
