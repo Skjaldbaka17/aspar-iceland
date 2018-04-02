@@ -142,7 +142,7 @@
     }
 
     .imageContainer{
-        top: 20%;
+        top: 50px;
         grid-template-columns: 0fr 2fr 0fr;
     }
 
