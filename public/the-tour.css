@@ -95,7 +95,7 @@ cursor: default;
     margin: 0;
    display: flex;
    justify-content: center;
-   height: 35rem;
+   height: 30rem;
    margin-bottom: 0;
    width: 100%;
 }
@@ -161,7 +161,6 @@ cursor: default;
 
  .images {
    margin: 0;
-   width: 33%;
    height: 100%;
 
    margin: 0 10px 0 0;
@@ -335,11 +334,12 @@ cursor: default;
     }
 
     .mainPic{
-        max-height: 200px;
+        max-height: 300px;
     }
 
     .slides{
         max-height: 100px;
+        max-width: 150px;
     }
 
     
