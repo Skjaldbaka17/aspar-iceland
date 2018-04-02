@@ -142,14 +142,9 @@
     }
 
     .imageContainer{
-        top: 40%;
+        top: 30%;
+        grid-template-columns: 0fr 2fr 0fr;
     }
-
-    .theOneImage{
-        display: grid;
-        grid-template-columns: 0.5fr 10fr 0.5fr;
-    }
-    
 
 }
 
