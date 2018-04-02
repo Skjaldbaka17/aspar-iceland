@@ -146,6 +146,10 @@
         grid-template-columns: 0fr 2fr 0fr;
     }
 
+    .modal img{
+        height: 300px;
+    }
+
 }
 
 /*End of pictures page*/
