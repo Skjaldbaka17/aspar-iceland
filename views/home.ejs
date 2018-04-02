@@ -49,10 +49,10 @@
     var isMobile = window.matchMedia("only screen and (max-width: 750px)");
 
     if (isMobile.matches && fun) {
+        mobile = true;
         rightOrder();
     }
  });
-
 
 if($(window).width() < 751 && !mobile) rightOrder();
 else if(!mobile) funOrder();
