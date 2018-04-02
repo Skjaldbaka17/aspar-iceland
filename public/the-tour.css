@@ -334,8 +334,12 @@ cursor: default;
         color: rgba(19, 17, 17, 0.486);
     }
 
-    .upplýsingar li{
+    .mainPic{
+        max-height: 200px;
+    }
 
+    .slides{
+        max-height: 100px;
     }
 
     
