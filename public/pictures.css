@@ -142,18 +142,8 @@
     }
 
     .imageContainer{
-        top: 50px;
-        height: 550px;
-        overflow: hidden;
+        top: 20%;
         grid-template-columns: 0fr 2fr 0fr;
-    }
-
-    .theOneImage{
-        height: 550px;
-    }
-
-    #largeImage{
-        height: 550px;
     }
 
 }
