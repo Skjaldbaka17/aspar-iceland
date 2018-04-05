@@ -53,8 +53,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: sticky;
-    top: 0;
+    /*position: sticky;
+    top: 0;*/
     height: 4rem;
 
     opacity: 0.3;
@@ -65,6 +65,13 @@
     z-index: 3;
     transition: all 1s;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
 #nav:hover{
     opacity: 0.9;
