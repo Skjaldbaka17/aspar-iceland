@@ -75,6 +75,7 @@ else if(!mobile) funOrder();
 
                         while(i < linkar.length){
                             linkar[i].style.order = i;
+                            linkar[i].style.zIndex= (i+1)%2;
                             i++;
                         }
                     }
