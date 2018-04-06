@@ -109,7 +109,7 @@ async function list(req, res){
         .sort((a,b) => a.position > b.position);
 
     var height = '700px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
 
@@ -125,7 +125,7 @@ async function pictures(req, res){
             
     
     var height = '400px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
     
@@ -186,7 +186,7 @@ async function selectedTour(req, res){
     const below = await readInformation(theTour + tour + '/below.md');
 
     var height = '400px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
     const pictures = files
@@ -202,7 +202,7 @@ async function tours(req, res){
         .sort((a,b) => a.position > b.position);
 
     var height = '400px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
 
@@ -213,7 +213,7 @@ async function about_us(req, res){
     const people = await readPeopleList();
 
     var height = '400px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
 
@@ -229,7 +229,7 @@ async function readTheArticle(req, res){
 
 
     var height = '400px';
-    var image = 'img/pano1234/' + panorama[pano];
+    var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
 
     res.render('article', {height, image, theArticle});
