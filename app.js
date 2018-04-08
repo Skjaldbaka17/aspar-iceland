@@ -5,6 +5,7 @@ const app = express();
 const router = require('./router');
 const formRouter = require('./form');
 
+app.set('x-powered-by', false); //Security risk prevention.
 
 app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT || 5000));
