@@ -242,5 +242,6 @@ router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
 router.get('/tours/:tour', catchErrors(selectedTour));
 router.get('/about-us', catchErrors(about_us));
+router.get('/google0897b145ce65bc52.html', (req,res) => {res.send('google-site-verification: google0897b145ce65bc52.html')})
 
 module.exports = router;
