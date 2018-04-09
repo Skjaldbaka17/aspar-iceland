@@ -7,6 +7,8 @@ const formRouter = require('./form');
 
 app.set('x-powered-by', false); //Security risk prevention.
 
+//can also do this: app.disable('x-powered-by');
+
 app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT || 5000));
 

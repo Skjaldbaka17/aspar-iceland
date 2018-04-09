@@ -113,7 +113,7 @@ async function list(req, res){
     pano = (pano+1)%panorama.length;
 
 
-    res.render('home', {height, image, articles});
+    res.render('home', {meta:true, height, image, articles});
 }
 
 
