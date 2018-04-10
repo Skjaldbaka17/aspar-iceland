@@ -7,7 +7,7 @@ const router = express.Router();
 const { saveToDb } = require('./db');
 
 
-
+var meta = false;
 var formSent = false;
 var height = '400px';
 var image = '../img/pano1234/pano4.JPG';
@@ -35,7 +35,7 @@ const formValidation = [
 function form(req, res) {
     const data = {};
     var errors = '';
-  res.render('form.ejs', { formSent, height, image,errors,  data, title: 'Form' });
+  res.render('form.ejs', { meta, formSent, height, image,errors,  data, title: 'Form' });
 }
 
 async function formPost(req, res) {
@@ -61,7 +61,7 @@ async function formPost(req, res) {
 
   if (!validation.isEmpty()) {
     const errors = validation.array();
-    return res.render('form', { formSent, height, image, errors, data, title: 'Form' });
+    return res.render('form', { meta, formSent, height, image, errors, data, title: 'Form' });
   }
 
   
@@ -69,7 +69,7 @@ async function formPost(req, res) {
 
 
 
-  return res.render('form', {height, image, formSent: true});
+  return res.render('form', {meta, height, image, formSent: true});
 }
 
 
