@@ -22,21 +22,29 @@ app.use(express.static(path.join(__dirname, 'home')));
 
 function enforceHttps(req, res, next) 
 {
-var www = '';
-var host = req.get("host");
-if(!host.match(/^www\..*/i)){
-  www = "www.";
-}
+  var host = req.get("host");
   if (!req.secure &&
     req.get("x-forwarded-proto") !== "https" &&
     process.env.NODE_ENV === "production") {
-    res.redirect(301, `https://${www+host}${req.url}`);
+    res.redirect(301, `https://${host}${req.url}`);
     console.log(req.get("host"));
   } else {
     next();
   }
 }
 
+function enforceWWW(req, res, next){
+  var host = req.get("host");
+  //Enforcing also www
+  if(host.match(/^www\..*/i)){
+    next();
+  }
+  else{
+    res.redirect(301, "https://www." + host);
+  }
+}
+
+app.use(enforceWWW);
 app.use(enforceHttps);
 
 /*function enforceWWW(req, res, next) {
