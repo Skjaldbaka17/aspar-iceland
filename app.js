@@ -20,7 +20,10 @@ app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));
 
 
-function enforceHttps(req, res, next) {
+app.get('*',function (req, res) {
+  res.redirect('https://<domain>' + req.url);
+});
+/*function enforceHttps(req, res, next) {
   if (!req.secure &&
     req.get("x-forwarded-proto") !== "https" &&
     process.env.NODE_ENV === "production") {
@@ -30,7 +33,7 @@ function enforceHttps(req, res, next) {
   }
 }
 
-app.use(enforceHttps);
+app.use(enforceHttps);*/
 
 app.use('/', router);
 app.use('/contact-us', formRouter);
