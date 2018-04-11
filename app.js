@@ -45,7 +45,7 @@ function enforceWWW(req, res, next){
   }
 }
 
-app.use(enforceWWW);
+//app.use(enforceWWW);
 app.use(enforceHttps);
 
 /*function enforceWWW(req, res, next) {
