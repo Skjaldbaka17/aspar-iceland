@@ -18,6 +18,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'tours')));
 app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));
+
+
+function enforceHttps(req, res, next) {
+  if (!req.secure &&
+    req.get("x-forwarded-proto") !== "https" &&
+    process.env.NODE_ENV === "production") {
+    res.redirect(301, `https://${req.get("host")}${req.url}`);
+  } else {
+    next();
+  }
+}
+
+app.use(enforceHttps);
+
 app.use('/', router);
 app.use('/contact-us', formRouter);
 
