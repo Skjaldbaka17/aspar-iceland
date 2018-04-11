@@ -20,17 +20,32 @@ app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));
 
 
-function enforceHttps(req, res, next) {
+function enforceHttps(req, res, next) 
+{
+var www = '';
+var host = req.get("host");
+if(!host.match(/^www\..*/i)){
+  www = "www.";
+}
   if (!req.secure &&
     req.get("x-forwarded-proto") !== "https" &&
     process.env.NODE_ENV === "production") {
-    res.redirect(301, `https://${req.get("host")}${req.url}`);
+    res.redirect(301, `https://${www+host}${req.url}`);
+    console.log(req.get("host"));
   } else {
     next();
   }
 }
 
 app.use(enforceHttps);
+
+/*function enforceWWW(req, res, next) {
+  if () {
+    res.redirect(301, `https://${req.get("host")}${req.url}`);
+  } else {
+    next();
+  }
+}*/
 
 app.use('/', router);
 app.use('/contact-us', formRouter);
