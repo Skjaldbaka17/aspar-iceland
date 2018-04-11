@@ -40,7 +40,7 @@ function enforceWWW(req, res, next){
     next();
   }
   else{
-    res.redirect(301, "https://www." + host);
+    res.redirect(301, "https://www.aspariceland.is");
   }
 }
 
