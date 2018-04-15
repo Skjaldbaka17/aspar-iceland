@@ -43,7 +43,7 @@
 
             <div id = "carousel" class="row" aria-live="polite" role="listbox">
                 <div></div>
-                <div class="images">
+                <div class="images" id="helloDraggableImages">
                 <%pictures.forEach((picture) =>{ %> 
                     
                     <% if(picture) { %>
@@ -56,6 +56,7 @@
                 
             </div>
         </div>
+        
             
         <div class="upplýsingar">
             
@@ -89,6 +90,8 @@
             
         
         <script src = "/imageGalleryHandler.js"></script>
+
+        
     </div>
     <div></div>
 

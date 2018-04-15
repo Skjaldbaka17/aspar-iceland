@@ -160,10 +160,27 @@ cursor: default;
     flex-direction: row;
     overflow-x: scroll;
     overflow-y: hidden;
-   margin: 2% 0 0 0;
+   margin: 2% 0 0 2%;
    height: 100%;
    /*padding: 10px;*/
  }
+
+ .ms-touch.images {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    
+    -ms-overflow-style: none;
+    /* Hides the scrollbar. */
+    
+    -ms-scroll-chaining: none;
+    /* Prevents Metro from swiping to the next tab or app. */
+    
+    -ms-scroll-snap-type: mandatory;
+    /* Forces a snap scroll behavior on your images. */
+    
+    -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+    /* Defines the y and x intervals to snap to when scrolling. */
+  }
 
  #carousel{
     position: relative;
@@ -174,8 +191,13 @@ cursor: default;
      width: 120%;
  }
  .images img{
-     width: 150px;
-     height: 140px;
+     min-width: 170px;
+     max-width: 350px;
+     min-height: 140px;
+     max-height: 300px;
+     height: 100%;
+     width: 100%;
+     
      margin: 0;
      padding: 0;
      z-index: 0;
@@ -186,6 +208,8 @@ cursor: default;
  .images img:hover{
      opacity: 1.0;
  }
+
+
 
  /*End of gallerý*/
 
