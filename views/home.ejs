@@ -58,9 +58,8 @@ if($(window).width() < 751 && !mobile) rightOrder();
 else if(!mobile) funOrder();
                 
                 $(window).on('resize', function(event){
-                    if(mobile) return;
                     var windowWidth = $(window).width();
-                if(windowWidth < 751 && fun){
+                if(windowWidth < 751){
                         rightOrder();
                     }
                     else if(!fun){
@@ -72,6 +71,7 @@ else if(!mobile) funOrder();
                         var i = 0;
                         var linkar = document.getElementsByClassName('linkurAGrein');
                         fun = false;
+                        mobile = true;
 
                         while(i < linkar.length){
                             linkar[i].style.order = i;
@@ -87,6 +87,7 @@ else if(!mobile) funOrder();
                     let t = document.getElementById('greinarHome').getElementsByClassName('linkurAGrein');
 
                     var size = t.length;
+                    mobile = false;
 
                     
                     t[size-1].id = 'lastOne';

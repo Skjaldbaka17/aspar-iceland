@@ -55,8 +55,9 @@
 }
 
 .linkurAGrein{
-    max-height: 400px;
     transition: all 1.5s;
+    max-height: 400px;
+    height: 100%;
 }
 
 .tourGrid button{
@@ -138,19 +139,12 @@
 .linkurAGrein img{
     flex: 0 0 auto;
     /*max-height: 100%;*/
-    max-height: 450px;
-    min-height: 400px;
     width: 100%;
+    height: inherit;
     /*border-radius: 50%;*/
 }
 
-#lastOne{
-    max-height: 450px;
-}
 
-#lastOne img{
-    min-height: 450px;
-}
 
 
 .articleInfo .articleTitle h4{
@@ -171,6 +165,7 @@
 .articleInfo .articleContent li{
     margin: 0 0 0 0;
 }
+
 
 @media (min-width: 1500px){
     .tourGrid{
@@ -197,11 +192,11 @@
 
 @media only screen and (max-width : 750px){
     .tourGrid{
-        min-height: 400px;
+        /*min-height: 400px;
         /*display: grid;
         grid-template-columns: 1fr;*/
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         order: initial;
         overflow: visible;
     }
@@ -214,7 +209,7 @@
         order: 1;
     }
 
-    .linkurAGrein{
+    /*.linkurAGrein{
         max-height: 400px;
         overflow: hidden;
     }
