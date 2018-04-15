@@ -40,7 +40,7 @@
 .greinarTours img{
     width: 100%;
     border-radius: 5px;
-    height: 350px;
+    /*height: 350px;*/
 }
 
 .greinarTours li{
@@ -93,9 +93,7 @@
         margin: 0;
     }
 
-    .greinarTours img{
-        height: 300px;
-    }
+    
     
 
 }

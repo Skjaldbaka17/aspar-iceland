@@ -209,7 +209,6 @@ async function tours(req, res){
         .sort((a,b) => a.position > b.position);
 
     var height = '400px';
-    console.log(pano, panorama);
     var image = '/img/pano1234/' + panorama[pano];
     
     pano = (pano+1)%panorama.length;
