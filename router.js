@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it'); //fyrir að skrifa og rendera md-file
 const matter = require('gray-matter');
+const bookingRoute = require('./booking')
+const { fetchData, runQuery } = require('./db');
 
 const router = express.Router();
 const readdirAsync = util.promisify(fs.readdir);
@@ -17,9 +19,54 @@ const peoplePath = "./people";
 const toursPath = "./tours/all_tours";
 const homePath = './home';
 var meta = false;
+var tourBooked = false;
 
 var pano = 0;
 var panorama;
+var allBookings;
+var Months = {};
+
+
+async function fetchBookingsForTour(req, res, next){
+
+    allBookings = await runQuery(`SELECT * FROM months where tourid = '${req.params.tour}' order by year, month, day;`);
+    Months = await worker();
+    next();
+}
+
+async function worker(){
+    var t = await[
+    January = allBookings.filter((book) => book.month.match(/.*January.*/)),
+    February = allBookings.filter((book) => book.month.match(/.*February.*/)),
+    March = allBookings.filter((book) => book.month.match(/.*March.*/)),
+    April = allBookings.filter((book) => book.month.match(/.*April.*/)),
+    May = allBookings.filter((book) => book.month.match(/.*May.*/)),
+    June = allBookings.filter((book) => book.month.match(/.*June.*/)),
+    July = allBookings.filter((book) => book.month.match(/.*July.*/)),
+    August = allBookings.filter((book) => book.month.match(/.*August.*/)),
+    September = allBookings.filter((book) => book.month.match(/.*September.*/)),
+    October = allBookings.filter((book) => book.month.match(/.*October.*/)),
+    November = allBookings.filter((book) => book.month.match(/.*November.*/)),
+    December = allBookings.filter((book) => book.month.match(/.*December.*/)),
+]
+
+var b = [];
+
+var s = 0;
+t.forEach((month) =>{
+    var k = [];
+    for(var i = 1; i <= 31; i++){
+        var booked = month.find((day) => day.day === i)
+        if(booked)  k[i] = booked.seatstaken;
+        else k[i] = 0;
+    }
+    b[s] = k;
+    s++;
+});
+
+
+    return b;
+}
 
 async function readPano(){
     panorama = (await readdirAsync('./public/img/pano1234')).filter(file => !file.match(".DS_Store"));
@@ -159,6 +206,7 @@ async function readInformation(filePath){
         guidePic,
         facebook,
         instagram,
+        guide,
         },
     } = data;
 
@@ -178,6 +226,7 @@ async function readInformation(filePath){
         guidePic,
         facebook,
         instagram,
+        guide,
     };
 }
 
@@ -191,6 +240,7 @@ async function selectedTour(req, res){
     const above = await readInformation(theTour + tour + '/above.md');
     const below = await readInformation(theTour + tour + '/below.md');
 
+
     var height = '400px';
     var image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
@@ -198,7 +248,14 @@ async function selectedTour(req, res){
     const pictures = files
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
         meta = false;
-    res.render('the-tour', {meta, height, image, pictures, information, above, below});
+    bookingFailed = false;
+    errors = [];
+    data = {};
+
+    
+
+    res.render('the-tour', {errors, data, tourBooked, Months, bookingFailed, information, meta, height, image, pictures, above, below});
+    tourBooked = false;
 }
 
 async function tours(req, res){
@@ -246,13 +303,23 @@ meta = false;
     res.render('article', {meta, height, image, theArticle});
 }
 
+async function thanksForBookingTour(req, res){
+    tourBooked = true;
+    res.redirect(`/tours/${req.params.tour}`);
+}
+
+
 
 router.get('/', catchErrors(list));
 router.get('/articles/:article', catchErrors(readTheArticle));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
-router.get('/tours/:tour', catchErrors(selectedTour));
+router.get('/tours/:tour', catchErrors(fetchBookingsForTour), catchErrors(selectedTour));
+router.get('/tours/:tour/thanks', catchErrors(fetchBookingsForTour), catchErrors(thanksForBookingTour));
 router.get('/about-us', catchErrors(about_us));
 router.get('/google0897b145ce65bc52.html', (req,res) => {res.send('google-site-verification: google0897b145ce65bc52.html')})
+router.post('/tours/:tour', bookingRoute);
+
+
 
 module.exports = router;

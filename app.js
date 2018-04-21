@@ -15,6 +15,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'intl-tel-input')));
 app.use(express.static(path.join(__dirname, 'tours')));
 app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));

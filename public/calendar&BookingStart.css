@@ -100,6 +100,9 @@
 
  /*start of booking*/
 
+ #booking{
+     display: none;
+ }
  #notAvailable{
      display: none;
  }
@@ -193,26 +196,31 @@ select{
     color: black;
 }
 
-#bookButton{
+#bookButtonContainer{
+    
+    display: flex;
+    justify-content: flex-end;
+}
+
+.confirmButtons{
     background: orange;
     color: white;
     border-radius: 10px;
-    flex-direction: row;
-    margin: 0;
-    width: 25%;
-    font-size: 20px;
+    width: 120px;
+    font-size: 25px;
     border: solid;
     font-weight: bold;
     cursor: pointer;
+    text-align: center;
 }
 
-#bookButton:hover{
+.confirmButtons:hover{
     background-color: #cc8400;
 }
 
 .button:hover {background-color: #3e8e41}
 
-#bookButton:active {
+.confirmButtons:active {
   background-color: #cc8400;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
@@ -220,3 +228,49 @@ select{
     
 
 /*End of Booking*/
+
+/*Start of BookingID*/
+
+#bookingID{
+    display: none;
+    width: 100%;
+}
+
+h4{
+    font-size: 30px;
+    margin-top: 0;
+}
+
+#bookingID h4{
+    
+    margin-bottom: 0;
+}
+
+.eachInput{
+    padding-right: 5%;
+}
+
+.eachInput input{
+    height: 40px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.eachInput label{
+    font-size: 20px;
+}
+
+/*#telly{
+    margin-top: 10%;
+}*/
+
+/*End of BookingID*/
+
+#payButton{
+    margin-top: 5%;
+    display: flex;
+    display: none;
+    justify-content: flex-end;
+}

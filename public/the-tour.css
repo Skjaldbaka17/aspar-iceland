@@ -1,4 +1,24 @@
 /*Start of theTour page*/
+#conni{
+    position: fixed;
+    top: 30%;
+    display: flex;
+    justify-content: center;
+}
+#thankYouMessageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    min-height: 300px;
+    background-color: white;
+    opacity: 1.0;
+}
+#thankYouMessage{
+    z-index: 100;
+    opacity: 1.0;
+    width: 80%;
+}
 
 #theTour{
     line-height: 2.5;

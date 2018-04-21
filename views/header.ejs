@@ -18,6 +18,7 @@
 
 
             <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+            
         <link rel="shortcut icon" href="/img/asparlogo/Aspar.png">
         <link rel="apple-touch-icon" href="/img/asparlogo/Aspar.png">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -26,6 +27,8 @@
             <meta name="description" content="WHAT IS ASPAR ICELAND!? We consider us as the ultimate down-to-earth tourist guides. Run by two brothers, we take you to THE spots to see and do so in the most memorable way possible. See magnificent waterfalls, swim in the ocean, relax in water from Europe's most powerful hot spring and eat good food. Enjoy your visit in Iceland and return home with amazing stories.">
         <%}%>
         <link href="https://fonts.googleapis.com/css?family=Acme|Bree+Serif|Josefin+Sans|Patua+One|Source+Serif+Pro" rel="stylesheet">
+        
+        <link rel="stylesheet" href="/build/css/intlTelInput.css"><!--International Telephone input!-->
         
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/calendar&BookingStart.css">
@@ -41,6 +44,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta charset="utf-8">
         <title>Aspar Iceland</title>
+
+<style>
+      .intl-tel-input { width: 100%; }
+
+      /* Overwrite flag sprite location for intl-tel-input */
+      .iti-flag {
+          background-image: url("/build/img/flags.png") !important;
+      
+          @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+          background-image: url("/build/img/flags@2x.png") !important;
+        }
+      }
+</style>
+    
     </head>
     
     <body>

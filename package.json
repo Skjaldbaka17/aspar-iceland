@@ -25,6 +25,7 @@
     "express-validator": "^5.0.3",
     "fs": "0.0.1-security",
     "gray-matter": "^3.1.1",
+    "intl-tel-input": "^12.1.13",
     "markdown-it": "^8.4.1",
     "nodemailer": "^4.6.3",
     "path": "^0.12.7",
