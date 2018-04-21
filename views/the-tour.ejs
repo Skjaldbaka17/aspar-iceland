@@ -1,10 +1,3 @@
-<%if(tourBooked){%>
-    <div id="conni">
-    <div id="thankYouMessageContainer">
-    <h1 id="thankYouMessage">Thank you for booking a trip with us. We'll send you all the information you need for the tour via sms and email.</h1>
-    </div>
-</div>
-<%}%>
 <%- include('header')-%>
 <div id="theTour">
 <div class ="glymurHeading">
@@ -99,20 +92,7 @@
             
         
         <script src = "/imageGalleryHandler.js"></script>
-        <script>
-            var bod = document.getElementById('theTour');
-            var thankYouMessage = document.getElementById('thankYouMessageContainer');
-            if(<%-tourBooked%>){
-                bod.style.opacity = 0.1;
-            bod.addEventListener('click', function(){
-                bod.style.opacity = 1.0;
-                thankYouMessage.style.display = "none";
-            });
-
-        }
-        </script>
     </div>
-    <%- include('calendarBooking')-%>
 
 
 </div>
