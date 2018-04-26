@@ -510,6 +510,10 @@
             var bookers = document.getElementsByClassName('bookerButton');
             var bod = document.getElementById('theTour');
             var exit = document.getElementById('exitSymbol');
+
+            thePayer.addEventListener('click', function(){
+                bookingForm.submit();
+            })
     
              bookButton.addEventListener("click", function(){
                 if(selectAmount.selectedIndex < 1) {

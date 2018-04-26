@@ -212,7 +212,7 @@ select{
 .confirmButtons{
     background: orange;
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 120px;
     font-size: 25px;
     border: solid;
@@ -282,6 +282,7 @@ h4{
     display: flex;
     display: none;
     justify-content: flex-end;
+    border-radius: 0px;
 }
 
 #exit{
@@ -350,6 +351,7 @@ h4{
         height: 40px;
         line-height: 50px;
         font-size: 20px;
+        min-width: 50px;
     }
 
     #bookButton{
@@ -365,4 +367,6 @@ h4{
     #weekdays div{
         border: solid 1px gray;
     }
+
+
 }

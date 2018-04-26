@@ -4,13 +4,14 @@
     top: 30%;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 #thankYouMessageContainer{
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     min-height: 300px;
     background-color: lightblue;
     border-radius: 5%;
