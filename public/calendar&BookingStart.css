@@ -353,7 +353,8 @@ h4{
     }
 
     #bookButton{
-
+        padding-right: 1px;
+        padding-left: 1px;
     }
 
     /*#payButton .confirmButtons{
