@@ -1,11 +1,21 @@
 <%- include('header')-%>
+
+<%if(tourBooked){%>
+    <div id="conni">
+    <div id="thankYouMessageContainer">
+    <h1 id="thankYouMessage">Thank you for booking a trip with us. We'll send you all the information you need for the tour shortly.</h1>
+    </div>
+</div> 
+<%}%>
+
+
 <div id="theTour">
 <div class ="glymurHeading">
         <h2><%=information.title%></h2>
         <h3><%=information.about%></h3>
     </div> 
 
-    
+    <div id="payInfo"><label id="payLabel">Payment on location. <br> Cash.</label></div>
 
 <div class = "together">
     <div class="sidebar"></div>
@@ -67,9 +77,13 @@
             </div>
         </div>
         <div class="priceAndProfile">
+            <div id="priceAndBooker">
             <div id="priceTag">
-                <p>Price: <strong>...<!-- information.price--></strong></p>
+                <p>Price: <strong><%= information.price%></strong>ISK</p>
             </div>
+            <div id="booker">
+                    <div class="bookerButton confirmButtons">Book Tour</div>
+                </div></div>
 
             <div id="cardContainer">
                 <div class="card">
@@ -94,9 +108,485 @@
         <script src = "/imageGalleryHandler.js"></script>
     </div>
 
+    <%- include('calendarBooking')-%>
+
 
 </div>
 </div>
+<script>var bookingData = <%-JSON.stringify(Months)%>;
+    var peopleMax =parseFloat(<%-JSON.stringify(information.peopleMax)%>);
+    const timeAvailable = <%-JSON.stringify(information.timeAvailable)%>;
+    const monthsAvailable = <%-JSON.stringify(information.monthsAvailable)%>;
+    const weekdaysAvailable= <%-JSON.stringify(information.weekdaysAvailable)%>;
+    document.getElementById('postedTimeAvailable').value = timeAvailable;
+        if(<%-bookingFailed%>){
+            document.getElementById('booking').style.display = "inline-block";
+            document.getElementById('bookingID').style.display = "inline-block";
+        }
+        
+    
+        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+    
+        const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    
+        function DateTracker(){
+    
+            this.today = new Date();
+            var day = this.today.getDate();
+           
+            var month = this.today.getMonth(); //January is 0!
+            var year = this.today.getFullYear();
+    
+            this.newPickDate(year, month, day+1);
+    
+            this.setup();
+    
+            
+        }
+    
+        DateTracker.prototype.newPickDate = function(year, month, day){
+            this.datePicked = new Date(year, month, day);
+            this.day = this.datePicked.getDate();
+            this.month = this.datePicked.getMonth();
+            this.year = this.datePicked.getFullYear();
+        };
+    
+        //theDay is the html-element for the picked day!
+        DateTracker.prototype.pickDate = function(theDay) {
+    
+            //this.cleanUp();
+            this.colorLastPickedBorderSilver();
+            this.newPickDate(this.year, this.month, theDay.innerHTML);
+            
+        document.getElementById('postedPrice').value = <%-information.price%>;
+    
+    
+            theDay.style.border = "1px solid black";
+    
+            document.getElementById("dayPicked").innerHTML = WEEKDAYS[this.datePicked.getDay()%7] +
+            " " + this.datePicked.getDate() +". " + MONTH_NAMES[this.datePicked.getMonth()] + " " +
+            this.datePicked.getFullYear();
+            var seats;
+           if(timeAvailable.length < 2) seats = this.seatsLeft(this.year, this.month, this.day, '');
+           else seats = this.seatsLeft(this.year, this.month, this.day, timeAvailable);
+    
+           
+    
+            document.getElementById("seatsLeft").innerHTML = "Seats Left: " + seats;
+    
+            this.deleteChildrenOf(selectAmount);
+            var topt = document.createElement('option');
+            topt.setAttribute('disabled', true);
+            topt.setAttribute('selected', true);
+            topt.setAttribute('value', 0);
+            selectAmount.appendChild(topt);
+            for (let i = 1; i <= seats; i++) {
+                var opt = document.createElement('option');
+                opt.setAttribute("value", i);
+                opt.innerHTML = i;
+                selectAmount.appendChild(opt);   
+            }
+    
+    
+            document.getElementById('booking').style.display = "inline-block";
+    
+            if( timeAvailable.length > 1){
+                this.deleteChildrenOf(timeSelector);
+                timeAvailable.forEach((time) =>{
+                    if(this.seatsLeft(this.year, this.month, this.day, [time]) > 0){
+                    var opt = document.createElement('option');
+                    opt.setAttribute('value', time);
+                    opt.innerHTML = time;
+                    timeSelector.appendChild(opt);
+                }
+                });
+            }
+            //this.deleteChildrenOf(document.getElementById('booking'));
+    
+            //this.setUpBookingFor(this.datePicked);
+    
+            /*<div id="amountOfPeople" class="pickDate">
+        <h4>People</h4>
+        <div>
+            <div id="selectContainer">
+                <label id="persons">Persons</label>
+                <select id="selectAmount">
+    
+                </select>
+            </div>
+            <div id="priceContainer">
+                <span>
+                    <strong>ISK ...</strong> per person
+                </span>
+            </div>*/   
+            
+        };
+    
+        DateTracker.prototype.colorLastPickedBorderSilver = function() {
+            var days = document.getElementsByClassName('day')
+            for(var i=0; i < days.length; i++){
+                if(days[i].innerHTML == this.day){
+                    days[i].style.border = "1px solid silver";
+                }
+            }
+        }
+    
+        DateTracker.prototype.seatsLeft = function(y,m,d,t){
+            var s = peopleMax;
+            if(t === ''){
+                if(bookingData[m][d].length < 1) s = 0;
+                else{
+                    var i = 0;
+                    bookingData[m][d].forEach((alli) =>{
+                        if(alli.seatstaken < s) s = alli.seatstaken;
+                        else i++;
+                    })
+                    if(!(i === timeAvailable.length) && s === peopleMax) s = 0;
+                }
+            }
+            else if(t.length === 1){
+                var itsThere = false;
+                bookingData[m][d].forEach((alli)=>{
+                    if(alli.timeBooked === t[0]){
+                         s = alli.seatstaken;
+                         itsThere = true;
+                        }
+                });
+                if(!itsThere) s = 0;
+    
+            }
+            else{
+                
+            var bokadurTimi = '';
+    
+    
+                for(var i = 0; i < t.length; i++){
+                    for(var j = 0; j < bookingData[m][d].length; j++){
+                        if(bookingData[m][d][j].timeBooked === t[i]){
+                            bokadurTimi = bookingData[m][d][j];
+                            break;
+                        }
+                    }
+    
+                    if(!bokadurTimi) {
+                        s = 0;
+                        break;
+                    }
+                    if(bokadurTimi.seatstaken < peopleMax){
+                        s = bokadurTimi.seatstaken;
+                        break;
+                    }
+                    bokadurTimi = '';
+                }
+                
+            }
+            return peopleMax - s;
+        }
+    
+        DateTracker.prototype.nextMonth = function(){
+    
+            this.datePicked = new Date(this.year, this.month+1, 1);
+            this.day = this.datePicked.getDate();
+            this.month = this.datePicked.getMonth();
+            this.year = this.datePicked.getFullYear();
+    
+            if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
+                
+                this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
+                
+                this.day = this.datePicked.getDate();
+                this.month = this.datePicked.getMonth();
+                this.year = this.datePicked.getFullYear();
+            }
+            
+    
+            this.deleteChildrenOf(document.getElementById('days'));
+    
+            document.getElementById('booking').style.display = "none";
+            document.getElementById('notAvailable').style.display = "none";
+    
+            this.setup();
+        }
+    
+        DateTracker.prototype.prevMonth = function(){
+            this.datePicked = new Date(this.year, this.month-1, 1);
+            this.day = this.datePicked.getDate();
+            this.month = this.datePicked.getMonth();
+            this.year = this.datePicked.getFullYear();
+    
+    
+                if(this.month === this.today.getMonth() && this.year === this.today.getFullYear()){
+                this.datePicked = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()+1);
+                this.day = this.datePicked.getDate();
+                this.month = this.datePicked.getMonth();
+                this.year = this.datePicked.getFullYear();
+            }
+    
+            document.getElementById('booking').style.display = "none";
+            document.getElementById('notAvailable').style.display = "none";
+    
+            this.deleteChildrenOf(document.getElementById('days'));
+    
+            this.setup();
+        }
+    
+        DateTracker.prototype.deleteChildrenOf = function(parent) {
+                //Delete all days:
+                    while (parent.firstChild) {
+                        parent.removeChild(parent.firstChild);
+                    }
+        }
+    
+            
+        DateTracker.prototype.isAvailable = function(x) {
+            //this.month, setja þetta á undan svo ekki alltaf verið að ná í upplýsingarnar! "cache"
+            
+            if(this.seatsLeft(this.year, this.month, x, '') > 0){ return true;}
+            
+                return false;
+        }
+    
+       DateTracker.prototype.selectAmountFiller = function(seats){
+            this.deleteChildrenOf(selectAmount);
+            var topt = document.createElement('option');
+            topt.setAttribute('disabled', true);
+            topt.setAttribute('selected', true);
+            topt.setAttribute('value', 0);
+            selectAmount.appendChild(topt);
+            for (let i = 1; i <= seats; i++) {
+                var opt = document.createElement('option');
+                opt.setAttribute("value", i);
+                opt.innerHTML = i;
+                selectAmount.appendChild(opt);   
+            }
+        }
+    
+        DateTracker.prototype.selectTimeHandler = function(){
+            var lab = document.getElementById('seatsLeft');
+            var timinn = timeSelector.options[timeSelector.selectedIndex].value;
+            const seats = this.seatsLeft(this.year, this.month, this.day, [timinn]);
+            lab.innerHTML = "Seats Left: " + seats;
+            this.selectAmountFiller(seats);
+        }
+    
+        DateTracker.prototype.selectHandler = function(){
+            var selected = selectAmount.selectedIndex;
+            //var t = parseFloat(document.getElementById('pricid').innerHTML);
+            var t = <%-information.price%>;
+            document.getElementById('pricid').innerHTML =  t*selected;
+            
+        }
+    
+        DateTracker.prototype.continueBooking = function(){
+            document.getElementById('bookingID').style.display = "inline-block";
+        }
+    
+        DateTracker.prototype.cleanUp = function() {
+            document.getElementById('bookingID').style.display = "none";
+            selectAmount.selectedIndex = "0";
+        }
+    
+        DateTracker.prototype.submitDate = function(){
+            if(timeAvailable.length > 1) {document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
+        + ' ' + timeSelector.options[timeSelector.selectedIndex].value + ':00';
+    }
+        else{
+            document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
+        + ' ' + timeAvailable[0]+ ':00';
+        }
+        }
+        
+        
+        DateTracker.prototype.setup = function() {
+            var temp = this;
+            document.getElementById('month').innerHTML = MONTH_NAMES[this.month] + " " + this.year;
+    
+            var day1 = new Date(this.year, this.month, 1).getDay()
+            day1 = (day1===0) ? 7 : day1;
+           
+    
+             // pass in any date as parameter anyDateInMonth, fjöldi daga í tilteknum mánuði
+            function daysInMonth(anyDateInMonth) {
+                return new Date(anyDateInMonth.getYear(), anyDateInMonth.getMonth()+1, 0).getDate();
+            }
+            
+            var amountOfDaysThisMonth = daysInMonth(this.today);
+            var lastMonthDate = new Date(this.today.getFullYear(), this.today.getMonth()-1);
+            var amountOfDaysLastMonth = daysInMonth(lastMonthDate);
+    
+            var weekDaysFollowing = 0;
+           for(var x =(amountOfDaysLastMonth - (day1-1))+1; x <= amountOfDaysLastMonth; x++){
+               weekDaysFollowing++;
+                var monthDay = document.createElement('div');
+                    monthDay.innerHTML = x;
+                    monthDay.className = 'day';
+                    monthDay.classList.add('grayDay');
+                    monthDay.style.background = "#E0E0E0";
+                    document.getElementById('days').appendChild(monthDay);          
+           }
+    
+            for(var x = 1; x <= amountOfDaysThisMonth; x++){
+                var monthDay = document.createElement('div');
+                monthDay.innerHTML = x;
+                monthDay.className = 'day';
+    
+                if(x === this.day && !(this.datePicked < this.today)) monthDay.style.fontWeight = "bolder";
+                //if(x === this.day-1 && !(this.datePicked < this.today)) monthDay.style.border = "1px solid black";
+                if(x > this.day-1){ 
+                    if(this.notAvailableThisMonth(this.month) || this.notAvailableThisWeekday(weekDaysFollowing))
+                    {monthDay.style.background = "white";}
+                    else{
+                    
+                        if(this.isAvailable(x)){                                      
+                            monthDay.id = `day`+x;
+                            monthDay.classList.add("available");
+                            monthDay.onclick = function() {
+                                document.getElementById('notAvailable').style.display = "none";
+                                //Inside this function 'this' means the html-element
+                                
+                                temp.pickDate(this);
+                            };
+                        }
+                        else{
+                            monthDay.classList.add("unavailable");
+                            monthDay.onclick = function(){
+                                temp.colorLastPickedBorderSilver();
+                                document.getElementById('booking').style.display = "none";
+                                document.getElementById('notAvailable').style.display = "inline-block";
+                            }
+                        }
+                        }
+                    }
+                    
+                    document.getElementById('days').appendChild(monthDay);
+                    weekDaysFollowing++;
+            }
+    
+            if((amountOfDaysThisMonth+(day1-1))%7 !== 0){
+                for(var x = 1; x <= 7 - (amountOfDaysThisMonth+(day1-1))%7; x++){
+                var monthDay = document.createElement('div');
+                monthDay.innerHTML = x;
+                monthDay.className = 'day';
+                monthDay.classList.add('grayDay');
+                monthDay.style.background = "#E0E0E0";
+                document.getElementById('days').appendChild(monthDay);
+                }
+                }
+            };
+    
+            DateTracker.prototype.notAvailableThisMonth = function(theMonth){
+                for(var i = 0; i < monthsAvailable.length; i++){
+                    if(monthsAvailable[i] == theMonth) return false;
+                }
+                return true;
+            }
+    
+            DateTracker.prototype.notAvailableThisWeekday = function(theWeekday){
+                for(var i = 0; i < weekdaysAvailable.length; i++){
+                    if(weekdaysAvailable[i] == theWeekday%7) return false;
+                }
+                return true;
+            }
+    
+            var orderDate = new DateTracker();
+    
+            var timeSelector = document.getElementById('timeSelector');
+            var nextMonth = document.getElementById("nextMonth");
+            var prevMonth = document.getElementById("prevMonth");
+            var selectAmount = document.getElementById('selectAmount');
+            var bookButton = document.getElementById('bookButton');
+            var payButton = document.getElementById('payButton');
+            var bookingForm = document.getElementById('bookingForm');
+            var firstName = document.getElementById('firstName');
+            var email = document.getElementById('emailAddress');
+            var thePayer = document.getElementById('thePayer');
+            var bookers = document.getElementsByClassName('bookerButton');
+            var bod = document.getElementById('theTour');
+            var exit = document.getElementById('exitSymbol');
+    
+             bookButton.addEventListener("click", function(){
+                if(selectAmount.selectedIndex < 1) {
+                    selectAmount.style.backgroundColor = "red";
+                    return;
+                }
+                payButton.style.display = "flex";
+                bookButton.style.display = "none";
+                selectAmount.style.backgroundColor = "white";
+                orderDate.continueBooking();
+            });
+    
+            nextMonth.addEventListener("click", function() {orderDate.nextMonth()});
+            prevMonth.addEventListener("click", function() {orderDate.prevMonth()});
+            selectAmount.addEventListener("change", function(){
+                orderDate.selectHandler();
+            });
+    
+            timeSelector.addEventListener('change', function(){
+                orderDate.selectTimeHandler();
+            });
+    
+            bookingForm.addEventListener('submit', function(e){
+                e.preventDefault();
+                const errors = 0;
+                
+                if(firstName.value === ''){
+                    firstName.style.backgroundColor = "red";
+                    errors++;
+                }
+                if(!email.value.match(/\S+@\S+\.\S+/)){ //Basic, not trustworthy, isEmail regex func.
+                    email.style.backgroundColor = "red";
+                    errors++;
+                }
+                if(errors > 0){
+                    return;
+                }
+                else{
+                    document.getElementById('phone').style.backgroundColor = "white";
+                    email.style.backgroundColor ="white";
+                    firstName.style.backgroundColor = "white";
+                }
+                orderDate.submitDate();
+                bookingForm.submit();
+            });
+
+
+for(var index =0 ; index < bookers.length; index++){
+    bookers[index].addEventListener('click', function(){
+                    document.getElementById('theCalendarBox').style.display = "flex";
+                });}
+
+            
+
+
+    exit.addEventListener('click', function(){
+                    document.getElementById('theCalendarBox').style.display = "none";
+                    document.getElementById('booking').style.display = "none";
+                })
+
+                
+
+          
+var thankYouMessage = document.getElementById('thankYouMessageContainer');
+var nav = document.getElementById('nav');
+    if(<%-tourBooked%>){
+        nav.style.zIndex = -5;
+        bod.style.opacity = 0.1;
+    bod.addEventListener('click', function(){
+        nav.style.zIndex = 3;
+        bod.style.opacity = 1.0;
+        thankYouMessage.style.display = "none";
+    });
+}
+
+
+            </script>
+
+
+
+
+
     
 
 

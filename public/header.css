@@ -62,7 +62,7 @@
     border-bottom: solid rgb(211,211,211);
     border-width: thin;
     margin: 0 10%;
-    z-index: 3;
+    z-index: 5;
     transition: all 1s;
 }
 
@@ -143,6 +143,10 @@ top: 0;
         display: none;
         grid-template-columns: 1fr;
         margin-bottom:  2%;
+    }
+
+    #nav{
+        z-index: 5;
     }
 
     .menuBar{

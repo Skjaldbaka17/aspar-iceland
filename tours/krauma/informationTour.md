@@ -4,7 +4,10 @@ about: Health and relaxation
 duration: 7-8 hours
 peopleMax: 12
 ageLimit: All ages
+monthsAvailable: 4,5,6,7
+weekdaysAvailable: 0,1,2,3,4
 time: 08:00
+timeAvailable: 08:00
 available: Summer (10.June-10.August)
 difficulty: Medium
 price: 23000

@@ -6,12 +6,14 @@
     justify-content: center;
 }
 #thankYouMessageContainer{
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     min-height: 300px;
-    background-color: white;
+    background-color: lightblue;
+    border-radius: 5%;
     opacity: 1.0;
 }
 #thankYouMessage{
@@ -50,6 +52,21 @@
     padding: 0;
     margin-right: 20%;
     color: #696969;
+}
+
+#payInfo{
+display: none;
+/*display: flex;
+justify-content: flex-end;*/
+}
+
+#payLabel{
+    background-color: lightblue;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 7.5%;
+    border-radius: 5%;
+    padding: 10px;
 }
 
 .peppTexti{
@@ -268,6 +285,10 @@ cursor: default;
     text-align: left;
 }
 
+#priceAndBooker #booker{
+    justify-content: flex-start;
+}
+
 
 #cardContainer{
     display: flex;
@@ -368,10 +389,22 @@ cursor: default;
 }
 
 @media only screen and (max-width: 750px){
+
+    #contactUsContainer button{
+        font-size: 20px;
+        
+    }
     .together{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         margin: 0 5%;
+    }
+
+
+    
+
+    .sidebar{
+        display: none;
     }
 
     .upplýsingar ul{
@@ -380,11 +413,6 @@ cursor: default;
         height: auto;
         color: rgba(19, 17, 17, 0.486);
     }
-
-
-
-
-    
 }
 
 

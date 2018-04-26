@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it'); //fyrir að skrifa og rendera md-file
 const matter = require('gray-matter');
+const { runQuery } = require('./db');
+const booking = require('./booking');
 
 const router = express.Router();
 const readdirAsync = util.promisify(fs.readdir);
@@ -17,10 +19,63 @@ const peoplePath = "./people";
 const toursPath = "./tours/all_tours";
 const homePath = './home';
 var meta = false;
-var tourBooked = false;
 
 var pano = 0;
 var panorama;
+
+var allBookings;
+var Months = {};
+var tourBooked = false;
+
+
+
+
+async function fetchBookingsForTour(req, res, next){
+
+    allBookings = await runQuery(`SELECT * FROM months where tourid = '${req.params.tour}' order by date;`);
+    Months = await worker();
+    next();
+}
+
+async function worker(){
+    var datein = new Date();
+    var t = await[
+        January = allBookings.filter((book) => book.date.getMonth() === 0),
+        February = allBookings.filter((book) => book.date.getMonth() === 1),
+        March = allBookings.filter((book) => book.date.getMonth() === 2),
+        April = allBookings.filter((book) =>book.date.getMonth() === 3),
+        May = allBookings.filter((book) => book.date.getMonth() === 4),
+        June = allBookings.filter((book) => book.date.getMonth() === 5),
+        July = allBookings.filter((book) => book.date.getMonth() === 6),
+        August = allBookings.filter((book) => book.date.getMonth() === 7),
+        September = allBookings.filter((book) => book.date.getMonth() === 8),
+        October = allBookings.filter((book) => book.date.getMonth() === 9),
+        November = allBookings.filter((book) => book.date.getMonth() === 10),
+        December = allBookings.filter((book) => book.date.getMonth() === 11),
+    ]
+
+var b = [];
+
+var s = 0;
+t.forEach((month) =>{
+var k = [];
+for(var i = 1; i <= 31; i++){
+    var booked = month.filter((day) => day.date.getDate() === i)
+
+    if(booked) { 
+        var difTime = [];
+        var l = 0;
+        booked.forEach((time) => { difTime[l++] = {timeBooked: time.date.getHours() + ':' + (time.date.getMinutes()<10?'0':'') 
+        + time.date.getMinutes(), seatstaken: time.seatstaken }});
+        k[i] = difTime;
+    }
+}
+b[s] = k;
+s++;
+});
+return b;
+}
+
 
 async function readPano(){
     panorama = (await readdirAsync('./public/img/pano1234')).filter(file => !file.match(".DS_Store"));
@@ -143,6 +198,12 @@ async function readInformation(filePath){
 
     const data = matter(file);
 
+    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+
+    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
     const{
         content,
         data:{
@@ -152,6 +213,9 @@ async function readInformation(filePath){
             peopleMax,
             ageLimit,
             time,
+            monthsAvailable='',
+            weekdaysAvailable='',
+            timeAvailable='',
             available,
             difficulty,
             price,
@@ -164,6 +228,13 @@ async function readInformation(filePath){
         },
     } = data;
 
+    var newWeekdaysAvailable;
+    var newMonthsAvailable;
+if(weekdaysAvailable.match(/^all/)) newWeekdaysAvailable = [0,1,2,3,4,5,6];
+else newWeekdaysAvailable = weekdaysAvailable.split(",");
+if(monthsAvailable.match(/^all/)) newMonthsAvailable = [0,1,2,3,4,5,6,7,8,9,10,11];
+else newMonthsAvailable = monthsAvailable.split(",");
+
     return {
         content,
         about,
@@ -171,7 +242,10 @@ async function readInformation(filePath){
         duration,
         peopleMax,
         ageLimit,
+        monthsAvailable: newMonthsAvailable,
+        weekdaysAvailable: newWeekdaysAvailable,
         time,
+        timeAvailable: timeAvailable.split(","),
         available,
         difficulty,
         price,
@@ -203,9 +277,13 @@ async function selectedTour(req, res){
         .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
         meta = false;
 
-    
+    //bookingFailed, information, meta, height, image, errors, data}
 
-    res.render('the-tour', { information, meta, height, image, pictures, above, below});
+    const bookingFailed = false;
+    const errors = [];
+
+    res.render('the-tour', { tourBooked, Months, bookingFailed, errors, tourBooked, information, meta, height, image, pictures, above, below});
+    tourBooked = false;
 }
 
 async function tours(req, res){
@@ -221,6 +299,9 @@ async function tours(req, res){
     pano = (pano+1)%panorama.length;
 
     meta = false;
+
+    
+    
 
     res.render('tours', {meta, height, image, articles});
 }
@@ -253,6 +334,11 @@ meta = false;
     res.render('article', {meta, height, image, theArticle});
 }
 
+async function thanksForBooking(req, res, next){
+    tourBooked = true;
+    res.redirect(`/tours/${req.params.tour}`);
+}
+
 
 
 
@@ -260,9 +346,11 @@ router.get('/', catchErrors(list));
 router.get('/articles/:article', catchErrors(readTheArticle));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
-router.get('/tours/:tour', catchErrors(selectedTour));
+router.get('/tours/:tour', catchErrors(fetchBookingsForTour), catchErrors(selectedTour));
 router.get('/about-us', catchErrors(about_us));
 router.get('/google0897b145ce65bc52.html', (req,res) => {res.send('google-site-verification: google0897b145ce65bc52.html')})
+router.get('/tours/:tour/thanks', catchErrors(thanksForBooking));
+router.post('/tours/:tour', booking);
 
 
 
