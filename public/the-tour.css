@@ -400,9 +400,6 @@ cursor: default;
         margin: 0 5%;
     }
 
-
-    
-
     .sidebar{
         display: none;
     }
@@ -412,6 +409,12 @@ cursor: default;
         padding-top: 5%;
         height: auto;
         color: rgba(19, 17, 17, 0.486);
+    }
+
+    .belowText{
+        margin-right: 0;
+        margin-left: 0;
+        padding
     }
 }
 
