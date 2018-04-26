@@ -342,20 +342,24 @@ h4{
 
     .eachInput input{
         height: 60px;
-        line-height: 70px;
+        line-height: 60px;
         font-size:30px;
     }
 
-    .controls select{
+    #booking select{
         height: 40px;
         line-height: 50px;
         font-size: 20px;
     }
 
-    #payButton .confirmButtons{
+    #bookButton{
+
+    }
+
+    /*#payButton .confirmButtons{
         font-size: 25px;
         width: 150px;
-    }
+    }*/
 
     #weekdays div{
         border: solid 1px gray;
