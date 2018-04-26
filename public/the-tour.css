@@ -260,7 +260,6 @@ cursor: default;
 
 .upplýsingar .frekariLýsing{
     color: #696969;
-    padding: 20px;
 }
 
 .frekariLýsing a{
@@ -396,7 +395,8 @@ cursor: default;
     }
     .together{
         display: flex;
-        flex-direction: column-reverse;
+        /*flex-direction: column-reverse;*/
+        flex-direction: column;
         margin: 0 5%;
     }
 
