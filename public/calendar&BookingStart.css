@@ -308,7 +308,7 @@ h4{
 
 #theCalendarBox{
     border-radius: 5px;
-    max-height: 600px;
+    max-height: 500px;
     position: fixed;
     top: 10%;
     z-index: 10;
@@ -333,7 +333,7 @@ h4{
     #booker .bookerButton{
         font-size: 30px;
         width: 150px;
-        padding: 0 5px;
+        padding: 0 2px;
     }
 
     .eachInput input{
