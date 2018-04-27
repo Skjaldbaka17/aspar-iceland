@@ -457,6 +457,7 @@
                                 //Inside this function 'this' means the html-element
                                 
                                 temp.pickDate(this);
+                                scrollSmoothDown('theSame', 'theCalendar');
                             };
                         }
                         else{
@@ -529,6 +530,8 @@
                 bookButton.style.display = "none";
                 selectAmount.style.backgroundColor = "white";
                 orderDate.continueBooking();
+                scrollSmoothDown('theSame', 'bookingID');
+
             });
     
             nextMonth.addEventListener("click", function() {orderDate.nextMonth()});
@@ -571,6 +574,7 @@ for(var index =0 ; index < bookers.length; index++){
                     document.getElementById('theCalendarBox').style.display = "flex";
                     document.getElementsByClassName('myndaGallerý')[0].style.display = "none";
                     document.getElementsByTagName('body')[0].style.overflow = "hidden";
+                    stopBodyScrolling(true);
 
                     //window.scrollTo(0,document.body.scrollHeight);
                 });}
@@ -583,9 +587,31 @@ for(var index =0 ; index < bookers.length; index++){
                     document.getElementById('booking').style.display = "none";
                     document.getElementsByClassName('myndaGallerý')[0].style.display = "inline-block";
                     document.getElementsByTagName('body')[0].style.overflow = "auto";
+                    stopBodyScrolling(false);
                     orderDate.cleanUp();
                 })
 
+var freezeVp = function(e) {
+    e.preventDefault();
+};
+function stopBodyScrolling (bool) {
+    
+    if (bool === true) {
+        document.body.addEventListener("touchmove", freezeVp, false);
+    } else {
+        document.body.removeEventListener("touchmove", freezeVp, false);
+    }
+}
+
+function scrollSmoothDown (id, elHeight) {
+    if(elHeight === 'bookingID') var height = $('#' + elHeight).height();
+    else var height = $('#' + elHeight).height()*1.7;
+    var divHeight = $('#' + id).height();
+    alert(divHeight + " " + height);
+   $('#theCalendarBox').animate({
+      scrollTop: divHeight - height
+   }, 1000);
+}
                 
 
           
