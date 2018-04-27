@@ -293,8 +293,8 @@ h4{
 
 #exit{
     position: fixed;
-    top: 6.5%;
-    right: 5.5%;
+    top: 0;
+    right: 1%;
     display: flex;
     justify-content: flex-end;
 }
@@ -309,11 +309,12 @@ h4{
 
 #theCalendarBox{
     border-radius: 5px;
-    max-height: 80%;
     position: fixed;
-    top: 10%;
+    top: 0;
+    left: 0;
+    height: 100%;
     z-index: 10;
-    width: 91%;
+    width: 100%;
     background-color: #dbdbdb;
     overflow: hidden;
     display: none;

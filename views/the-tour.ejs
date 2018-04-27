@@ -565,7 +565,8 @@
 for(var index =0 ; index < bookers.length; index++){
     bookers[index].addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "flex";
-                    
+                    document.getElementsByClassName('myndaGallerý')[0].style.display = "none";
+
                     //window.scrollTo(0,document.body.scrollHeight);
                 });}
 
@@ -575,6 +576,7 @@ for(var index =0 ; index < bookers.length; index++){
     exit.addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "none";
                     document.getElementById('booking').style.display = "none";
+                    document.getElementsByClassName('myndaGallerý')[0].style.display = "flex";
                 })
 
                 
