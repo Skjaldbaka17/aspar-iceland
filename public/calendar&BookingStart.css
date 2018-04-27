@@ -327,8 +327,8 @@ h4{
     position: fixed;
     top: 10%;
     left: 5%;
-    min-height: 400px;
-    max-height: 85%;
+    min-height: 350px;
+    max-height: 90%;
     z-index: 10;
     width: 90%;
     background-color: #dbdbdb;
@@ -384,7 +384,8 @@ h4{
     #bookButton{
         display: flex;
         justify-content: center;
-        padding: 0 5px;    
+        width: 130px;
+        line-height: 55px;
     }
 
     #payButton input{
