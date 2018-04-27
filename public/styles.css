@@ -18,3 +18,10 @@ body{
     z-index: 0;
 
 }
+
+input[type=text] {   
+    /* Remove First */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

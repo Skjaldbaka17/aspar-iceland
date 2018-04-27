@@ -375,14 +375,6 @@ h4{
         min-width: 50px;
     }
 
-
-    #payButton input[type=text] {   
-        /* Remove First */
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-    }
-
     #weekdays div{
         border: solid 1px gray;
     }
