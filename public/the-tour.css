@@ -395,6 +395,9 @@ cursor: default;
         
     }
 
+    #conni{
+        top: 10%;
+    }
     #thankYouMessageContainer{
         width: 80%;
     }
