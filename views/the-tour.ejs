@@ -594,7 +594,7 @@ var freezeVp = function(e) {
 };
 function stopBodyScrolling (bool) {
     if (bool === true) {
-        document.body.addEventListener('touchmove', preventDefault, { passive: false };
+        document.body.addEventListener('touchmove', preventDefault, { passive: false });
     } else {
         document.body.removeEventListener('touchmove', preventDefault, { passive: false });
     }
