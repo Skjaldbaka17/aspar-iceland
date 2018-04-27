@@ -594,9 +594,9 @@ var freezeVp = function(e) {
 };
 function stopBodyScrolling (bool) {
     if (bool === true) {
-        document.getElementsByTagName('body')[0].style.overflow="hidden";
+        document.body.addEventListener('touchmove', preventDefault, { passive: false };
     } else {
-        document.getElementsByTagName('body')[0].style.overflow="auto";
+        document.body.removeEventListener('touchmove', preventDefault, { passive: false });
     }
 }
 

@@ -381,7 +381,8 @@ h4{
 
     #bookButton{
         display: flex;
-        justify-content: center;    
+        justify-content: center;
+        padding: 0 5px;    
     }
 
     #payButton input{
