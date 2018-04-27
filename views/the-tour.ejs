@@ -572,7 +572,6 @@
 for(var index =0 ; index < bookers.length; index++){
     bookers[index].addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "flex";
-                    document.getElementsByClassName('myndaGallerý')[0].style.display = "none";
                     document.getElementsByTagName('body')[0].style.overflow = "hidden";
                     stopBodyScrolling(true);
 
@@ -585,7 +584,6 @@ for(var index =0 ; index < bookers.length; index++){
     exit.addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "none";
                     document.getElementById('booking').style.display = "none";
-                    document.getElementsByClassName('myndaGallerý')[0].style.display = "inline-block";
                     document.getElementsByTagName('body')[0].style.overflow = "auto";
                     stopBodyScrolling(false);
                     orderDate.cleanUp();
