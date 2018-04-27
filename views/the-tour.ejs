@@ -589,14 +589,21 @@ for(var index =0 ; index < bookers.length; index++){
                     orderDate.cleanUp();
                 })
 
-var freezeVp = function(e) {
-    e.preventDefault();
-};
+
 function stopBodyScrolling (bool) {
+    alert("in func");
     if (bool === true) {
-        document.body.addEventListener('touchmove', preventDefault, { passive: false });
+        document.body.style.position ="fixed";
+        document.getElementsByTagName('html')[0].style.position = "fixed";
+        document.body.style.overflow ="hidden";
+        document.getElementsByTagName('html')[0].style.overflow = "hidden";
+        alert("stoppedScroll");
     } else {
-        document.body.removeEventListener('touchmove', preventDefault, { passive: false });
+        document.body.style.position ="static";
+        document.getElementsByTagName('html')[0].style.position = "static";
+        document.body.style.overflow ="default";
+        document.getElementsByTagName('html')[0].style.overflow = "default";
+        alert("addedSCroll");
     }
 }
 
