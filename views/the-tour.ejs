@@ -591,19 +591,16 @@ for(var index =0 ; index < bookers.length; index++){
 
 
 function stopBodyScrolling (bool) {
-    alert("in func");
     if (bool === true) {
         document.body.style.position ="fixed";
         document.getElementsByTagName('html')[0].style.position = "fixed";
         document.body.style.overflow ="hidden";
         document.getElementsByTagName('html')[0].style.overflow = "hidden";
-        alert("stoppedScroll");
     } else {
         document.body.style.position ="static";
         document.getElementsByTagName('html')[0].style.position = "static";
         document.body.style.overflow ="default";
         document.getElementsByTagName('html')[0].style.overflow = "default";
-        alert("addedSCroll");
     }
 }
 
