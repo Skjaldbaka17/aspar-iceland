@@ -596,10 +596,8 @@ var freezeVp = function(e) {
 };
 function stopBodyScrolling (bool) {
     if (bool === true) {
-        document.html.style.overflow ="hidden";
         document.body.addEventListener("touchmove", freezeVp, false);
     } else {
-        document.html.style.overflow ="auto";
         document.body.removeEventListener("touchmove", freezeVp, false);
     }
 }

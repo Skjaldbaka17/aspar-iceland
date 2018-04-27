@@ -19,9 +19,11 @@ body{
 
 }
 
-input[type=text] {   
+input[type=text],input[type="button"],
+input[type="submit"] {   
     /* Remove First */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    border-radius: 0;
 }
