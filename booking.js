@@ -199,6 +199,7 @@ async function formPost(req, res) {
     return res.redirect('/tours');
   }
 
+
   
   await moveBookingToDb(data, 'bookings');
 

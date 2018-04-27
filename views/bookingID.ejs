@@ -36,11 +36,6 @@
             <script>
                 $(document).ready(function(){
 
-                    $('#bookingForm').submit(function(){
-                        var countryData = $("#phone").intlTelInput("getSelectedCountryData");
-                        $('#phoneCountry').val(countryData.name);
-                    });
-
                     $("#phone").intlTelInput({
   initialCountry: "auto",
   geoIpLookup: function(callback) {
@@ -49,7 +44,6 @@
       callback(countryCode);
     });
   },
-  hiddenInput: "fullPhoneNumber",
   utilsScript: "../../build/js/utils.js" // just for formatting/placeholders etc,
 
 });

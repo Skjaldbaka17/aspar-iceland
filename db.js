@@ -33,7 +33,6 @@ async function moveBookingToDb(data, table) {
   const values = [data.tourid, data.tourGuide, data.date, data.firstName,
   data.lastName, data.email, data.phoneCountry, data.fullPhoneNumber, data.phoneNumber, data.nationality, 
   data.persons, data.price, data.paid, data.pickup];
-
   try {
     await client.query(query, values);
     await updateMonth(client, data);

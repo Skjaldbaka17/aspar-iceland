@@ -44,6 +44,7 @@
                     <input name="timeAvailable" id="postedTimeAvailable" type="hidden">
                     <input name="timeTour" value="<%=information.time%>" type="hidden">
                     <input name="tourGuide" value="<%=information.guide%>" type="hidden">
+                    <input name="fullPhoneNumber" id ="fullPhoneNumber" type="hidden">
                     <input name="date" id="postedDate" type="hidden">
                     <input name="price" id="postedPrice" type="hidden" class='<%=isInvalid("price", errors)%>'>
 
@@ -118,7 +119,7 @@
             
 
             <div id="payButton">
-                <input id="thePayer" class="confirmButtons" type="submit" value="Confirm">
+                <input id="thePayer" class="confirmButtons" type="button" value="Confirm">
             </div>
                 </form>
             </div>

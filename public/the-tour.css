@@ -394,6 +394,10 @@ cursor: default;
         font-size: 20px;
         
     }
+
+    #thankYouMessageContainer{
+        width: 80%;
+    }
     .together{
         display: flex;
         /*flex-direction: column-reverse;*/

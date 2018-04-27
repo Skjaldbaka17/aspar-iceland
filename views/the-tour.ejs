@@ -518,8 +518,30 @@
             var exit = document.getElementById('exitSymbol');
 
             thePayer.addEventListener('click', function(){
+                const errors = 0;
+                if(firstName.value === ''){
+                    firstName.style.backgroundColor = "red";
+                    errors++;
+                }
+                if(!email.value.match(/\S+@\S+\.\S+/)){ //Basic, not trustworthy, isEmail regex func.
+                    email.style.backgroundColor = "red";
+                    errors++;
+                }
+                if(errors > 0){
+                    return;
+                }
+                else{
+                    document.getElementById('phone').style.backgroundColor = "white";
+                    email.style.backgroundColor ="white";
+                    firstName.style.backgroundColor = "white";
+                }
+                orderDate.submitDate();
+                var countryData = $("#phone").intlTelInput("getSelectedCountryData");
+                var ntlNumber = $("#phone").intlTelInput("getNumber", intlTelInputUtils.numberFormat.INTERNATIONAL);
+                $('#phoneCountry').val(countryData.name);
+                $('#fullPhoneNumber').val(ntlNumber);
                 bookingForm.submit();
-            })
+            });
     
              bookButton.addEventListener("click", function(){
                 if(selectAmount.selectedIndex < 1) {
@@ -543,11 +565,10 @@
             timeSelector.addEventListener('change', function(){
                 orderDate.selectTimeHandler();
             });
-    
-            bookingForm.addEventListener('submit', function(e){
-                e.preventDefault();
+
+            /*bookingForm.addEventListener('submit', function(e){
                 const errors = 0;
-                
+                alert(2);
                 if(firstName.value === ''){
                     firstName.style.backgroundColor = "red";
                     errors++;
@@ -557,7 +578,8 @@
                     errors++;
                 }
                 if(errors > 0){
-                    return;
+                    e.preventDefault();
+                    return false;
                 }
                 else{
                     document.getElementById('phone').style.backgroundColor = "white";
@@ -565,8 +587,11 @@
                     firstName.style.backgroundColor = "white";
                 }
                 orderDate.submitDate();
-                bookingForm.submit();
-            });
+                alert(1);
+                var countryData = $("#phone").intlTelInput("getSelectedCountryData");
+                $('#phoneCountry').val(countryData.name);
+                return true;
+});*/
 
 
 for(var index =0 ; index < bookers.length; index++){
