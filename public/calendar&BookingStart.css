@@ -379,8 +379,9 @@ h4{
         border: solid 1px gray;
     }
 
-    .confirmButtons{
-        padding: 0 10px;
+    #bookButton{
+        display: flex;
+        justify-content: center;    
     }
 
     #payButton input{
