@@ -14,8 +14,11 @@ body{
     /*display: flex;
     flex-direction: column;*/
     background-color: #f6f6f6/*#f6fbfc/*#d6ebf2/*#e6f3f7*/;
-
     position: static;
     z-index: 0;
 
+}
+
+html,body{
+    height: 100%;
 }

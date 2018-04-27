@@ -86,9 +86,10 @@
             <div id="priceTag">
                 <p>Price: <strong><%= information.price%></strong>ISK</p>
             </div>
-            <!--<div id="booker">
+            <div id="booker">
                     <div class="bookerButton confirmButtons">Book Tour</div>
-                </div>--></div>
+                </div>
+            </div>
 
             <div id="cardContainer">
                 <div class="card">
@@ -563,8 +564,9 @@
 
 for(var index =0 ; index < bookers.length; index++){
     bookers[index].addEventListener('click', function(){
-                    //document.getElementById('theCalendarBox').style.display = "flex";
-                    window.scrollTo(0,document.body.scrollHeight);
+                    document.getElementById('theCalendarBox').style.display = "flex";
+                    
+                    //window.scrollTo(0,document.body.scrollHeight);
                 });}
 
             

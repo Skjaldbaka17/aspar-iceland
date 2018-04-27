@@ -291,7 +291,7 @@ h4{
 
 @media only screen and (max-width: 750px){
 
-/*#exit{
+#exit{
     position: fixed;
     top: 6.5%;
     right: 5.5%;
@@ -324,11 +324,11 @@ h4{
     overflow: scroll;
     max-height: 100%;
     padding: 45px 3% 2% 3%;
-}*/
-
-#theSame{
-    padding: 0;
 }
+
+/*#theSame{
+    padding: 0;
+}*/
 
     #booker{
         display: flex;
@@ -355,8 +355,7 @@ h4{
     }
 
     #bookButton{
-        padding-right: 1px;
-        padding-left: 1px;
+        width: 50%;
     }
 
     /*#payButton .confirmButtons{
