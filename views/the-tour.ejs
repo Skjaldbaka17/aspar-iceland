@@ -595,10 +595,11 @@ var freezeVp = function(e) {
     e.preventDefault();
 };
 function stopBodyScrolling (bool) {
-    
     if (bool === true) {
+        document.body.style.overflow ="hidden";
         document.body.addEventListener("touchmove", freezeVp, false);
     } else {
+        document.body.style.overflow ="auto";
         document.body.removeEventListener("touchmove", freezeVp, false);
     }
 }
@@ -607,7 +608,6 @@ function scrollSmoothDown (id, elHeight) {
     if(elHeight === 'bookingID') var height = $('#' + elHeight).height();
     else var height = $('#' + elHeight).height()*1.7;
     var divHeight = $('#' + id).height();
-    alert(divHeight + " " + height);
    $('#theCalendarBox').animate({
       scrollTop: divHeight - height
    }, 1000);
