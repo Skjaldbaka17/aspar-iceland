@@ -8,6 +8,10 @@
     display: none;
 }
 
+#bookingForm{
+    width: 100%;
+}
+
  
 
  #theSame{
@@ -136,6 +140,7 @@
  }
 
 
+
  .pickDate > div{
      border: 1px solid;
      padding-top: 0;
@@ -210,6 +215,7 @@ select{
 }
 
 .confirmButtons{
+    white-space: nowrap;
     background: orange;
     color: white;
     border-radius: 5px;
@@ -289,12 +295,20 @@ h4{
     display: none;
 }
 
+#bookButton{
+    text-align: center;
+    padding: 0 5px;
+}
+
+
+
 @media only screen and (max-width: 750px){
 
 #exit{
     position: fixed;
-    top: 0;
-    right: 1%;
+    top: 6%;
+    z-index: 1;
+    right: 5%;
     display: flex;
     justify-content: flex-end;
 }
@@ -307,23 +321,29 @@ h4{
     color: gray;
 }
 
+
 #theCalendarBox{
     border-radius: 5px;
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
+    top: 10%;
+    left: 5%;
+    min-height: 350px;
+    max-height: 80%;
     z-index: 10;
-    width: 100%;
+    width: 90%;
     background-color: #dbdbdb;
-    overflow: hidden;
+    overflow: scroll;
     display: none;
+}
+
+#theCalendar{
+    min-height: 350px;
 }
 
 
 #theSame{
     overflow: scroll;
-    max-height: 100%;
+    height: 100%;
     padding: 45px 3% 2% 3%;
 }
 
@@ -355,9 +375,6 @@ h4{
         min-width: 50px;
     }
 
-    #bookButton{
-        width: 50%;
-    }
 
     /*#payButton .confirmButtons{
         font-size: 25px;
@@ -366,6 +383,15 @@ h4{
 
     #weekdays div{
         border: solid 1px gray;
+    }
+
+    .confirmButtons{
+        padding: 0 10px;
+    }
+
+    #payButton input{
+        border-radius: 0;
+        background-color: orange;
     }
 
 

@@ -162,7 +162,7 @@
         //theDay is the html-element for the picked day!
         DateTracker.prototype.pickDate = function(theDay) {
     
-            //this.cleanUp();
+            this.cleanUp();
             this.colorLastPickedBorderSilver();
             this.newPickDate(this.year, this.month, theDay.innerHTML);
             
@@ -196,7 +196,7 @@
             }
     
     
-            document.getElementById('booking').style.display = "inline-block";
+            document.getElementById('booking').style.display = "flex";
     
             if( timeAvailable.length > 1){
                 this.deleteChildrenOf(timeSelector);
@@ -390,8 +390,12 @@
         }
     
         DateTracker.prototype.cleanUp = function() {
+            this.colorLastPickedBorderSilver();
             document.getElementById('bookingID').style.display = "none";
+            payButton.style.display = "none";
+            document.getElementById('pricid').innerHTML = "...";
             selectAmount.selectedIndex = "0";
+            bookButton.style.display = "flex";
         }
     
         DateTracker.prototype.submitDate = function(){
@@ -566,6 +570,7 @@ for(var index =0 ; index < bookers.length; index++){
     bookers[index].addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "flex";
                     document.getElementsByClassName('myndaGallerý')[0].style.display = "none";
+                    document.getElementsByTagName('body')[0].style.overflow = "hidden";
 
                     //window.scrollTo(0,document.body.scrollHeight);
                 });}
@@ -576,7 +581,9 @@ for(var index =0 ; index < bookers.length; index++){
     exit.addEventListener('click', function(){
                     document.getElementById('theCalendarBox').style.display = "none";
                     document.getElementById('booking').style.display = "none";
-                    document.getElementsByClassName('myndaGallerý')[0].style.display = "flex";
+                    document.getElementsByClassName('myndaGallerý')[0].style.display = "inline-block";
+                    document.getElementsByTagName('body')[0].style.overflow = "auto";
+                    orderDate.cleanUp();
                 })
 
                 
