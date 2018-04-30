@@ -2,28 +2,38 @@
 
 <%if(tourBooked){%>
     <div id="conni">
-    <div id="thankYouMessageContainer">
-    <h1 id="thankYouMessage">Thank you for booking a trip with us. We'll send you all the information you need for the tour shortly.</h1>
-    </div>
-</div> 
+        <div id="thankYouMessageContainer">
+            <h1 id="thankYouMessage">
+                Thank you for booking a trip with us. 
+                We'll send you all the information you need 
+                for the tour shortly.
+            </h1>
+        </div>
+    </div> 
 <%}%>
 
 
 <div id="theTour">
-<div class ="glymurHeading">
+    <div class ="glymurHeading">
         <h2><%=information.title%></h2>
         <h3><%=information.about%></h3>
     </div> 
 
-    <div id="payInfo"><label id="payLabel">Payment on location. <br> Cash.</label></div>
+    <div id="payInfo">
+        <label id="payLabel">
+            Payment on location. <br> Cash.
+        </label>
+    </div>
 
     <div id="booker">
-            <div class="bookerButton confirmButtons">Book Tour</div>
+        <div class="bookerButton confirmButtons">
+            Book Tour
         </div>
+    </div>
 
-<div class = "together">
-    <div class="sidebar"></div>
-    <div class="myndaGallerý">
+    <div class = "together">
+        <div class="sidebar"></div>
+        <div class="myndaGallerý">
             <div class="upplýsingar">
                     <ul>
                         <li><strong>Duration:</strong> <%= information.duration%></li>
@@ -36,121 +46,116 @@
             </div>
 
             <h5>Tour Highlights</h5>
+
             <div id="tourHighlights">
                 <%-information.content%>
-                </div>
+            </div>
+
             <div class ="peppTexti">
-                    <p>
-                        <div class="aboveText">
-                                <%- above.content%>
-                        </div>
-                    </p>
-                </div>
-            <!-- <h2 style="text-align:center">Pictures</h2> -->
-
-        <div class="pictureKeeper">
-
-
-            <div class ="mainPic">
-                <a class="prev" onclick="car.prev()">&#10094;</a>
-                <img id ="showPic" src="">
-                <a class="next" onclick="car.next()">&#10095;</a>
+                <p>
+                    <div class="aboveText">
+                        <%- above.content%>
+                    </div>
+                </p>
             </div>
 
-            <div id = "carousel" class="row" aria-live="polite" role="listbox">
-                <div></div>
-                <div class="images" id="helloDraggableImages">
-                <%pictures.forEach((picture) =>{ %> 
-                    
-                    <% if(picture) { %>
-                        <img class="slides" aria-hidden="true" src="/img/<%= picture%>" onclick="car.moveToBig(this.src)">
-                    <% } %>
-                    
-                <% });%>
+            <div class="pictureKeeper">
+                <div class ="mainPic">
+                    <a class="prev" onclick="car.prev()">&#10094;</a>
+                    <img id ="showPic" src="">
+                    <a class="next" onclick="car.next()">&#10095;</a>
                 </div>
-                <div></div>
+
+                <div id = "carousel" class="row" aria-live="polite" role="listbox">
+                    <div></div>
+                    <div class="images" id="helloDraggableImages">
+                        <%pictures.forEach((picture) =>{ %> 
+                            <% if(picture) { %>
+                                <img class="slides" aria-hidden="true" src="/img/<%= picture%>" onclick="car.moveToBig(this.src)">
+                            <% } %>
+                        <% });%>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            
                 
-            </div>
-        </div>
-        
-            
-        <div class="upplýsingar">
-            <p>
-            <div class="frekariLýsing belowText">
-                <%- below.content%>
-            </div>
-        </p>
-        </div>
-        <div class="priceAndProfile">
-            <div id="priceAndBooker">
-            <div id="priceTag">
-                <p>Price: <strong><%= information.price%></strong>ISK</p>
-            </div>
-            <div id="booker">
-                    <div class="bookerButton confirmButtons">Book Tour</div>
-                </div>
+            <div class="upplýsingar">
+                <p>
+                    <div class="frekariLýsing belowText">
+                        <%- below.content%>
+                    </div>
+                </p>
             </div>
 
-            <div id="cardContainer">
-                <div class="card">
-                    <div class="infoOnTourGuide">
-                        <img src="/img/<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
-                        <p class="tourGuide"><%=information.tourGuide%></p>
-                        <p class="profileTitle"><%=information.whoAmI%></p>
+            <div class="priceAndProfile">
+                <div id="priceAndBooker">
+                    <div id="priceTag">
+                        <p>Price: <strong><%= information.price%></strong>ISK</p>
                     </div>
-                        
+
+                    <div id="booker">
+                        <div class="bookerButton confirmButtons">Book Tour</div>
+                    </div>
+                </div>
+
+                <div id="cardContainer">
+                    <div class="card">
+                        <div class="infoOnTourGuide">
+                            <img src="/img/<%=information.guidePic%>" alt="<%=information.tourGuide%>" style="width:100%">
+                            <p class="tourGuide"><%=information.tourGuide%></p>
+                            <p class="profileTitle"><%=information.whoAmI%></p>
+                        </div>
+                            
                         <div class="socialMedia">
-                        <a href="<%=information.instagram%>"><i class="fa fa-instagram"></i></a>  
-                        <a href="<%=information.facebook%>"><i class="fa fa-facebook"></i></a> 
+                            <a href="<%=information.instagram%>"><i class="fa fa-instagram"></i></a>  
+                            <a href="<%=information.facebook%>"><i class="fa fa-facebook"></i></a> 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <form action="/contact-us" id="contactUsContainer">
-            <button>Contact Us</button> 
-        </form>
-            
+
+            <form action="/contact-us" id="contactUsContainer">
+                <button>Contact Us</button> 
+            </form>
         
-        <script src = "/imageGalleryHandler.js"></script>
+            <script src = "/imageGalleryHandler.js"></script>
+        </div>
+
+        <%- include('calendarBooking')-%>
+
     </div>
-
-    <%- include('calendarBooking')-%>
-
-
 </div>
-</div>
-<script>var bookingData = <%-JSON.stringify(Months)%>;
+
+<script>
+    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    var bookingData = <%-JSON.stringify(Months)%>;
     var peopleMax =parseFloat(<%-JSON.stringify(information.peopleMax)%>);
     const timeAvailable = <%-JSON.stringify(information.timeAvailable)%>;
     const monthsAvailable = <%-JSON.stringify(information.monthsAvailable)%>;
     const weekdaysAvailable= <%-JSON.stringify(information.weekdaysAvailable)%>;
+    
     document.getElementById('postedTimeAvailable').value = timeAvailable;
-        if(<%-bookingFailed%>){
-            document.getElementById('booking').style.display = "inline-block";
-            document.getElementById('bookingID').style.display = "inline-block";
-        }
-        
+    if(<%-bookingFailed%>){
+        document.getElementById('booking').style.display = "inline-block";
+        document.getElementById('bookingID').style.display = "inline-block";
+    }
     
-        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-        ];
-    
-        const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    
-        function DateTracker(){
-    
-            this.today = new Date();
-            var day = this.today.getDate();
-           
-            var month = this.today.getMonth(); //January is 0!
-            var year = this.today.getFullYear();
-    
-            this.newPickDate(year, month, day+1);
-    
-            this.setup();
-    
-            
-        }
+    function DateTracker(){
+
+        this.today = new Date();
+        var day = this.today.getDate();
+        var month = this.today.getMonth(); //January is 0!
+        var year = this.today.getFullYear();
+
+        this.newPickDate(year, month, day+1);
+
+        this.setup();
+    }
     
         DateTracker.prototype.newPickDate = function(year, month, day){
             this.datePicked = new Date(year, month, day);
@@ -161,25 +166,19 @@
     
         //theDay is the html-element for the picked day!
         DateTracker.prototype.pickDate = function(theDay) {
-    
             this.cleanUp();
             this.colorLastPickedBorderSilver();
             this.newPickDate(this.year, this.month, theDay.innerHTML);
             
-        document.getElementById('postedPrice').value = <%-information.price%>;
-    
-    
+            document.getElementById('postedPrice').value = <%-information.price%>;
             theDay.style.border = "1px solid black";
-    
             document.getElementById("dayPicked").innerHTML = WEEKDAYS[this.datePicked.getDay()%7] +
             " " + this.datePicked.getDate() +". " + MONTH_NAMES[this.datePicked.getMonth()] + " " +
             this.datePicked.getFullYear();
+            
             var seats;
-           if(timeAvailable.length < 2) seats = this.seatsLeft(this.year, this.month, this.day, '');
-           else seats = this.seatsLeft(this.year, this.month, this.day, timeAvailable);
-    
-           
-    
+            if(timeAvailable.length < 2) seats = this.seatsLeft(this.year, this.month, this.day, '');
+            else seats = this.seatsLeft(this.year, this.month, this.day, timeAvailable);
             document.getElementById("seatsLeft").innerHTML = "Seats Left: " + seats;
     
             this.deleteChildrenOf(selectAmount);
@@ -194,10 +193,8 @@
                 opt.innerHTML = i;
                 selectAmount.appendChild(opt);   
             }
-    
-    
+
             document.getElementById('booking').style.display = "flex";
-    
             if( timeAvailable.length > 1){
                 this.deleteChildrenOf(timeSelector);
                 timeAvailable.forEach((time) =>{
@@ -209,24 +206,6 @@
                 }
                 });
             }
-            //this.deleteChildrenOf(document.getElementById('booking'));
-    
-            //this.setUpBookingFor(this.datePicked);
-    
-            /*<div id="amountOfPeople" class="pickDate">
-        <h4>People</h4>
-        <div>
-            <div id="selectContainer">
-                <label id="persons">Persons</label>
-                <select id="selectAmount">
-    
-                </select>
-            </div>
-            <div id="priceContainer">
-                <span>
-                    <strong>ISK ...</strong> per person
-                </span>
-            </div>*/   
             
         };
     
@@ -265,7 +244,7 @@
             }
             else{
                 
-            var bokadurTimi = '';
+                var bokadurTimi = '';
     
     
                 for(var i = 0; i < t.length; i++){
@@ -339,19 +318,20 @@
         }
     
         DateTracker.prototype.deleteChildrenOf = function(parent) {
-                //Delete all days:
-                    while (parent.firstChild) {
-                        parent.removeChild(parent.firstChild);
-                    }
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
         }
     
             
         DateTracker.prototype.isAvailable = function(x) {
             //this.month, setja þetta á undan svo ekki alltaf verið að ná í upplýsingarnar! "cache"
             
-            if(this.seatsLeft(this.year, this.month, x, '') > 0){ return true;}
+            if(this.seatsLeft(this.year, this.month, x, '') > 0){ 
+                return true;
+            }
             
-                return false;
+            return false;
         }
     
        DateTracker.prototype.selectAmountFiller = function(seats){
@@ -379,10 +359,8 @@
     
         DateTracker.prototype.selectHandler = function(){
             var selected = selectAmount.selectedIndex;
-            //var t = parseFloat(document.getElementById('pricid').innerHTML);
             var t = <%-information.price%>;
             document.getElementById('pricid').innerHTML =  t*selected;
-            
         }
     
         DateTracker.prototype.continueBooking = function(){
@@ -399,15 +377,16 @@
         }
     
         DateTracker.prototype.submitDate = function(){
-            if(timeAvailable.length > 1) {document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
-        + ' ' + timeSelector.options[timeSelector.selectedIndex].value + ':00';
-    }
-        else{
-            document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
-        + ' ' + timeAvailable[0]+ ':00';
+            if(timeAvailable.length > 1) {
+                document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
+                                                                + ' ' + timeSelector.options[timeSelector.selectedIndex].value 
+                                                                + ':00';
+                }
+            else{
+                document.getElementById('postedDate').value = this.year + '-' + parseInt(this.month+1) + '-' + this.day
+                                                                + ' ' + timeAvailable[0]+ ':00';
+            }
         }
-        }
-        
         
         DateTracker.prototype.setup = function() {
             var temp = this;
@@ -443,7 +422,6 @@
                 monthDay.className = 'day';
     
                 if(x === this.day && !(this.datePicked < this.today)) monthDay.style.fontWeight = "bolder";
-                //if(x === this.day-1 && !(this.datePicked < this.today)) monthDay.style.border = "1px solid black";
                 if(x > this.day-1){ 
                     if(this.notAvailableThisMonth(this.month) || this.notAvailableThisWeekday(weekDaysFollowing))
                     {monthDay.style.background = "white";}
@@ -543,7 +521,7 @@
                 bookingForm.submit();
             });
     
-             bookButton.addEventListener("click", function(){
+            bookButton.addEventListener("click", function(){
                 if(selectAmount.selectedIndex < 1) {
                     selectAmount.style.backgroundColor = "red";
                     return;
@@ -556,111 +534,74 @@
 
             });
     
-            nextMonth.addEventListener("click", function() {orderDate.nextMonth()});
-            prevMonth.addEventListener("click", function() {orderDate.prevMonth()});
+            nextMonth.addEventListener("click", function() {
+                orderDate.nextMonth()
+            });
+            prevMonth.addEventListener("click", function() {
+                orderDate.prevMonth()
+            });
             selectAmount.addEventListener("change", function(){
                 orderDate.selectHandler();
             });
-    
             timeSelector.addEventListener('change', function(){
                 orderDate.selectTimeHandler();
             });
 
-            /*bookingForm.addEventListener('submit', function(e){
-                const errors = 0;
-                alert(2);
-                if(firstName.value === ''){
-                    firstName.style.backgroundColor = "red";
-                    errors++;
-                }
-                if(!email.value.match(/\S+@\S+\.\S+/)){ //Basic, not trustworthy, isEmail regex func.
-                    email.style.backgroundColor = "red";
-                    errors++;
-                }
-                if(errors > 0){
-                    e.preventDefault();
-                    return false;
-                }
-                else{
-                    document.getElementById('phone').style.backgroundColor = "white";
-                    email.style.backgroundColor ="white";
-                    firstName.style.backgroundColor = "white";
-                }
-                orderDate.submitDate();
-                alert(1);
-                var countryData = $("#phone").intlTelInput("getSelectedCountryData");
-                $('#phoneCountry').val(countryData.name);
-                return true;
-});*/
-
-
-for(var index =0 ; index < bookers.length; index++){
-    bookers[index].addEventListener('click', function(){
-                    document.getElementById('theCalendarBox').style.display = "flex";
-                    document.getElementsByTagName('body')[0].style.overflow = "hidden";
-                    stopBodyScrolling(true);
-
-                    //window.scrollTo(0,document.body.scrollHeight);
+            for(var index =0 ; index < bookers.length; index++){
+                bookers[index].addEventListener('click', function(){
+                        document.getElementById('theCalendarBox').style.display = "flex";
+                        document.getElementsByTagName('body')[0].style.overflow = "hidden";
+                        stopBodyScrolling(true);
                 });}
 
             
 
 
-    exit.addEventListener('click', function(){
-                    document.getElementById('theCalendarBox').style.display = "none";
-                    document.getElementById('booking').style.display = "none";
-                    document.getElementsByTagName('body')[0].style.overflow = "auto";
-                    stopBodyScrolling(false);
-                    orderDate.cleanUp();
-                })
+            exit.addEventListener('click', function(){
+                        document.getElementById('theCalendarBox').style.display = "none";
+                        document.getElementById('booking').style.display = "none";
+                        document.getElementsByTagName('body')[0].style.overflow = "auto";
+                        stopBodyScrolling(false);
+                        orderDate.cleanUp();
+                });
 
 
-function stopBodyScrolling (bool) {
-    if (bool === true) {
-        document.body.style.position ="fixed";
-        document.getElementsByTagName('html')[0].style.position = "fixed";
-        document.body.style.overflow ="hidden";
-        document.getElementsByTagName('html')[0].style.overflow = "hidden";
-    } else {
-        document.body.style.position ="static";
-        document.getElementsByTagName('html')[0].style.position = "static";
-        document.body.style.overflow ="default";
-        document.getElementsByTagName('html')[0].style.overflow = "default";
-    }
-}
+            function stopBodyScrolling (bool) {
+                if (bool === true) {
+                    document.body.style.position ="fixed";
+                    document.getElementsByTagName('html')[0].style.position = "fixed";
+                    document.body.style.overflow ="hidden";
+                    document.getElementsByTagName('html')[0].style.overflow = "hidden";
+                } else {
+                    document.body.style.position ="static";
+                    document.getElementsByTagName('html')[0].style.position = "static";
+                    document.body.style.overflow ="default";
+                    document.getElementsByTagName('html')[0].style.overflow = "default";
+                }
+            }
 
-function scrollSmoothDown (id, elHeight) {
-    if(elHeight === 'bookingID') var height = $('#' + elHeight).height();
-    else var height = $('#' + elHeight).height()*1.7;
-    var divHeight = $('#' + id).height();
-   $('#theCalendarBox').animate({
-      scrollTop: divHeight - height
-   }, 1000);
-}
+            function scrollSmoothDown (id, elHeight) {
+                if(elHeight === 'bookingID') var height = $('#' + elHeight).height();
+                else var height = $('#' + elHeight).height()*1.7;
+                var divHeight = $('#' + id).height();
+                $('#theCalendarBox').animate({
+                    scrollTop: divHeight - height
+                }, 1000);
+            }
                 
 
           
-var thankYouMessage = document.getElementById('thankYouMessageContainer');
-var nav = document.getElementById('nav');
-    if(<%-tourBooked%>){
-        nav.style.zIndex = -5;
-        bod.style.opacity = 0.1;
-    bod.addEventListener('click', function(){
-        nav.style.zIndex = 3;
-        bod.style.opacity = 1.0;
-        thankYouMessage.style.display = "none";
-    });
-}
-
-
-            </script>
-
-
-
-
-
-    
-
-
+            var thankYouMessage = document.getElementById('thankYouMessageContainer');
+            var nav = document.getElementById('nav');
+            if(<%-tourBooked%>){
+                nav.style.zIndex = -5;
+                bod.style.opacity = 0.1;
+                bod.addEventListener('click', function(){
+                    nav.style.zIndex = 3;
+                    bod.style.opacity = 1.0;
+                    thankYouMessage.style.display = "none";
+                });
+            }
+</script>
 
 <%- include('footer')-%>

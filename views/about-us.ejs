@@ -1,6 +1,5 @@
 <%- include('header')-%>
 
-
 <h1 id="peopleOfAspar">People of Aspar Iceland</h1>
 <div class ="people">
         
@@ -10,14 +9,13 @@
 
             <%if(person.image){%>
                 <div class="mynd">
-                <img src="./img/<%= person.image%>" alt="<%= person.nafn%>">
+                    <img src="./img/<%= person.image%>" alt="<%= person.nafn%>">
                 </div>
             <%}%>
             <h2><%= person.who%></h2>
-            <div class="content"> <%= person.content%> </div>
+            <div class="content"> <%- person.content%> </div>
         </div>
     <%});%>
 </div>
-
 
 <%- include('footer')-%>

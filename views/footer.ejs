@@ -1,52 +1,43 @@
 <% if(height === '700px'){%>
-<footer style='margin-top: 200px;'>
+
+    <footer style='margin-top: 200px;'>
         <% } else{ %>
-            <footer> <% } %>
-            <div class="footerStuff">
-                <div></div>
-                <div class="asparLogo">
-                    <img src="/img/asparlogo/Aspar.png">
-                    <h1>Aspar Iceland</h1>
-                </div>
-                <div></div>
+    <footer><% } %>
+        
+        <div class="footerStuff">
+            <div></div>
+
+            <div class="asparLogo">
+
+                <img src="/img/asparlogo/Aspar.png">
+                <h1>Aspar Iceland</h1>
+
             </div>
-  
-                <!--<form id ="submitForm">
-                    <input type="text" placeholder ="Your name">
-                    <input type="text" placeholder ="Email">
-                    <input type="text" placeholder ="Subject">
-                    <textarea class = "about" placeholder ="About..."></textarea>
-                    <input type="submit" value="submit">
-                </form>-->
-                <div class="footerLink">
-                <a  href="mailto:asparIceland@gmail.com">aspariceland@gmail.com</a>
-            </div>
-            </footer>
 
-            
-            <script>
-                window.onscroll = function() {myFunction()};
+            <div></div>
 
-                    var header = document.getElementById("nav");
-                    var sticky = header.offsetTop;
+        </div>
+        
+        <div class="footerLink">
+            <a  href="mailto:asparIceland@gmail.com">aspariceland@gmail.com</a>
+        </div>
+    </footer>    
 
-                    function myFunction() {
-                    if (window.pageYOffset >= sticky) {
-                        header.classList.add("sticky");
-                    } else {
-                        header.classList.remove("sticky");
-                    }
-                    }
-            </script>
+    <script>
+        window.onscroll = function() {myFunction()};
 
-            <!--<script>
-                    $('#submitForm').submit(function () {
-                        alert($('.about').val());
-                        return false;
-                    });
-            </script>-->
+            var header = document.getElementById("nav");
+            var sticky = header.offsetTop;
 
-            
-    </body>
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            }
+    </script>     
+
+</body>
 
 </html>

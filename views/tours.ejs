@@ -1,32 +1,34 @@
 <%- include('header') -%>
 
 <div class = "kynning"> 
-<h3>Join the team</h3>
+  <h3>Join the team</h3>
 </div>
-            <ul class = "greinarTours">
-                    <% articles.forEach((article) => { %>
-                        <li>
-                            <a href=<%=article.href%>>
-                              <% if (article.image) { %>
-                                <img src = "img/<%= article.image %>" alt="<%= article.title%>">
-                              <% } %>
-                              <h1><%= article.title%></h1>
-                            </a>
-                        </li>
-                      <% }) %>
-            </ul>
 
-            <div class = "kynning" style="margin-top:150px;">
-                    <p style="line-height: 2.5"> Aspar is an organisation which specializes in health and well-being of 
-                        both body and mind. It was founded by two Icelandic brothers who have 
-                        a great passion for finding successful ways to a good life. Aspar Iceland
-                         specializes in creating interesting tours for tourists who are visiting 
-                         the island. We offer both day tours and small experiences but both have 
-                         it in common to make everyone feel connected to Icelandic nature and 
-                         increasing your overall health. This summer we will offer you 3 day tours 
-                         and 1 experience which you can choose from. We hope you have a great time 
-                         with us this summer.
-                    </p>
-                </div>
+<ul class = "greinarTours">
+  <% articles.forEach((article) => { %>
+    <li>
+      <a href=<%=article.href%>>
+        <% if (article.image) { %>
+          <img src = "img/<%= article.image %>" alt="<%= article.title%>">
+        <% } %>
+        <h1><%= article.title%></h1>
+      </a>
+    </li>
+  <% }) %>
+</ul>
+
+<div class = "kynning" style="margin-top:150px;">
+  <p style="line-height: 2.5"> 
+    Aspar is an organisation which specializes in health and well-being of 
+    both body and mind. It was founded by two Icelandic brothers who have 
+    a great passion for finding successful ways to a good life. Aspar Iceland
+    specializes in creating interesting tours for tourists who are visiting 
+    the island. We offer both day tours and small experiences but both have 
+    it in common to make everyone feel connected to Icelandic nature and 
+    increasing your overall health. This summer we will offer you 3 day tours 
+    and 1 experience which you can choose from. We hope you have a great time 
+    with us this summer.
+  </p>
+</div>
 
 <%- include('footer') -%>

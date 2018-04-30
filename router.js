@@ -8,36 +8,42 @@ const { runQuery } = require('./db');
 const booking = require('./booking');
 
 const router = express.Router();
+const md = new MarkdownIt();
 const readdirAsync = util.promisify(fs.readdir);
 const readFileAsync = util.promisify(fs.readFile);
-
-const md = new MarkdownIt();
 
 const picturesPath = './public/img';
 const theTour = './tours/';
 const peoplePath = "./people";
 const toursPath = "./tours/all_tours";
 const homePath = './home';
-var meta = false;
 
-var pano = 0;
-var panorama;
-
-var allBookings;
+var meta = false, tourBooked = false; /*meta: if true then the header.ejs file will display meta-data, the
+description of the page. tourBooked: if true then the thankYouMessage is displayed to the client, giving him the 
+info he needs about the trip he has just booked (is true immediately after client has confirmed a booking.*/
+var panorama, height, image; /*panorama: an array of panorama-pictures, the pictures in the header of the page.
+height: height in pixels of panopic (header of each page). Image: What pano, from panorama-array, is displayed on current
+page.*/
 var Months = {};
-var tourBooked = false;
+var pano = 0;
 
-
-
-
-async function fetchBookingsForTour(req, res, next){
-
-    allBookings = await runQuery(`SELECT * FROM months where tourid = '${req.params.tour}' order by date;`);
-    Months = await worker();
-    next();
+//Reads in all panoramaPictures. (HeaderPhotos).
+async function readPano(){
+    panorama = (await readdirAsync('./public/img/pano1234')).filter(file => !file.match(".DS_Store"));
 }
 
-async function worker(){
+async function fetchBookingsForTour(req, res, next){
+    try{
+        const allBookings = await runQuery(`SELECT * FROM months where tourid = '${req.params.tour}' order by date;`);
+        Months = await worker(allBookings);
+    } catch(err){
+        console.error(err);
+    } finally{
+        next();
+    }
+}
+
+async function worker(allBookings){
     var datein = new Date();
     var t = await[
         January = allBookings.filter((book) => book.date.getMonth() === 0),
@@ -76,15 +82,7 @@ s++;
 return b;
 }
 
-
-async function readPano(){
-    panorama = (await readdirAsync('./public/img/pano1234')).filter(file => !file.match(".DS_Store"));
-}
-
-function catchErrors(fn) {
-    return (req, res, next) => fn(req, res, next).catch(next);
-  }
-
+//Reads a md-file and returns an object of strings found in file.
 async function readArticle(filePath){
     const file = await readFileAsync(filePath);
   
@@ -100,6 +98,8 @@ async function readArticle(filePath){
         slug,
         image,
         position,
+        nafn,
+        who,
       },
     } = data;
   
@@ -112,97 +112,18 @@ async function readArticle(filePath){
       slug,
       image,
       position,
+      nafn,
+      who,
       path: filePath,
     };
 }
 
-async function readPeople(filePath){
-    const file = await readFileAsync(filePath);
-
-    const data = matter(file);
-
-    const{
-        content,
-        data: {
-            nafn,
-            who,
-            image,
-        },
-    } = data;
-
-    return {
-        content,
-        nafn,
-        who,
-        image,
-    };
-}
-
-async function readToursList(thePath){
-    const files = await readdirAsync(thePath);
-
-    
-    const articles = files
-      .filter(file => path.extname(file) === '.md')
-      .map(file => readArticle(`${path.join(thePath, file)}`));
-
-    return Promise.all(articles);
-}
-
-async function readPeopleList(){
-    const files = await readdirAsync(peoplePath);
-
-    const people = files   
-        .filter(file => path.extname(file) === '.md')
-        .map(file => readPeople(`${path.join(peoplePath, file)}`))
-
-        return Promise.all(people);
-}
-
-async function list(req, res){
-    if(!panorama) await readPano();
-    
-    const files = await readToursList(homePath);
-
-    const articles = files
-        .sort((a,b) => a.position > b.position);
-
-    var height = '700px';
-    var image = '/img/pano1234/' + panorama[pano];
-    pano = (pano+1)%panorama.length;
-
-    meta = true;
-    res.render('home', {meta, height, image, articles});
-}
-
-
-async function pictures(req, res){
-    if(!panorama) await readPano();
-    const tours = await readToursList(homePath);
-    const pictures = (await readdirAsync((theTour + 'img')))
-    .filter(file => (!file.match(/.*\.DS_Store.*/)));
-           
-            
-    
-    var height = '400px';
-    var image = '/img/pano1234/' + panorama[pano];
-    pano = (pano+1)%panorama.length;
-
-    meta = false;
-    
-    res.render('pictures', {meta, height, image, pictures});
-}
-
+/*Reads information about a specific tour, from a md-file. And 
+    Returns an object of the information.*/
 async function readInformation(filePath){
     const file = await readFileAsync(filePath);
 
     const data = matter(file);
-
-    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
-
-    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     const{
         content,
@@ -220,130 +141,152 @@ async function readInformation(filePath){
             difficulty,
             price,
             tourGuide,
-        whoAmI,
-        guidePic,
-        facebook,
-        instagram,
-        guide,
+            whoAmI,
+            guidePic,
+            facebook,
+            instagram,
+            guide,
         },
     } = data;
 
     var newWeekdaysAvailable;
     var newMonthsAvailable;
-if(weekdaysAvailable.match(/^all/)) newWeekdaysAvailable = [0,1,2,3,4,5,6];
-else newWeekdaysAvailable = weekdaysAvailable.split(",");
-if(monthsAvailable.match(/^all/)) newMonthsAvailable = [0,1,2,3,4,5,6,7,8,9,10,11];
-else newMonthsAvailable = monthsAvailable.split(",");
+        if(weekdaysAvailable.match(/^all/)) newWeekdaysAvailable = [0,1,2,3,4,5,6];
+        else newWeekdaysAvailable = weekdaysAvailable.split(",");
+        if(monthsAvailable.match(/^all/)) newMonthsAvailable = [0,1,2,3,4,5,6,7,8,9,10,11];
+        else newMonthsAvailable = monthsAvailable.split(",");
 
-    return {
-        content,
-        about,
-        title,
-        duration,
-        peopleMax,
-        ageLimit,
-        monthsAvailable: newMonthsAvailable,
-        weekdaysAvailable: newWeekdaysAvailable,
-        time,
-        timeAvailable: timeAvailable.split(","),
-        available,
-        difficulty,
-        price,
-        tourGuide,
-        whoAmI,
-        guidePic,
-        facebook,
-        instagram,
-        guide,
+return {
+    content,
+    about,
+    title,
+    duration,
+    peopleMax,
+    ageLimit,
+    monthsAvailable: newMonthsAvailable,
+    weekdaysAvailable: newWeekdaysAvailable,
+    time,
+    timeAvailable: timeAvailable.split(","),
+    available,
+    difficulty,
+    price,
+    tourGuide,
+    whoAmI,
+    guidePic,
+    facebook,
+    instagram,
+    guide,
     };
 }
 
-async function selectedTour(req, res){
-    if(!panorama) await readPano();
-    const { tour } = req.params;
-    var regex = new RegExp(tour);
-    const files = (await readdirAsync((theTour + 'img')))
-.filter((file) => file.match(regex));
-    const information = await readInformation((theTour + tour + '/informationTour.md'));
-    const above = await readInformation(theTour + tour + '/above.md');
-    const below = await readInformation(theTour + tour + '/below.md');
+//Read all md-files in a folder and return an array of objects representing each file.
+async function readList(thePath){
+    const files = await readdirAsync(thePath);
+    
+    const articles = files
+      .filter(file => path.extname(file) === '.md')
+      .map(file => readArticle(`${path.join(thePath, file)}`));
 
-
-    var height = '400px';
-    var image = '/img/pano1234/' + panorama[pano];
-    pano = (pano+1)%panorama.length;
-
-    const pictures = files
-        .filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/))
-        meta = false;
-
-    //bookingFailed, information, meta, height, image, errors, data}
-
-    const bookingFailed = false;
-    const errors = [];
-
-    res.render('the-tour', { tourBooked, Months, bookingFailed, errors, tourBooked, information, meta, height, image, pictures, above, below});
-    tourBooked = false;
+    return Promise.all(articles);
 }
 
-async function tours(req, res){
+
+//Sets up the home page. 
+async function home(req, res){
     if(!panorama) await readPano();
-    const files = await readToursList(toursPath);
+    const files = await readList(homePath);
 
     const articles = files
         .sort((a,b) => a.position > b.position);
 
-    var height = '400px';
-    var image = '/img/pano1234/' + panorama[pano];
+    await constStuff(true);
+
+    res.render('home', {meta, height, image, articles});
+}
+
+//Sets up the pictures page.
+async function pictures(req, res){
+    if(!panorama) await readPano();
+    const tours = await readList(homePath);
+
+    const pictures = (await readdirAsync((theTour + 'img')))
+    .filter(file => (!file.match(/.*\.DS_Store.*/)));
+
+    await constStuff(false);
     
+    res.render('pictures', {meta, height, image, pictures});
+}
+
+//Sets up the-tour page.
+async function selectedTour(req, res){
+    if(!panorama) await readPano();
+    const { tour } = req.params;
+    var regex = new RegExp(tour);
+    const files = (await readdirAsync((theTour + 'img'))).filter((file) => file.match(regex));
+    const information = await readInformation((theTour + tour + '/informationTour.md'));
+    const above = await readInformation(theTour + tour + '/above.md');
+    const below = await readInformation(theTour + tour + '/below.md');
+
+    await constStuff(false);
+
+    const pictures = files.filter(picture => picture !== '.DS_Store' && !picture.match(/aspar.*/) && !picture.match(/pano.*/));
+    
+    const bookingFailed = false;
+    const errors = [];
+
+    res.render('the-tour', { tourBooked, Months, bookingFailed, errors, 
+        tourBooked, information, meta, height, image, pictures, above, below});
+    
+    tourBooked = false;
+}
+
+//Set the variables needed for rendering (ejs-variables).
+async function constStuff(frontPage){
+    if(frontPage){ 
+        height = '700px';
+        meta = true;
+    }
+    else {
+        height = '400px';
+        meta = false;
+    }
+    image = '/img/pano1234/' + panorama[pano];
     pano = (pano+1)%panorama.length;
+}
 
-    meta = false;
+//Sets up the tours-page
+async function tours(req, res){
+    if(!panorama) await readPano();
+    const files = await readList(toursPath);
+    const articles = files
+        .sort((a,b) => a.position > b.position);
 
-    
-    
+    await constStuff(false);
 
     res.render('tours', {meta, height, image, articles});
 }
 
+//Sets up the about-us page.
 async function about_us(req, res){  
     if(!panorama) await readPano();
-    const people = await readPeopleList();
+    const people = await readList(peoplePath);
 
-    var height = '400px';
-    var image = '/img/pano1234/' + panorama[pano];
-    pano = (pano+1)%panorama.length;
+    await constStuff(false);
 
-meta = false;
     res.render('about-us', {meta, height, image, people});
 }
 
-async function readTheArticle(req, res){
-    if(!panorama) await readPano();
-    const files = await readToursList(articlesPath);
-    const { article } = req.params;
-
-    const theArticle = files
-        .find((a) => a.id === article);
-
-
-    var height = '400px';
-    var image = '/img/pano1234/' + panorama[pano];
-    pano = (pano+1)%panorama.length;
-meta = false;
-    res.render('article', {meta, height, image, theArticle});
-}
-
+//Redirect when client has booked a trip with us, sets tourBooked to 'true' so html will display thankyouMessage.
 async function thanksForBooking(req, res, next){
     tourBooked = true;
     res.redirect(`/tours/${req.params.tour}`);
 }
 
+function catchErrors(fn) {
+    return (req, res, next) => fn(req, res, next).catch(next);
+  }
 
-
-
-router.get('/', catchErrors(list));
-router.get('/articles/:article', catchErrors(readTheArticle));
+router.get('/', catchErrors(home));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
 router.get('/tours/:tour', catchErrors(fetchBookingsForTour), catchErrors(selectedTour));

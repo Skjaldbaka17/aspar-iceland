@@ -20,7 +20,9 @@ app.use(express.static(path.join(__dirname, 'tours')));
 app.use(express.static(path.join(__dirname, 'people')));
 app.use(express.static(path.join(__dirname, 'home')));
 
-
+/**
+ * Tryggir að client sækir síðu gegnum https.
+ */
 function enforceHttps(req, res, next) 
 {
   var host = req.get("host");
@@ -34,35 +36,9 @@ function enforceHttps(req, res, next)
   }
 }
 
-function enforceWWW(req, res, next){
-  var host = req.get("host");
-  //Enforcing also www
-  if(host.match(/^www\..*/i)){
-    next();
-  }
-  else{
-    res.redirect(301, "http://www.aspariceland.is");
-    next();
-  }
-}
-
-//app.use(enforceWWW);
 app.use(enforceHttps);
-
-/*function enforceWWW(req, res, next) {
-  if () {
-    res.redirect(301, `https://${req.get("host")}${req.url}`);
-  } else {
-    next();
-  }
-}*/
-
 app.use('/', router);
 app.use('/contact-us', formRouter);
-
-
-
-
 
 // hjálparfall fyrir view
 app.locals.isInvalid = (param, errors) => {
@@ -73,15 +49,15 @@ app.locals.isInvalid = (param, errors) => {
   return Boolean(errors.find(i => i.param === param)) ? 'field-invalid': '';
 };
 
-
-
-
+//Ef síðan er ekki til.
 function notFoundHandler(req, res, next) { // eslint-disable-line
     const title = 'Fannst ekki';
     const message = 'Sorry, this page is currently under construction.';
     res.status(404).render('error', {message });
   }
   
+  /*Ef upp kemur villa. Hinsvegar væri hægt að gera betur með því að 
+    gefa upp meiri upplýsingar með status-kóðanum (default hér 500)*/
   function errorHandler(err, req, res, next) { // eslint-disable-line
     console.error(err);
     const title = 'Villa kom upp';
@@ -89,7 +65,7 @@ function notFoundHandler(req, res, next) { // eslint-disable-line
     res.status(500).render('error', { message });
   }
 
-  app.use(notFoundHandler);
+app.use(notFoundHandler);
 app.use(errorHandler);
 
 app.listen(app.get('port'), function() {

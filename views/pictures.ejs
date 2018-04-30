@@ -1,35 +1,35 @@
 <%- include('header') -%>
 <div onload="load();">
-<ul class="myndir" id="myList">
-    <%var a = 0; pictures.forEach((picture) =>{%>
-        <li>
-            <% if (picture) {%>
-                <img class="yoda" src = "./img/<%= picture %>" alt="" onclick="imageGal.openModal(this.src)">
-            <% } %>
-        </li>
+    <ul class="myndir" id="myList">
+        <%var a = 0; pictures.forEach((picture) =>{%>
+            <li>
+                <% if (picture) {%>
+                    <img class="yoda" src = "./img/<%= picture %>" alt="" onclick="imageGal.openModal(this.src)">
+                <% } %>
+            </li>
 
         <%}); %>
-</ul>
+    </ul>
 
-<div class = "meira">
-    <a href="#" id ="loadMore">more</a>
-</div>
+    <div class = "meira">
+        <a href="#" id ="loadMore">more</a>
+    </div>
 
-<div id="myModal" class="modal" onclick="imageGal.closeModal();">
-    <div class="imageContainer">
-        <div></div>
-        <div class="theOneImage" id="largeImageContainer">
-            <a class="prevPic" onclick="imageGal.changePic(-1)">&#10094;</a>         
-            <img id="largeImage" src="">
-            <a class="nextPic" onclick="imageGal.changePic(+1)">&#10095;</a>     
+    <div id="myModal" class="modal" onclick="imageGal.closeModal();">
+        <div class="imageContainer">
+            <div></div>
+
+            <div class="theOneImage" id="largeImageContainer">
+                <a class="prevPic" onclick="imageGal.changePic(-1)">&#10094;</a>         
+                <img id="largeImage" src="">
+                <a class="nextPic" onclick="imageGal.changePic(+1)">&#10095;</a>     
+            </div>
+            
+            <div></div>
         </div>
-        <div></div>
     </div>
 </div>
-</div>
 
-      
-      
 <script src = "/pictureGalleryHandler.js"></script>
                  
        

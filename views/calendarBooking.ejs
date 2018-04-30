@@ -4,108 +4,131 @@
 <%}%>
 
 <div id="theCalendarBox">
-        <div id="exit"> <div id="exitSymbol">&#10006;</div> </div>
-        <div id="theSame">
-    
-            <div id="theCalendar">
-                    <div id ="headerMonth">
-                        <div class="previousRound" id="prevMonth">
-                                <a>&#8249;</a>
-                        </div>
-                        <div class="theMonth"> <h1 id="month">Month</h1> </div>
-                       
-                        <div id="nextMonth"class="nextRound">
-                                <a>&#8250;</a>
-                        </div>
-                        
+    <div id="exit"> 
+        <div id="exitSymbol">
+            &#10006;
+        </div> 
+    </div>
+
+    <div id="theSame">
+        <div id="theCalendar">
+                <div id ="headerMonth">
+                    <div class="previousRound" id="prevMonth">
+                            <a>&#8249;</a>
                     </div>
-                    <div id="weekdays">
-                        <div>MON</div>
-                        <div>TUE</div>
-                        <div>WED</div>
-                        <div>THU</div>
-                        <div>FRI</div>
-                        <div>SAT</div>
-                        <div>SUN</div>
+
+                    <div class="theMonth"> 
+                        <h1 id="month">Month</h1> 
                     </div>
-                    <div id="days"></div>
-            </div>
+                    
+                    <div id="nextMonth"class="nextRound">
+                            <a>&#8250;</a>
+                    </div>
+                    
+                </div>
+                <div id="weekdays">
+                    <div>MON</div>
+                    <div>TUE</div>
+                    <div>WED</div>
+                    <div>THU</div>
+                    <div>FRI</div>
+                    <div>SAT</div>
+                    <div>SUN</div>
+                </div>
+                <div id="days">
 
-            <div id="notAvailable">We are fullbooked on this day, sorry.</div>
+                </div>
+        </div>
 
-        
+        <div id="notAvailable">
+            We are fullbooked on this day, sorry.
+        </div>
 
-            <div id="booking">
+        <div id="booking">
 
             <form method="POST" id="bookingForm">
-                     <%if(information.time !== '(You choose!)'){%>    
-                        <input name="time" value="<%= information.time %>" type="hidden" class='<%=isInvalid("time", errors)%>'>
-                        <%}%>
-                    <input name="timeAvailable" id="postedTimeAvailable" type="hidden">
-                    <input name="timeTour" value="<%=information.time%>" type="hidden">
-                    <input name="tourGuide" value="<%=information.guide%>" type="hidden">
-                    <input name="fullPhoneNumber" id ="fullPhoneNumber" type="hidden">
-                    <input name="date" id="postedDate" type="hidden">
-                    <input name="price" id="postedPrice" type="hidden" class='<%=isInvalid("price", errors)%>'>
+                <%if(information.time !== '(You choose!)'){%>    
+                    <input name="time" value="<%= information.time %>" type="hidden" class='<%=isInvalid("time", errors)%>'>
+                <%}%>
+                <input name="timeAvailable" id="postedTimeAvailable" type="hidden">
+                <input name="timeTour" value="<%=information.time%>" type="hidden">
+                <input name="tourGuide" value="<%=information.guide%>" type="hidden">
+                <input name="fullPhoneNumber" id ="fullPhoneNumber" type="hidden">
+                <input name="date" id="postedDate" type="hidden">
+                <input name="price" id="postedPrice" type="hidden" class='<%=isInvalid("price", errors)%>'>
 
                 <div id="datePicked" class="pickDate">
                     <h4>Dates</h4>
+
                     <div>
                         <h3 id="dayPicked"></h3>
+
                         <div id="radioContainer" class="containerBelow">
-                                <% if(information.timeAvailable.length > 1){%> 
-                                    <div class="eachInput">
-                                        <label class="controlLabel">
-                                            Time
-                                        </label>
-                                        <div class="controls">
-                                            <select required id="timeSelector" class='answer <%=isInvalid("time", errors)%>'  name="time" form="bookingForm">
-                                                    <option value="10:00">10:00</option>
-                                                    <option value="12:00">11:00</option>
-                                                    <option value="12:00">12:00</option>
-                                                    <option value="13:00">13:00</option>
-                                                    <option value="14:00">14:00</option>
-                                                    <option value="15:00">15:00</option>
-                                                    <option value="16:00">16:00</option>
-                                                    <option value="17:00">17:00</option>
-                                                    <option value="18:00">18:00</option>
-                                                    <option value="19:00">19:00</option>
-                                            </select>
-                                        </div>
+                            <% if(information.timeAvailable.length > 1){%> 
+                                <div class="eachInput">
+                                    <label class="controlLabel">
+                                        Time
+                                    </label>
+                                    <div class="controls">
+                                        <select required id="timeSelector" class='answer <%=isInvalid("time", errors)%>'  name="time" form="bookingForm">
+                                                <option value="10:00">10:00</option>
+                                                <option value="12:00">11:00</option>
+                                                <option value="12:00">12:00</option>
+                                                <option value="13:00">13:00</option>
+                                                <option value="14:00">14:00</option>
+                                                <option value="15:00">15:00</option>
+                                                <option value="16:00">16:00</option>
+                                                <option value="17:00">17:00</option>
+                                                <option value="18:00">18:00</option>
+                                                <option value="19:00">19:00</option>
+                                        </select>
                                     </div>
-                                    <label id="seatsLeft"></label>
-                                    <%}%>
-                                <% if(information.timeAvailable.length === 1){%>
-                            <input name="radio" id="radio" type="radio" checked="true" disabled="true">
-                            <label id="time"><%= information.timeAvailable[0] %></label>
-                            <input type="hidden" id="timeSelector">
-                            
-                            <label id="seatsLeft"></label>
+                                </div>
+                                <label id="seatsLeft"></label>
+                            <%}%>
+
+                            <% if(information.timeAvailable.length === 1){%>
+                                <input name="radio" id="radio" type="radio" checked="true" disabled="true">
+                                <label id="time">
+                                    <%= information.timeAvailable[0] %>
+                                </label>
+                                <input type="hidden" id="timeSelector">
+                                <label id="seatsLeft">
+
+                                </label>
                             <%}%>
                         </div>
                     </div>
                 </div>
 
                 <div id="amountOfPeople" class="pickDate">
-                    <h4>People</h4>
+                    <h4>
+                        People
+                    </h4>
+
                     <div>
                         <div id="selectContainer">
-                            <label id="persons">Persons</label>
+                            <label id="persons">
+                                Persons
+                            </label>
                             <select required name="persons" id="selectAmount" form="bookingForm" class='<%=isInvalid("persons", errors)%>'>
                                 <option disabled selected value> -- Number of Persons -- </option>
                             </select>
                         </div>
+
                         <div id="priceContainer">
                             <span>
-                                <strong>ISK </strong> <strong id="pricid">...</strong> Total
+                                <strong>ISK </strong><strong id="pricid">...</strong> Total
                             </span>
                         </div>
+
                         <div class="containerBelow">
                             <input name="pickup" type="checkbox" checked="true" disabled="true">
-                                <span>
-                                    <strong>Yes</strong>,
-                                     we would like to be picked up. <span>(included in price)</span>
-                                </span>
+                            <span>
+                                <strong>Yes</strong>,
+                                we would like to be picked up. 
+                                <span>(included in price)</span>
+                            </span>
                         </div>
 
                     </div>
@@ -115,17 +138,16 @@
                     <div id="bookButton" class="confirmButtons">Book Now</div>
                 </div>
 
-            <%- include('bookingID')-%>
+                <%- include('bookingID')-%>
             
 
-            <div id="payButton">
-                <input id="thePayer" class="confirmButtons" type="button" value="Confirm">
-            </div>
-                </form>
-            </div>
+                <div id="payButton">
+                    <input id="thePayer" class="confirmButtons" type="button" value="Confirm">
+                </div>
+            </form>
         </div>
     </div>
-                
+</div>           
 
 <%if(bookingFailed){%>
     <%- include('footer')-%>

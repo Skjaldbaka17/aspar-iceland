@@ -25,11 +25,11 @@
                     <input required  name="email" type="email" class ='answer <%=isInvalid("email", errors)%>' id="emailAddress">
                 </div>
         </div>
-       <div class="eachInput" id="telly">
-           <label class="controlLabel">
+        <div class="eachInput" id="telly">
+            <label class="controlLabel">
                Phone number
-           </label>
-           <input type="hidden" id="phoneCountry" name="phoneCountry">
+            </label>
+            <input type="hidden" id="phoneCountry" name="phoneCountry">
             <input required type="tel" name="shortPhoneNumber" id="phone" class ='<%=isInvalid("phoneNumber", errors)%>'>
 
             <script src="/build/js/intlTelInput.js"></script> <!--International Telephone input!-->
@@ -37,25 +37,20 @@
                 $(document).ready(function(){
 
                     $("#phone").intlTelInput({
-  initialCountry: "auto",
-  geoIpLookup: function(callback) {
-    $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-      var countryCode = (resp && resp.country) ? resp.country : "";
-      callback(countryCode);
-    });
-  },
-  utilsScript: "../../build/js/utils.js" // just for formatting/placeholders etc,
-
-});
-                    
-
-                    
-
-});
-
+                        initialCountry: "auto",
+                        geoIpLookup: function(callback) {
+                            $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                            var countryCode = (resp && resp.country) ? resp.country : "";
+                            callback(countryCode);
+                            });
+                        },
+                        utilsScript: "../../build/js/utils.js" // just for formatting/placeholders etc,
+                    });
+                });
             </script>
-       </div>
-       <div class="eachInput">
+
+        </div>
+        <div class="eachInput">
             <label class="controlLabel">
                 Nationality
             </label>
@@ -254,7 +249,7 @@
                         <option value="yemenite">Yemenite</option>
                         <option value="zambian">Zambian</option>
                         <option value="zimbabwean">Zimbabwean</option>
-                      </select>
+                </select>
             </div>
         </div>
     </div>

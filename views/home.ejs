@@ -1,112 +1,116 @@
 <%- include('header') -%>
 
-        <div class = "kynning">
-            <h3>Welcome to Iceland</h3>
-            <p>The island in the North. Home to many of the world's most magnificent
-                waterfalls, glaciers and landscapes. Iceland heals, fights and inspires like no other.
-            </p>
-        </div>
-            
-            <div class = "tourGrid" id="greinarHome">
-                    <% articles.forEach((article) => { %>
-                        <% 
-                        var classinn = (article.position%2 === 0) ? 'right' : 'left';
-                        var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
-                        var limmidi = (article.position%2 === 1) ? 'otherCol' : 'thisCol';
-                        %>                             
-                                <div class="grPic linkurAGrein <%=classinn%>">
-                                    <% if (article.image) { %>
-                                        <img src = "<%= article.image %>" alt="<%= article.title%>">
-                                    <% } %>
-                                </div>
+<div class = "kynning">
+    <h3>Welcome to Iceland</h3>
 
-                                <div class="txtGr linkurAGrein <%=textClassinn%> <%=limmidi%>">
-                                    <div class="articleInfo">
-                                            <div class="articleTitle">
-                                                <h4><%= article.title%></h4>
-                                            </div>
-                                            <div class="articleDescription">
-                                                <h5><%= article.description%></h5>
-                                            </div>
-                                            <div class="articleContent">
-                                                <%- article.content%>
-                                            </div>
-                                    </div>
-                                        <form id="tourButton" action="<%=article.href%>">
-                                            <button>More info</button> 
-                                        </form>
-                                </div>
-                              
-                        
-                      <% }) %>
+    <p>
+        The island in the North. Home to many of the world's most magnificent
+        waterfalls, glaciers and landscapes. Iceland heals, fights and inspires like no other.
+    </p>
+</div>
+        
+<div class = "tourGrid" id="greinarHome">
+        <% articles.forEach((article) => { %>
+            <% 
+                var classinn = (article.position%2 === 0) ? 'right' : 'left';
+                var textClassinn = (article.position%2 === 1) ? 'rightText' : 'leftText';
+                var limmidi = (article.position%2 === 1) ? 'otherCol' : 'thisCol';
+            %>     
+
+            <div class="grPic linkurAGrein <%=classinn%>">
+                <% if (article.image) { %>
+                    <img src = "<%= article.image %>" alt="<%= article.title%>">
+                <% } %>
             </div>
 
-            <script>
-                var fun = true;
-                var mobile = false;
+            <div class="txtGr linkurAGrein <%=textClassinn%> <%=limmidi%>">
+                <div class="articleInfo">
+                    <div class="articleTitle">
+                        <h4><%= article.title%></h4>
+                    </div>
 
-                $( document ).ready(function() {      
-    var isMobile = window.matchMedia("only screen and (max-width: 750px)");
+                    <div class="articleDescription">
+                        <h5><%= article.description%></h5>
+                    </div>
 
-    if (isMobile.matches && fun) {
-        mobile = true;
-        rightOrder();
-    }
- });
-
-if($(window).width() < 751 && !mobile) rightOrder();
-else if(!mobile) funOrder();
+                    <div class="articleContent">
+                        <%- article.content%>
+                    </div>
+                </div>
                 
-                $(window).on('resize', function(event){
-                    var windowWidth = $(window).width();
-                if(windowWidth < 751){
-                        rightOrder();
-                    }
-                    else if(!fun){
-                        funOrder();
-                    }
-                    });
+                <form id="tourButton" action="<%=article.href%>">
+                    <button>More info</button> 
+                </form>
+            </div>
+            <% }) %>
+</div>
 
-                    function rightOrder(){
-                        var i = 0;
-                        var linkar = document.getElementsByClassName('linkurAGrein');
-                        fun = false;
-                        mobile = true;
+<script>
+    var fun = true;
+    var mobile = false;
 
-                        while(i < linkar.length){
-                            linkar[i].style.order = i;
-                            linkar[i].style.zIndex= (i+1)%2;
-                            i++;
-                        }
-                    }
-                        
-                
+    $( document ).ready(function() {      
+        var isMobile = window.matchMedia("only screen and (max-width: 750px)");
 
-                function funOrder(){
-                    fun = true;
-                    let t = document.getElementById('greinarHome').getElementsByClassName('linkurAGrein');
+        if (isMobile.matches && fun) {
+            mobile = true;
+            rightOrder();
+        }
+    });
 
-                    var size = t.length;
-                    mobile = false;
-
+    if($(window).width() < 751 && !mobile) rightOrder();
+    else if(!mobile) funOrder();
                     
-                    t[size-1].id = 'lastOne';
-                   
-                    let greinar = document.getElementsByClassName('linkurAGrein');
-                    var i = 0;
+    $(window).on('resize', function(event){
+        var windowWidth = $(window).width();
+        if(windowWidth < 751){
+            rightOrder();
+        }
+        else if(!fun){
+            funOrder();
+        }
+    });
 
-                    while(i < size){
-                            if(i % 4 === 0){
-                                greinar[i].style.order = i+1;
-                                greinar[i+1].style.order = i;
-                            } 
-                            else if(i%2 === 0){
-                                greinar[i].style.order = i;
-                                greinar[i+1].style.order = i+1;
-                            }
-                            i++;
-                    }
-                    }
-                </script>
+    function rightOrder(){
+        var i = 0;
+        var linkar = document.getElementsByClassName('linkurAGrein');
+        fun = false;
+        mobile = true;
+
+        while(i < linkar.length){
+            linkar[i].style.order = i;
+            linkar[i].style.zIndex= (i+1)%2;
+            i++;
+        }
+    }
+            
+    
+
+    function funOrder(){
+        fun = true;
+        let t = document.getElementById('greinarHome').getElementsByClassName('linkurAGrein');
+
+        var size = t.length;
+        mobile = false;
+
+        
+        t[size-1].id = 'lastOne';
+    
+        let greinar = document.getElementsByClassName('linkurAGrein');
+        var i = 0;
+
+        while(i < size){
+            if(i % 4 === 0){
+                greinar[i].style.order = i+1;
+                greinar[i+1].style.order = i;
+            } 
+            else if(i%2 === 0){
+                greinar[i].style.order = i;
+                greinar[i+1].style.order = i+1;
+            }
+            i++;
+        }
+    }
+</script>
 
 <%- include('footer') -%>

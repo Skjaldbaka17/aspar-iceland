@@ -4,21 +4,16 @@
 
         <!-- Start of Google Anal-->
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117680639-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117680639-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-  gtag('config', 'UA-117680639-1');
-</script>
-
-<!-- End of Google Anal-->
-
-
-
-            <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-            
+            gtag('config', 'UA-117680639-1');
+        </script>
+        <!-- End of Google-Anal-->
+                    
         <link rel="shortcut icon" href="/img/asparlogo/Aspar.png">
         <link rel="apple-touch-icon" href="/img/asparlogo/Aspar.png">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -29,7 +24,6 @@
         <link href="https://fonts.googleapis.com/css?family=Acme|Bree+Serif|Josefin+Sans|Patua+One|Source+Serif+Pro" rel="stylesheet">
         
         <link rel="stylesheet" href="/build/css/intlTelInput.css"><!--International Telephone input!-->
-        
         <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="/calendar&BookingStart.css">
         <link rel="stylesheet" href="/home.css">
@@ -43,20 +37,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta charset="utf-8">
+
         <title>Aspar Iceland</title>
 
-<style>
-      .intl-tel-input { width: 100%; }
+        <style>
+            .intl-tel-input { width: 100%; }
 
-      /* Overwrite flag sprite location for intl-tel-input */
-      .iti-flag {
-          background-image: url("/build/img/flags.png") !important;
-      
-          @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-          background-image: url("/build/img/flags@2x.png") !important;
-        }
-      }
-</style>
+            /* Overwrite flag sprite location for intl-tel-input */
+            .iti-flag {
+                background-image: url("/build/img/flags.png") !important;
+            
+                @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+                background-image: url("/build/img/flags@2x.png") !important;
+                }
+            }
+        </style>
     
     </head>
     
@@ -65,21 +60,22 @@
         <div class ="big_picture" style="height: <%= height %> ; background-image: url(<%= image %>);">
             
             <div class = "logo">
-                    <a href="http://www.aspariceland.is/">
-                    <img src = "/img/asparlogo/Aspar.png" alt="Aspar Iceland"></a>
+                <a href="http://www.aspariceland.is/">
+                    <img src = "/img/asparlogo/Aspar.png" alt="Aspar Iceland">
+                </a>
             </div>
+
             <% if(height === '700px'){%>
-            <h1>Aspar Iceland</h1> 
+                <h1>Aspar Iceland</h1> 
             <% } %>
         </div>
 
-
         <div id="nav">
-                <div id="menuBar" onclick="dropdown(1);">
-                        <div class="menuBar"></div>
-                        <div class="menuBar"></div>
-                        <div class="menuBar"></div>
-                </div>
+            <div id="menuBar" onclick="dropdown(1);">
+                <div class="menuBar"></div>
+                <div class="menuBar"></div>
+                <div class="menuBar"></div>
+            </div>
 
             <nav>
                 <a href = "/">Home</a>
@@ -92,26 +88,23 @@
 
         <script>
 
-var x = 0;
-function dropdown(t){
-    x += t;
-    
-    if(x%2===0) cleanUp();
-    else dropIt();
-}
+            var x = 0;
+            function dropdown(t){
+                x += t;
+                if(x%2===0) cleanUp();
+                else dropIt();
+            }
 
-function cleanUp() {
-    const doc = document.getElementsByTagName('nav');
-    var as = doc[0].getElementsByTagName('a');
+            function cleanUp() {
+                const doc = document.getElementsByTagName('nav');
+                var as = doc[0].getElementsByTagName('a');
+                doc[0].style.display = 'none';
+            }
 
-    doc[0].style.display = 'none';
-    
-}
-
-function dropIt(){
-    const doc = document.getElementsByTagName('nav');
-    var as = doc[0].getElementsByTagName('a');
-
-  doc[0].style.display = 'grid';
-}
+            function dropIt(){
+                const doc = document.getElementsByTagName('nav');
+                var as = doc[0].getElementsByTagName('a');
+                doc[0].style.display = 'grid';
+            }
+            
         </script>
