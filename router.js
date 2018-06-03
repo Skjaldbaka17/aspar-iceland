@@ -286,6 +286,21 @@ function catchErrors(fn) {
     return (req, res, next) => fn(req, res, next).catch(next);
   }
 
+  async function authorQuotes(req, res){
+    const { author } = req.params;
+    const json = await readFileAsync("AuthorsPutTogether/" + author.charAt(0) + ".json")
+    const jsonObj = JSON.parse(json);
+    return res.end(JSON.stringify(jsonObj[author]))
+  }
+  async function icelandicAuthorQuotes(req, res){
+    const { author } = req.params;
+    console.log(author)
+    const json = await readFileAsync("IcelandicAuthorsPutTogether/" + author.charAt(0) + ".json")
+    const jsonObj = JSON.parse(json);
+    console.log(jsonObj[author])
+    return res.end(JSON.stringify(jsonObj[author]))
+  }
+
 router.get('/', catchErrors(home));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
@@ -295,12 +310,8 @@ router.get('/google0897b145ce65bc52.html', (req,res) => {res.send('google-site-v
 router.get('/tours/:tour/thanks', catchErrors(thanksForBooking));
 router.post('/tours/:tour', booking);
 router.get('/quotes/english/:author',catchErrors(authorQuotes))
-async function authorQuotes(req, res){
-    const { author } = req.params;
-    const json = await readFileAsync("AuthorsPutTogether/" + author.charAt(0) + ".json")
-    const jsonObj = JSON.parse(json);
-    return res.end(JSON.stringify(jsonObj[author]))
-  }
+router.get('/quotes/icelandic/:author',catchErrors(icelandicAuthorQuotes))
+
 
 
 
