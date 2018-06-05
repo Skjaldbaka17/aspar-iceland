@@ -288,14 +288,14 @@ function catchErrors(fn) {
 
   async function authorQuotes(req, res){
     const { author } = req.params;
-    const json = await readFileAsync("AuthorsPutTogether/" + author.charAt(0) + ".json")
+    const json = await readFileAsync("AuthorsPutTogether/" + author.charAt(0).toUpperCase() + ".json")
     const jsonObj = JSON.parse(json);
     return res.end(JSON.stringify(jsonObj[author]))
   }
   async function icelandicAuthorQuotes(req, res){
     const { author } = req.params;
     console.log(author)
-    const json = await readFileAsync("IcelandicAuthorsPutTogether/" + author.charAt(0) + ".json")
+    const json = await readFileAsync("IcelandicAuthorsPutTogether/" + author.charAt(0).toUpperCase() + ".json")
     const jsonObj = JSON.parse(json);
     console.log(jsonObj[author])
     return res.end(JSON.stringify(jsonObj[author]))
