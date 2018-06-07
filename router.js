@@ -294,10 +294,8 @@ function catchErrors(fn) {
   }
   async function icelandicAuthorQuotes(req, res){
     const { author } = req.params;
-    console.log(author)
     const json = await readFileAsync("IcelandicAuthorsPutTogether/" + author.charAt(0).toUpperCase() + ".json")
     const jsonObj = JSON.parse(json);
-    console.log(jsonObj[author])
     return res.end(JSON.stringify(jsonObj[author]))
   }
 
