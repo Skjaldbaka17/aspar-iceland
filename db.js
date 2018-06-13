@@ -13,10 +13,10 @@ async function saveAuthorToDB(author){
  try {
  if(!rows[0]){
   const query1 = `Insert into authors (author, searches) values($1, $2)`;
-  const values = [author, 100];
+  const values = [author, 1];
    await client.query(query1, values)
  } else {
-  const query2 = `Update authors set searches = ${1 + 100} where author = ${author};`;
+  const query2 = `Update authors set searches = ${1 + rows[0]} where author = '${author}';`;
    await client.query(query2);
  }
 } catch (err) {
