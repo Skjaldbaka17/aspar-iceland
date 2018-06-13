@@ -3,6 +3,29 @@ const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL;
 
+async function saveAuthorToDB(author){
+  const client = new Client({ connectionString });
+  await client.connect();
+
+  const query = `Select * from authors where author = '${author}';`
+ const result = await client.query(query);
+ const{ rows } = result;
+ try {
+ if(!rows[0]){
+  const query1 = `Insert into authors (author, searches) values($1, $2)`;
+  const values = [author, 1];
+   await client.query(query1, values)
+ } else {
+  const query2 = `Update authors set searches = ${1 + parseInt(rows[0].searches)} where author = ${author}`;
+   await client.query(query2);
+ }
+} catch (err) {
+  console.error('Error inserting data');
+  throw err;
+} finally {
+  await client.end();
+}
+}
 
 async function saveToDb(data, table) {
   const client = new Client({ connectionString });
@@ -103,4 +126,5 @@ module.exports = {
   fetchData,
   runQuery,
   moveBookingToDb,
+  saveAuthorToDB,
 };

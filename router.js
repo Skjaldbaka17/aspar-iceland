@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const MarkdownIt = require('markdown-it'); //fyrir að skrifa og rendera md-file
 const matter = require('gray-matter');
-const { runQuery } = require('./db');
+const { runQuery, saveAuthorToDB } = require('./db');
 const booking = require('./booking');
 
 const router = express.Router();
@@ -290,12 +290,14 @@ function catchErrors(fn) {
     const { author } = req.params;
     const json = await readFileAsync("AuthorsPutTogether/" + author.charAt(0).toUpperCase() + ".json")
     const jsonObj = JSON.parse(json);
+    saveAuthorToDB(author)
     return res.end(JSON.stringify(jsonObj[author]))
   }
   async function icelandicAuthorQuotes(req, res){
     const { author } = req.params;
     const json = await readFileAsync("IcelandicAuthorsPutTogether/" + author.charAt(0).toUpperCase() + ".json")
     const jsonObj = JSON.parse(json);
+    saveAuthorToDB(author)
     return res.end(JSON.stringify(jsonObj[author]))
   }
 
