@@ -16,7 +16,7 @@ async function saveAuthorToDB(author){
   const values = [author, 1];
    await client.query(query1, values)
  } else {
-  const query2 = `Update authors set searches = ${1 + rows[0]} where author = '${author}';`;
+  const query2 = `Update authors set searches = ${1 + parseInt(rows[0].searches)} where author = '${author}';`;
    await client.query(query2);
  }
 } catch (err) {
