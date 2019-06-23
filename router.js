@@ -301,6 +301,18 @@ function catchErrors(fn) {
     return res.end(JSON.stringify(jsonObj[author]))
   }
 
+  async function privacyPolicy(req, res){
+
+    const file = (await readFileAsync('./Skilmálar.txt')).toString();
+    const policy = file
+    try {
+        res.render('privacyPolicy', {policy})
+        res.end()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 router.get('/', catchErrors(home));
 router.get('/pictures', catchErrors(pictures));
 router.get('/tours', catchErrors(tours));
@@ -311,6 +323,7 @@ router.get('/tours/:tour/thanks', catchErrors(thanksForBooking));
 router.post('/tours/:tour', booking);
 router.get('/quotes/english/:author',catchErrors(authorQuotes))
 router.get('/quotes/icelandic/:author',catchErrors(icelandicAuthorQuotes))
+router.get('/quotes/skilmalar', catchErrors(privacyPolicy))
 
 
 
