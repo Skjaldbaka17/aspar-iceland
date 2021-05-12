@@ -27,7 +27,7 @@
     "gray-matter": "^3.1.1",
     "intl-tel-input": "^12.1.13",
     "markdown-it": "^8.4.1",
-    "nodemailer": "^4.6.3",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7",
     "pg": "^7.4.1",
     "util": "^0.10.3",
