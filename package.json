@@ -26,7 +26,7 @@
     "fs": "0.0.1-security",
     "gray-matter": "^3.1.1",
     "intl-tel-input": "^12.1.13",
-    "markdown-it": "^8.4.1",
+    "markdown-it": "^12.3.2",
     "nodemailer": "^4.6.3",
     "path": "^0.12.7",
     "pg": "^7.4.1",
